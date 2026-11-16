@@ -1,0 +1,9 @@
+{
+  "name": "logic-defender-bekom",
+  "version": "1.0.0",
+  "description": "Game Edukasi Berpikir Komputasi berbasis Native JS",
+  "type": "module",
+  "scripts": {
+    "start": "npx serve ."
+  }
+}

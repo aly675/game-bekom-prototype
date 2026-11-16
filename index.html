@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Quest — Berpikir Komputasi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+
+  <!-- ===== APP HEADER ===== -->
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-icon">🐍</span>
+      <span class="brand-name">Python Quest</span>
+    </div>
+    <div class="header-actions">
+      <span class="subtitle-tag">Berpikir Komputasi</span>
+      <button id="btn-sound" class="icon-btn" title="Toggle Sound">🔊</button>
+    </div>
+  </header>
+
+  <!-- ===== SCREEN: MENU UTAMA ===== -->
+  <section id="screen-menu" class="screen active">
+    <div class="menu-container">
+      <!-- Animated hero on menu -->
+      <div class="menu-hero-anim" id="menu-hero">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 80" width="80" height="106">
+          <rect x="15" y="26" width="30" height="28" rx="5" fill="#4A90D9"/>
+          <circle cx="30" cy="18" r="15" fill="#FFDAB9"/>
+          <rect x="12" y="5" width="36" height="8" rx="4" fill="#E63946"/>
+          <rect x="17" y="1" width="26" height="6" rx="3" fill="#E63946"/>
+          <circle cx="24" cy="17" r="2.5" fill="#333"/>
+          <circle cx="36" cy="17" r="2.5" fill="#333"/>
+          <path d="M24 23 Q30 27 36 23" stroke="#333" stroke-width="2" fill="none"/>
+          <rect x="15" y="44" width="12" height="18" rx="4" fill="#2C3E50"/>
+          <rect x="33" y="44" width="12" height="18" rx="4" fill="#2C3E50"/>
+          <rect x="13" y="57" width="15" height="8" rx="4" fill="#8B4513"/>
+          <rect x="32" y="57" width="15" height="8" rx="4" fill="#8B4513"/>
+          <rect x="2" y="28" width="13" height="8" rx="4" fill="#4A90D9"/>
+          <rect x="45" y="28" width="13" height="8" rx="4" fill="#4A90D9"/>
+          <text x="30" y="38" text-anchor="middle" font-size="10" fill="white" font-family="monospace" font-weight="bold">Py</text>
+        </svg>
+      </div>
+
+      <h1 class="menu-title">
+        <span class="title-line1">PYTHON</span>
+        <span class="title-line2">QUEST</span>
+      </h1>
+      <p class="menu-tagline">Kalahkan Musuh dengan Kode Python!</p>
+
+      <div class="menu-buttons">
+        <button id="btn-play" class="btn btn-primary btn-large">
+          <span>▶</span> MULAI PETUALANGAN
+        </button>
+        <button id="btn-howto" class="btn btn-secondary">
+          <span>❓</span> CARA BERMAIN
+        </button>
+      </div>
+
+      <div class="menu-decorations">
+        <div class="deco-cloud cloud1">☁️</div>
+        <div class="deco-cloud cloud2">☁️</div>
+        <div class="deco-enemy-preview">
+          <!-- decorative enemy SVGs -->
+          <div class="preview-enemy" style="animation-delay:0s">🐛</div>
+          <div class="preview-enemy" style="animation-delay:0.5s">🦇</div>
+          <div class="preview-enemy" style="animation-delay:1s">👹</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN: PILIH LEVEL ===== -->
+  <section id="screen-levels" class="screen">
+    <div class="levels-container">
+      <h2 class="levels-title">Pilih Level</h2>
+      <p class="levels-subtitle">3 Level · 15 Stage · 15 Soal Python</p>
+
+      <div class="level-grid">
+        <div class="level-card" data-level="1">
+          <div class="level-card-num">01</div>
+          <div class="level-card-icon">🌲</div>
+          <div class="level-card-name">Python Dasar</div>
+          <div class="level-card-desc">Variabel, Print, Tipe Data, Operator</div>
+          <div class="level-card-stages">5 Stage</div>
+        </div>
+
+        <div class="level-card" data-level="2">
+          <div class="level-card-num">02</div>
+          <div class="level-card-icon">🕌</div>
+          <div class="level-card-name">Kondisi &amp; Percabangan</div>
+          <div class="level-card-desc">if, else, elif, Operator Perbandingan</div>
+          <div class="level-card-stages">5 Stage</div>
+          <div class="lock-icon">🔒</div>
+        </div>
+
+        <div class="level-card" data-level="3">
+          <div class="level-card-num">03</div>
+          <div class="level-card-icon">🌋</div>
+          <div class="level-card-name">Perulangan &amp; Fungsi</div>
+          <div class="level-card-desc">for, while, def, return, list</div>
+          <div class="level-card-stages">5 Stage</div>
+          <div class="lock-icon">🔒</div>
+        </div>
+      </div>
+
+      <button id="btn-back-menu" class="btn btn-ghost">
+        ← Kembali ke Menu
+      </button>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN: GAME ===== -->
+  <section id="screen-game" class="screen">
+
+    <!-- HUD -->
+    <div class="game-hud">
+      <div class="hud-left">
+        <div class="stage-badge" id="stage-badge">L1-S1</div>
+      </div>
+      <div class="hud-center">
+        <div class="timer-wrap" id="timer-bar-wrap">
+          <div class="timer-label">⏱</div>
+          <div class="timer-track">
+            <div class="timer-bar" id="timer-bar"></div>
+          </div>
+          <div class="timer-num" id="timer-num">10</div>
+        </div>
+      </div>
+      <div class="hud-right">
+        <div class="hud-hearts" id="hud-hearts">❤️❤️❤️</div>
+      </div>
+    </div>
+
+    <!-- Boss HP Bar (hidden by default) -->
+    <div class="boss-hp-bar" id="boss-hp-bar" style="display:none;">
+      <span class="boss-hp-label">💀</span>
+      <span class="boss-hp-name" id="boss-hp-name">BOSS</span>
+      <div class="boss-hp-track">
+        <div class="boss-hp-inner" id="boss-hp-inner"></div>
+      </div>
+    </div>
+
+    <!-- GAME WORLD -->
+    <div class="game-world" id="game-world">
+
+      <!-- Sky / background -->
+      <div class="sky-bg" id="sky-bg"></div>
+
+      <!-- Mountains / backdrop -->
+      <div class="mountain-layer" id="mountain-layer">
+        <svg class="mountains-svg" viewBox="0 0 1200 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="mtn1" points="0,180 150,60 300,180"/>
+          <polygon class="mtn1" points="200,180 400,30 600,180"/>
+          <polygon class="mtn1" points="500,180 700,70 900,180"/>
+          <polygon class="mtn1" points="750,180 950,45 1150,180"/>
+          <polygon class="mtn1" points="1000,180 1150,80 1300,180"/>
+          <polygon class="mtn2" points="0,180 100,100 200,180"/>
+          <polygon class="mtn2" points="300,180 480,90 660,180"/>
+          <polygon class="mtn2" points="650,180 820,100 990,180"/>
+          <polygon class="mtn2" points="900,180 1060,110 1200,180"/>
+        </svg>
+      </div>
+
+      <!-- Scenery objects (trees/stalactites/rocks) -->
+      <div class="scenery" id="scenery"></div>
+
+      <!-- Ground -->
+      <div class="ground-layer" id="ground-layer"></div>
+
+      <!-- Player -->
+      <div class="player hero-idle" id="player"></div>
+
+      <!-- Enemy container -->
+      <div class="enemy-container" id="enemy-container"></div>
+
+      <!-- Stage flag -->
+      <div class="stage-flag" id="stage-flag" style="display:none;">
+        <div class="flag-pole"></div>
+        <div class="flag-banner">🏁</div>
+      </div>
+
+      <!-- Stage clear flash overlay -->
+      <div class="transition-overlay" id="transition-overlay"></div>
+    </div>
+    <!-- end game-world -->
+
+    <!-- BATTLE PANEL -->
+    <div class="battle-panel" id="battle-panel">
+      <div class="battle-inner">
+        <div class="battle-top">
+          <p class="battle-scenario" id="battle-scenario">Musuh muncul!</p>
+        </div>
+        <div class="code-block">
+          <div class="code-label">🐍 Python Code</div>
+          <div class="code-display" id="code-display"></div>
+        </div>
+        <div class="answer-grid" id="answer-grid">
+          <button class="answer-btn" data-answer="">...</button>
+          <button class="answer-btn" data-answer="">...</button>
+          <button class="answer-btn" data-answer="">...</button>
+          <button class="answer-btn" data-answer="">...</button>
+        </div>
+        <div class="battle-feedback" id="battle-feedback"></div>
+        <div class="battle-explanation" id="battle-explanation" style="display:none;"></div>
+      </div>
+    </div>
+    <!-- end battle-panel -->
+
+  </section>
+  <!-- end screen-game -->
+
+  <!-- ===== MODAL: CARA BERMAIN ===== -->
+  <div class="modal-overlay" id="modal-howto">
+    <div class="modal-box">
+      <h2 class="modal-title">🎮 Cara Bermain</h2>
+      <div class="howto-content">
+        <div class="howto-step">
+          <span class="howto-num">1</span>
+          <div>
+            <strong>Pahlawan berjalan otomatis</strong> ke kanan dan mendekati musuh.
+          </div>
+        </div>
+        <div class="howto-step">
+          <span class="howto-num">2</span>
+          <div>
+            Saat bertemu musuh, <strong>panel kode Python</strong> muncul dengan bagian kosong <code>___</code>.
+          </div>
+        </div>
+        <div class="howto-step">
+          <span class="howto-num">3</span>
+          <div>
+            Pilih <strong>jawaban yang benar</strong> dalam <strong>10 detik</strong>. Jawaban benar → musuh mati!
+          </div>
+        </div>
+        <div class="howto-step">
+          <span class="howto-num">4</span>
+          <div>
+            <strong>Boss</strong> memiliki ❤️❤️❤️ 3 HP. Butuh 3 jawaban benar berturut-turut!
+          </div>
+        </div>
+        <div class="howto-step">
+          <span class="howto-num">5</span>
+          <div>
+            Kamu punya <strong>3 nyawa ❤️</strong>. Jawaban salah atau waktu habis = -1 nyawa.
+          </div>
+        </div>
+        <div class="howto-step">
+          <span class="howto-num">6</span>
+          <div>
+            Kalahkan semua musuh di stage → <strong>lanjut ke stage berikutnya</strong>!
+          </div>
+        </div>
+      </div>
+      <button id="btn-close-howto" class="btn btn-primary">Siap Bermain! 🐍</button>
+    </div>
+  </div>
+
+  <!-- ===== MODAL: GAME OVER ===== -->
+  <div class="modal-overlay" id="modal-gameover">
+    <div class="modal-box modal-gameover">
+      <div class="modal-icon">💀</div>
+      <h2 class="modal-title">Game Over!</h2>
+      <p class="modal-msg" id="gameover-msg">Kamu dikalahkan. Jangan menyerah!</p>
+      <div class="modal-buttons">
+        <button id="btn-restart" class="btn btn-primary">🔄 Coba Lagi</button>
+        <button id="btn-return-menu" class="btn btn-secondary">🏠 Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL: VICTORY ===== -->
+  <div class="modal-overlay" id="modal-victory">
+    <div class="modal-box modal-victory">
+      <div class="modal-icon victory-spin">🏆</div>
+      <h2 class="modal-title victory-title">Level Clear!</h2>
+      <p class="modal-level-name" id="victory-level">Level 1: Python Dasar</p>
+      <p class="modal-msg">Luar biasa! Kamu menguasai materi ini!</p>
+      <div class="stars-row">⭐⭐⭐</div>
+      <div class="modal-buttons">
+        <button id="btn-next-level" class="btn btn-primary">Level Berikutnya →</button>
+        <button id="btn-return-menu2" class="btn btn-secondary" onclick="document.getElementById('modal-victory').classList.remove('active'); document.getElementById('screen-menu').classList.add('active'); document.getElementById('screen-game').classList.remove('active');">🏠 Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/game.js"></script>
+</body>
+</html>
