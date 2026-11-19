@@ -1,9 +1,9 @@
 /**
- * Modul Timer Countdown 10 Detik
+ * Modul Timer Countdown 60 Detik (1 Menit)
  */
 
 export class GameTimer {
-  constructor(totalSeconds = 10) {
+  constructor(totalSeconds = 60) {
     this.totalSeconds = totalSeconds;
     this.remainingMs = totalSeconds * 1000;
     this.intervalId = null;

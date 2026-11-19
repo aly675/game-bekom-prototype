@@ -8,18 +8,20 @@
 
 ## 🌟 Konsep & Mekanik Baru
 
-Game ini telah dirombak total menjadi **Side-Scrolling Platformer** bergaya Mario Bros:
+Game ini telah disempurnakan dengan sistem **Drag & Drop Code Puzzle (Fill-in-the-Blank)** ala Mario Bros Platformer:
 1. **Pahlawan Berjalan ke Kanan**: Karakter pahlawan berjalan otomatis melintasi daratan platform.
 2. **Musuh Berjalan Menghampiri dari Kanan**: Monster bergerak mendekat ke arah pahlawan.
-3. **Pertarungan Kode Python (*Fill-in-the-blank*)**:
-   - Saat berpapasan dengan musuh, panel pertarungan muncul dengan kode Python berlubang (`___`).
-   - Pemain memilih jawaban yang tepat dari 4 tombol pilihan dalam waktu **10 detik**.
+3. **Puzzle Kode Python Drag & Drop (*Fill-in-the-blank*)**:
+   - Saat berpapasan dengan musuh, panel kode Python muncul dengan bagian rumpang `[ ? ]` (misal bagian `if`, `else`, `print`, perbandingan kondisi, dll).
+   - Pemain menyusun potongan kode dari **Bank Balok Kode (5 s/d 10 pilihan balok)** menggunakan sistem **Drag & Drop** atau **Klik untuk menempatkan**.
+   - Waktu berpikir: **1 Menit (60 Detik)** per tantangan.
+   - Pemain menekan tombol **▶ JALANKAN KODE!** untuk mengeksekusi kode dan menyerang musuh.
 4. **Animasi Lompat & Serang (*Jump Attack*)**:
-   - Jika jawaban **BENAR**: Pahlawan melompat dan menghancurkan musuh, lalu melanjutkan perjalanan ke kanan!
-   - Jika jawaban **SALAH** atau waktu **HABIS**: Musuh menyerang pahlawan (**-1 HP**) dan layar bergetar merah.
-5. **Boss Spesial (3 HP & 3 Fase Pertanyaan)**:
+   - Jika kode **BENAR**: Pahlawan melompat dan menghancurkan musuh, lalu melanjutkan perjalanan ke kanan!
+   - Jika kode **SALAH** atau waktu **HABIS**: Pahlawan terkena serangan musuh (**-1 HP**), muncul penjelasan konsep, dan pemain dapat memperbaiki kodenya.
+5. **Boss Spesial (3 HP & 3 Fase Kode)**:
    - Di Stage 5 setiap level terdapat Monster Boss berkekuatan **3 HP** dengan bar nyawa khusus.
-   - Mengalahkan Boss membutuhkan **3 jawaban benar berturut-turut**, masing-masing dengan tantangan kode Python fase baru!
+   - Mengalahkan Boss membutuhkan **3 jawaban benar berturut-turut**, masing-masing dengan puzzle kode Python fase baru!
 6. **Transisi Area (*Pindah Tempat ala Mario Bros*)**:
    - Setelah semua musuh di stage dikalahkan, muncul **Tiang Bendera Finish (🏁)**.
    - Pahlawan berlari ke arah bendera dan layar bertransisi dengan efek kilatan (*flash transition*) menuju area/stage berikutnya dengan pergantian latar belakang (*background theme*).
@@ -38,11 +40,11 @@ Game ini telah dirombak total menjadi **Side-Scrolling Platformer** bergaya Mari
 
 ### 🕌 Level 2: Kondisi & Percabangan (Tema Gua / Cave)
 - **Background**: Langit gua gelap berbintang, stalaktit batu, kristal ungu bercahaya.
-- **Stage 1**: Condition Bat — *Percabangan `else:`*
-- **Stage 2**: Elif Goblin — *Operator Pembanding Numerik `>`*
-- **Stage 3**: Input Imp — *Input Pengguna & Konversi Integer `int(input(...))`*
-- **Stage 4**: Elif Troll — *Operator Lebih Besar atau Sama Dengan `>=`*
-- **Stage 5 (BOSS)**: Logic Demon (3 HP) — *Deklarasi Fungsi `def`, Parameter Serangan, & Return Value*
+- **Stage 1**: Condition Bat — *Percabangan If-Else Kelulusan Nilai Siswa (`if`, `nilai >= 70`, `print`, `else`)*
+- **Stage 2**: Elif Goblin — *Operator Pembanding Numerik Positif (`if angka > 0: ... else:`)*
+- **Stage 3**: Input Imp — *Percabangan Bertingkat Elif Grade Nilai (`elif skor >= 70:`)*
+- **Stage 4**: Elif Troll — *Operator Logika Gabungan AND (`if tiket and password_benar:`)*
+- **Stage 5 (BOSS)**: Logic Demon (3 HP) — *Diskon Belanja, Logika OR Kelemahan Sihir, & Percabangan Mana Jurus Pamungkas*
 
 ### 🌋 Level 3: Perulangan & Fungsi (Tema Gunung Berapi / Volcano)
 - **Background**: Langit merah membara, gunung berapi aktif, batu magma pijar.

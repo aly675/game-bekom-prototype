@@ -1,46 +1,48 @@
-# Game Design Document & Perencanaan Awal: "Logic Defender"
+# Game Design Document: "Python Quest — Logic Battle"
 **Mata Kuliah**: Berpikir Komputasi (Bekom)  
-**Tech Stack**: Native HTML5, CSS3, Vanilla JavaScript (ES6+) — Tanpa Framework  
+**Tech Stack**: Native HTML5, CSS3, Vanilla JavaScript (ES6+) — Single Page Application (SPA)
 
 ---
 
 ## 1. Konsep & Tujuan Game
 
-Game edukasi berbasis web interaktif bertema petualangan logika pemrograman (*Logic Battle*). Pemain berperan sebagai karakter yang harus mengalahkan musuh/monster di setiap stage dengan cara melengkapi potongan kode/logika (*fill-the-blank*). 
+Game edukasi berbasis web interaktif bertema petualangan pahlawan logika Python (*Code Puzzle Drag & Drop*). Pemain berperan sebagai pahlawan yang menjelajahi 3 dunia (Forest, Cave, Volcano) dan menghadapi monster di setiap stage dengan cara menyelesaikan puzzle kode Python yang rumpang (*Fill-in-the-Blank*).
 
 Keterkaitan dengan **4 Pilar Berpikir Komputasi**:
-1. **Dekomposisi**: Memecah masalah kode besar menjadi bagian baris perintah spesifik.
-2. **Pengenalan Pola**: Memahami pola sintaks, iterasi, dan kondisi logika.
-3. **Abstraksi**: Mengabaikan kompleksitas berlebih dan berfokus pada bagian yang kosong (*blank*).
-4. **Algoritma**: Menyusun alur eksekusi logika yang benar agar program berjalan sukses.
+1. **Dekomposisi**: Memecah blok program Python yang utuh ke dalam token-token komponen (pernyataan kondisi, pemanggilan fungsi, operator perbandingan, kata kunci percabangan).
+2. **Pengenalan Pola**: Mengenali struktur baku percabangan (`if...else`), sintaks fungsi (`def...return`), dan iterasi perulangan (`for...in range`).
+3. **Abstraksi**: Mengidentifikasi variabel penentu keputusan dan menyaring balok kode yang tidak relevan (pengecoh).
+4. **Algoritma**: Menyusun balok-balok kode dalam urutan eksekusi yang valid agar program menghasilkan luaran yang diharapkan.
 
 ---
 
 ## 2. Alur Navigasi & Game State (Game Flow)
 
-Game dirancang sebagai **Single Page Application (SPA)** murni menggunakan pergantian section/div di HTML.
+Game dirancang sebagai **Single Page Application (SPA)** murni:
 
 ```mermaid
 flowchart TD
-    A["Halaman Utama (Main Menu)"] --> B["Halaman Pemilihan Level (Level Select)"]
-    B --> C["Level 1 (Stage 1 s/d 5)"]
+    A["Halaman Utama (Main Menu)"] --> B["Pemilihan Level (Level Select)"]
+    B --> C["Arena Game (Walking Phase)"]
+    C --> D["Pertemuan Musuh & Battle Phase"]
     
-    subgraph GameplayLoop ["Siklus Gameplay per Stage"]
-        C --> D["Tampilkan Pertanyaan & Musuh"]
-        D --> E["Timer 10 Detik Berjalan"]
-        E -->|Waktu Habis / Salah| F["Musuh Menyerang: Player HP -1"]
-        E -->|Jawaban Benar| G["Player Menyerang: Musuh Kalah / HP Berkurang"]
-        F --> H{"Player HP > 0?"}
-        H -->|Tidak| I["Game Over Screen"]
-        H -->|Ya| E
-        G --> J{"Stage Terakhir (Stage 5)?"}
-        J -->|Belum| K["Lanjut ke Stage Berikutnya"]
-        K --> D
-        J -->|Sudah| L["Level Complete / Victory Screen"]
+    subgraph BattleLoop ["Siklus Pertarungan Drag & Drop"]
+        D --> E["Timer 60 Detik (1 Menit) Berjalan"]
+        E --> F["Pemain Menata Balok Kode (Drag & Drop / Klik)"]
+        F --> G["Klik Tombol 'Jalankan Kode!'"]
+        G -->|Semua Balok Benar| H["Pahlawan Menyerang: Musuh Kalah / Boss HP -1"]
+        G -->|Ada Balok Salah| I["Musuh Menyerang: Player HP -1 & Muncul Penjelasan"]
+        E -->|Waktu 60s Habis| I
+        I --> J{"Player HP > 0?"}
+        J -->|Ya| E
+        J -->|Tidak| K["Game Over Modal"]
+        H --> L{"Stage Terakhir (Boss Phase)?"}
+        L -->|Lanjut Fase/Stage| C
+        L -->|Tamat Level| M["Victory Modal ⭐⭐⭐"]
     end
 
-    I --> B
-    L --> B
+    K --> B
+    M --> B
 ```
 
 ---
@@ -48,87 +50,58 @@ flowchart TD
 ## 3. Mekanik Inti Gameplay (Core Mechanics)
 
 ### A. Sistem Nyawa (Health Points / HP)
-- **Player HP**: Default **3 atau 5 HP** (direpresentasikan dengan ikon hati ❤️).
-- **Enemy HP**: Tiap stage memiliki 1 monster (misal 1 HP per stage, atau 2-3 HP di boss stage 5).
+- **Player HP**: Memiliki **3 Nyawa ❤️❤️❤️**.
+- **Enemy HP**: Musuh reguler memiliki 1 HP. Musuh **Boss** memiliki 3 HP (membutuhkan 3 fase tantangan kode berturut-turut).
 
-### B. Mekanik Musuh & Timer 10 Detik
-- Ketika stage dimulai, countdown timer 10 detik langsung aktif.
-- Visualisasi: Progress bar waktu yang berkurang dari hijau ke merah.
-- **Kondisi Penalti**:
-  - Jika waktu mencapai `0` detik: Monster melakukan animasi serang, Player terkena damage (-1 HP), timer di-reset ke 10 detik untuk memberi kesempatan menjawab lagi (atau pindah ke soal berikutnya).
-  - Jika pemain menjawab salah: Muncul peringatan visual "Salah!", dan timer dapat dikurangi penalti (opsional) atau langsung memicu serangan musuh.
+### B. Countdown Timer 60 Detik (1 Menit)
+- Setiap soal memberikan waktu **60 detik (1 menit)** agar pemain memiliki cukup waktu untuk membaca dan menganalisis kode secara analitis.
+- Visualisasi: Bar waktu dinamis (Hijau > 30s, Kuning 16-30s, Merah ≤ 15s) dan counter digital.
+- Jika waktu habis: Pemain kehilangan 1 HP dan musuh melancarkan serangan balasan.
 
-### C. Sistem Input "Fill the Blank"
-Ada 2 opsi interaksi yang ramah pengguna:
-- **Opsi 1 (Button Click / Word Bank)**: Pemain disajikan beberapa opsi tombol pilihan (misal 3-4 pilihan) untuk mengisi titik-titik `___`. (Sangat direkomendasikan untuk game cepat bertimer 10 detik).
-- **Opsi 2 (Text Input)**: Input teks manual. Kurang ideal untuk timer 10 detik karena risiko typo dan lambat mengetik di HP/keyboard.
-
----
-
-## 4. Rincian Materi Level 1 (5 Stages)
-
-Level 1 difokuskan pada pengenalan dasar berpikir komputasi & logika pemrograman:
-
-| Stage | Topik Berpikir Komputasi | Bentuk Kasus / Soal | Contoh Logika (*Fill the blank*) |
-| :--- | :--- | :--- | :--- |
-| **Stage 1** | Variabel & Penugasan Nilai | Menginisialisasi darah pemain | `let player_hp = ___;` *(Pilihan: 100 / "batu" / false)* |
-| **Stage 2** | Operasi Komparasi / Perbandingan | Mengecek apakah kunci pintu sudah cukup | `if (kunci ___ 3) { bukaPintu(); }` *(Pilihan: == / = / <)* |
-| **Stage 3** | Percabangan Logika (If-Else) | Menentukan arah jalan pahlawan | `if (musuhDiDepan) { serang(); } ___ { maju(); }` *(Pilihan: else / then / loop)* |
-| **Stage 4** | Perulangan (Looping Pattern) | Mengambil 5 koin emas di dungeon | `for (let i = 0; i < 5; i___) { ambilKoin(); }` *(Pilihan: ++ / -- / ==)* |
-| **Stage 5 (Boss)** | Gerbang Logika Kombinasi (AND / OR) | Membuka mantra segel naga | `if (punyaPedang ___ punyaPerisai) { serangNaga(); }` *(Pilihan: && / \|\| / !)* |
+### C. Sistem Input: Drag & Drop Fill-in-the-Blank (+ Click-to-Place)
+- **Multi-Blank Code Snippet**: Kode program disajikan dalam blok editor kode dengan bagian kosong bertanda `[ ? ]`.
+- **Word / Code Bank (Pool Balok Kode)**: Tersedia 5 s/d 10 pilihan balok kode (berisi jawaban benar + pengecoh/distractor yang menantang).
+- **Dual-Input Mode**:
+  1. *Drag & Drop*: Tarik balok dari pool dan lepaskan di kotak kosong `[ ? ]`.
+  2. *Click-to-Place*: Klik balok di pool untuk otomatis mengisi slot kosong pertama; klik balok di slot (atau tanda `×`) untuk mengembalikannya ke pool.
+- **Aksi Pemain**:
+  - Tombol **▶ JALANKAN KODE!**: Memverifikasi apakah semua slot sudah terisi dan memeriksa kebenaran kode.
+  - Tombol **🔄 Reset Balok**: Mengembalikan seluruh balok ke pool untuk menyusun ulang strategi.
 
 ---
 
-## 5. Arsitektur Struktur Folder & File
+## 4. Contoh Kasus Soal (Sesuai User Request)
 
-Untuk menjaga kode tetap bersih, modular, dan mudah dikembangkan:
-
+Contoh kode nyata pada **Level 2 Stage 1 (Evaluasi Kelulusan Siswa)**:
+```python
+nilai = 50
+if nilai >= 70:
+    print('Selamat, anda lulus!')
+else:
+    print('Maaf, anda tidak lulus.')
 ```
-project_akhir/
-├── index.html            # Halaman tunggal (berisi kontainer Main, Level, Game, Modal)
-├── css/
-│   ├── style.css         # Styling global, typography, layout grid/flexbox
-│   └── game.css          # Animasi battle, visual health bar, timer progress bar
-├── js/
-│   ├── data/
-│   │   └── questions.js  # Bank soal, kunci jawaban, dan data musuh per stage
-│   ├── modules/
-│   │   ├── timer.js      # Pengatur countdown 10 detik & callback saat habis
-│   │   ├── ui.js         # Render elemen DOM (update HP, render soal, popup)
-│   │   └── audio.js      # Efek suara (opsional: serang, kena pukul, menang)
-│   └── app.js            # Controller utama / Game Engine & State Management
-└── assets/
-    ├── images/           # Avatar player, sprite monster stage 1-5, background
-    └── audio/            # Sound effects / BGM ringan (opsional)
-```
+- **Bagian yang Dikosongkan**: `if`, `nilai >= 70`, `print`, `else`.
+- **Pilihan Balok di Pool (8 Opsi)**:
+  `['if', 'nilai >= 70', 'print', 'else', 'elif', 'nilai == 50', 'input', 'while']`
+- **Tujuan Pembelajaran**: Siswa memahami alur percabangan bahwa ketika `nilai = 50` dan kondisi `nilai >= 70` tidak terpenuhi, eksekusi berpindah ke blok `else`.
 
 ---
 
-## 6. Model Data Pertanyaan (`questions.js`)
-
-Struktur objek JavaScript untuk menyimpan level dan stage:
+## 5. Model Data Pertanyaan (`GAME_DATA`)
 
 ```javascript
-export const gameData = {
-  level1: {
-    id: 1,
-    name: "Dasar Logika & Algoritma",
-    stages: [
-      {
-        stageNumber: 1,
-        enemyName: "Bug Slime",
-        enemyHp: 1,
-        enemySprite: "assets/images/slime.png",
-        questionText: "Lengkapi kode untuk menyimpan jumlah nyawa pahlawan!",
-        codeSnippet: "let player_health = ___ ;",
-        options: ["100", "'mati'", "false", "undefined"],
-        correctAnswer: "100",
-        hint: "Nyawa direpresentasikan dengan angka (integer)."
-      },
-      // Stage 2 s/d 5 ...
-    ]
-  }
-};
+{
+  scenario: "Susun algoritma kelulusan siswa dengan batas nilai 70!",
+  code: "nilai = 50\n{0} {1}:\n    {2}('Selamat, anda lulus!')\n{3}:\n    print('Maaf, anda tidak lulus.')",
+  blanks: [
+    { id: 0, answer: "if" },
+    { id: 1, answer: "nilai >= 70" },
+    { id: 2, answer: "print" },
+    { id: 3, answer: "else" }
+  ],
+  pool: ["if", "nilai >= 70", "print", "else", "elif", "nilai == 50", "input", "while"],
+  explanation: "Gunakan 'if' untuk kondisi pertama (nilai >= 70), 'print' untuk mencetak output, dan 'else' untuk kondisi alternatif."
+}
 ```
 
 ---

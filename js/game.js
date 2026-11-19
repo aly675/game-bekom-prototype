@@ -15,93 +15,93 @@
             stageNum: 1,
             enemy: { name: 'Bug Goomba', type: 'goomba', hp: 1, isBoss: false },
             question: {
-              scenario: 'Bug Goomba menghalangi jalan! Simpan nama pengguna dalam variabel!',
-              codePre: 'nama = ',
-              codeBlank: '___',
-              codePost: '',
-              options: ['"Budi"', '123', 'True', 'None'],
-              answer: '"Budi"',
-              explanation: 'String dalam Python ditulis dalam tanda kutip. nama = "Budi" menyimpan teks "Budi" ke variabel nama.'
+              scenario: 'Bug Goomba menghalangi jalan! Inisialisasi variabel nama dan cetak pesan sapaan ke layar!',
+              code: 'nama = {0}\n{1}("Halo, " + nama)',
+              blanks: [
+                { id: 0, answer: '"Budi"' },
+                { id: 1, answer: 'print' }
+              ],
+              pool: ['"Budi"', 'print', '123', 'True', 'input', 'def', 'nama', 'None'],
+              explanation: 'String dalam Python ditulis dalam tanda kutip ("Budi"), dan print() adalah fungsi bawaan untuk menampilkan output ke layar.'
             }
           },
           {
             stageNum: 2,
             enemy: { name: 'Error Slug', type: 'goomba', hp: 1, isBoss: false },
             question: {
-              scenario: 'Error Slug menyerang! Tampilkan teks ke layar!',
-              codePre: '',
-              codeBlank: '___',
-              codePost: '("Halo Python!")',
-              options: ['print', 'input', 'return', 'def'],
-              answer: 'print',
-              explanation: 'print() adalah fungsi bawaan Python untuk menampilkan output ke layar.'
+              scenario: 'Error Slug menyerang! Hitung total biaya 3 ramuan menggunakan operasi perkalian!',
+              code: 'harga = 20\njumlah = 3\ntotal = harga {0} {1}\nprint("Total:", total)',
+              blanks: [
+                { id: 0, answer: '*' },
+                { id: 1, answer: 'jumlah' }
+              ],
+              pool: ['*', 'jumlah', '+', '/', 'harga', '"3"', '%', 'total'],
+              explanation: 'Operator * digunakan untuk perkalian angka (harga * jumlah). Hasilnya adalah 60.'
             }
           },
           {
             stageNum: 3,
             enemy: { name: 'Type Ghost', type: 'goomba', hp: 1, isBoss: false },
             question: {
-              scenario: 'Type Ghost muncul! Cari tipe data dari angka 42!',
-              codePre: 'tipe = type(',
-              codeBlank: '___',
-              codePost: ')',
-              options: ['42', '"42"', 'True', '[]'],
-              answer: '42',
-              explanation: "type(42) mengembalikan <class 'int'> karena 42 adalah bilangan bulat (integer)."
+              scenario: 'Type Ghost muncul! Ambil masukan usia dan ubah teks string menjadi tipe integer!',
+              code: 'teks = input("Usia: ")\nusia = {0}({1})\nprint("Tipe:", type(usia))',
+              blanks: [
+                { id: 0, answer: 'int' },
+                { id: 1, answer: 'teks' }
+              ],
+              pool: ['int', 'teks', 'str', 'float', '"usia"', 'input', 'type', 'print'],
+              explanation: 'int(teks) mengonversi input bertipe string menjadi bilangan bulat (integer) agar dapat dihitung secara numerik.'
             }
           },
           {
             stageNum: 4,
             enemy: { name: 'Syntax Bat', type: 'bat', hp: 1, isBoss: false },
             question: {
-              scenario: 'Syntax Bat menghalangi! Hitung hasil operasi perkalian!',
-              codePre: 'hasil = 10 ',
-              codeBlank: '___',
-              codePost: ' 3  # hasilnya 30',
-              options: ['*', '+', '-', '/'],
-              answer: '*',
-              explanation: '10 * 3 = 30. Operator * digunakan untuk perkalian dalam Python.'
+              scenario: 'Syntax Bat menghadang! Tentukan apakah skor pemain mencukupi batas KKM (minimal 75)!',
+              code: 'skor = 85\nkkm = 75\nlulus = {0} {1} {2}\nprint("Lulus:", lulus)',
+              blanks: [
+                { id: 0, answer: 'skor' },
+                { id: 1, answer: '>=' },
+                { id: 2, answer: 'kkm' }
+              ],
+              pool: ['skor', '>=', 'kkm', '==', '<=', '85', '75', 'is'],
+              explanation: 'Operator >= (lebih besar atau sama dengan) memeriksa apakah skor memenuhi batas minimal kkm.'
             }
           },
           {
             stageNum: 5,
             enemy: { name: 'BOSS: Def Specter', type: 'boss_specter', hp: 3, isBoss: true },
-            question: {
-              scenario: 'BOSS MUNCUL! Def Specter menantang! Cetak pesan kelulusan!',
-              codePre: 'if nilai >= 60:\n    print(',
-              codeBlank: '___',
-              codePost: ')',
-              options: ['"Lulus"', '"Gagal"', 'nilai', 'True'],
-              answer: '"Lulus"',
-              explanation: 'Jika nilai >= 60, cetak "Lulus". String harus dalam tanda kutip.'
-            },
             bossQuestions: [
               {
-                scenario: '🔥 [BOSS FASE 1/3] Def Specter menyerang! Cetak pesan kelulusan jika nilai >= 60!',
-                codePre: 'if nilai >= 60:\n    print(',
-                codeBlank: '___',
-                codePost: ')',
-                options: ['"Lulus"', '"Gagal"', 'nilai', 'True'],
-                answer: '"Lulus"',
-                explanation: 'Jika nilai >= 60, cetak "Lulus". String harus dalam tanda kutip.'
+                scenario: '🔥 [BOSS FASE 1/3] Def Specter muncul! Siapkan status kesiapan bertarung pahlawan!',
+                code: 'hero_hp = 100\nstatus = {0}\n{1}("Hero siap bertarung!")',
+                blanks: [
+                  { id: 0, answer: '"Siap"' },
+                  { id: 1, answer: 'print' }
+                ],
+                pool: ['"Siap"', 'print', 'hero_hp', '100', 'def', 'input', 'False', 'status'],
+                explanation: 'Variabel status diisi string "Siap" dan fungsi print() menampilkan status ke layar.'
               },
               {
-                scenario: '⚡ [BOSS FASE 2/3] Def Specter melemah! Lengkapi blok else jika nilai kurang dari 60!',
-                codePre: 'if nilai >= 60:\n    status = "Lulus"\n',
-                codeBlank: '___',
-                codePost: ':\n    status = "Remedial"',
-                options: ['else', 'elif', 'then', 'loop'],
-                answer: 'else',
-                explanation: 'else menangani semua kondisi alternatif ketika if bernilai False.'
+                scenario: '⚡ [BOSS FASE 2/3] Def Specter menyerang! Hitung kekuatan pukulan kombo pahlawan!',
+                code: 'pukulan = 30\ncombo = 2\ntotal_damage = {0} {1} {2}',
+                blanks: [
+                  { id: 0, answer: 'pukulan' },
+                  { id: 1, answer: '*' },
+                  { id: 2, answer: 'combo' }
+                ],
+                pool: ['pukulan', '*', 'combo', '+', '/', 'total_damage', '60', 'hero_hp'],
+                explanation: 'total_damage dihitung dari hasil perkalian pukulan * combo menggunakan operator *.'
               },
               {
-                scenario: '💥 [BOSS FASE FINAL] Pukulan Terakhir! Inisialisasi batas nilai KKM bertipe integer!',
-                codePre: 'kkm = ',
-                codeBlank: '___',
-                codePost: '\nif nilai >= kkm:\n    print("Menang!")',
-                options: ['75', '"75"', 'False', 'None'],
-                answer: '75',
-                explanation: 'Nilai angka murni 75 bertipe integer (tanpa kutip) agar dapat dibandingkan secara numerik.'
+                scenario: '💥 [BOSS FASE FINAL] Pukulan Terakhir! Konversi sisa HP boss ke string untuk dicetak!',
+                code: 'sisa_hp = 0\n{0}("Boss K.O.! Sisa HP: " + {1}(sisa_hp))',
+                blanks: [
+                  { id: 0, answer: 'print' },
+                  { id: 1, answer: 'str' }
+                ],
+                pool: ['print', 'str', 'int', 'sisa_hp', 'type', 'input', 'None', '"0"'],
+                explanation: 'str(sisa_hp) mengonversi angka 0 menjadi string agar dapat digabungkan dengan operator +.'
               }
             ]
           }
@@ -116,93 +116,99 @@
             stageNum: 1,
             enemy: { name: 'Condition Bat', type: 'bat', hp: 1, isBoss: false },
             question: {
-              scenario: 'Condition Bat menyerang! Lengkapi kondisi else!',
-              codePre: 'if skor > 100:\n    print("Menang")\n',
-              codeBlank: '___',
-              codePost: ':\n    print("Kalah")',
-              options: ['else', 'elif', 'if', 'and'],
-              answer: 'else',
-              explanation: 'else digunakan untuk menangani kondisi yang tidak memenuhi syarat if.'
+              scenario: 'Condition Bat menyerang! Susun algoritma kelulusan siswa dengan batas nilai 70!',
+              code: 'nilai = 50\n{0} {1}:\n    {2}(\'Selamat, anda lulus!\')\n{3}:\n    print(\'Maaf, anda tidak lulus.\')',
+              blanks: [
+                { id: 0, answer: 'if' },
+                { id: 1, answer: 'nilai >= 70' },
+                { id: 2, answer: 'print' },
+                { id: 3, answer: 'else' }
+              ],
+              pool: ['if', 'nilai >= 70', 'print', 'else', 'elif', 'nilai == 50', 'input', 'while'],
+              explanation: "Gunakan 'if' untuk memeriksa 'nilai >= 70', 'print' untuk mencetak output, dan 'else' untuk kondisi tidak lulus."
             }
           },
           {
             stageNum: 2,
             enemy: { name: 'Elif Goblin', type: 'goblin', hp: 1, isBoss: false },
             question: {
-              scenario: 'Elif Goblin muncul! Periksa bilangan positif!',
-              codePre: 'if x ',
-              codeBlank: '___',
-              codePost: ' 0:\n    print("Positif")',
-              options: ['>', '<', '==', '!='],
-              answer: '>',
-              explanation: 'Operator > (lebih besar dari) digunakan untuk memeriksa apakah x lebih besar dari 0.'
+              scenario: 'Elif Goblin muncul! Periksa apakah nilai bilangan merupakan angka positif!',
+              code: 'angka = 15\n{0} angka {1} 0:\n    print("Positif")\n{2}:\n    print("Bukan Positif")',
+              blanks: [
+                { id: 0, answer: 'if' },
+                { id: 1, answer: '>' },
+                { id: 2, answer: 'else' }
+              ],
+              pool: ['if', '>', 'else', '<', 'elif', '==', 'then', 'angka'],
+              explanation: 'if angka > 0 memeriksa apakah angka lebih besar dari 0, dan else menangani alternatif kondisi.'
             }
           },
           {
             stageNum: 3,
             enemy: { name: 'Input Imp', type: 'goblin', hp: 1, isBoss: false },
             question: {
-              scenario: 'Input Imp menghalangi! Ambil input angka dari pengguna!',
-              codePre: 'nilai = int(input(',
-              codeBlank: '___',
-              codePost: '))',
-              options: ['"Masukkan nilai: "', 'nilai', '100', 'int'],
-              answer: '"Masukkan nilai: "',
-              explanation: 'input() menerima string sebagai prompt. int() mengubah input menjadi bilangan bulat.'
+              scenario: 'Input Imp menghalangi! Lengkapi percabangan bertingkat elif untuk menentukan Grade B!',
+              code: 'skor = 78\nif skor >= 85:\n    grade = "A"\n{0} skor {1} 70:\n    grade = "B"\n{2}:\n    grade = "C"',
+              blanks: [
+                { id: 0, answer: 'elif' },
+                { id: 1, answer: '>=' },
+                { id: 2, answer: 'else' }
+              ],
+              pool: ['elif', '>=', 'else', 'if', '<=', 'grade', 'skor', 'then'],
+              explanation: 'elif (else if) digunakan untuk mengecek kondisi alternatif jika if pertama bernilai False.'
             }
           },
           {
             stageNum: 4,
             enemy: { name: 'Elif Troll', type: 'goblin', hp: 1, isBoss: false },
             question: {
-              scenario: 'Elif Troll datang! Lengkapi kondisi elif untuk skor cukup!',
-              codePre: 'elif skor ',
-              codeBlank: '___',
-              codePost: ' 50:\n    print("Cukup")',
-              options: ['>=', '<=', '==', '>'],
-              answer: '>=',
-              explanation: '>= berarti "lebih besar atau sama dengan". elif skor >= 50 memeriksa skor minimal 50.'
+              scenario: 'Elif Troll menjaga gerbang! Akses hanya dibuka jika punya tiket DAN punya password!',
+              code: 'tiket = True\npassword_benar = True\nif tiket {0} {1}:\n    {2}("Pintu Terbuka!")\nelse:\n    print("Akses Ditolak!")',
+              blanks: [
+                { id: 0, answer: 'and' },
+                { id: 1, answer: 'password_benar' },
+                { id: 2, answer: 'print' }
+              ],
+              pool: ['and', 'password_benar', 'print', 'or', 'not', 'tiket', 'elif', 'False'],
+              explanation: 'Operator and memastikan kedua kondisi bernilai True agar blok pernyataan if dapat dieksekusi.'
             }
           },
           {
             stageNum: 5,
             enemy: { name: 'BOSS: Logic Demon', type: 'boss_logic', hp: 3, isBoss: true },
-            question: {
-              scenario: 'BOSS MUNCUL! Logic Demon menantang! Kembalikan nilai kelulusan!',
-              codePre: 'def cek_lulus(nilai):\n    if nilai >= 60:\n        return ',
-              codeBlank: '___',
-              codePost: '',
-              options: ['"Lulus"', '"Gagal"', 'nilai', 'True'],
-              answer: '"Lulus"',
-              explanation: 'return "Lulus" mengembalikan string "Lulus" ketika nilai >= 60.'
-            },
             bossQuestions: [
               {
-                scenario: '🔥 [BOSS FASE 1/3] Logic Demon mengunci fungsi! Kembalikan string "Lulus"!',
-                codePre: 'def cek_lulus(nilai):\n    if nilai >= 60:\n        return ',
-                codeBlank: '___',
-                codePost: '',
-                options: ['"Lulus"', '"Gagal"', 'nilai', 'True'],
-                answer: '"Lulus"',
-                explanation: 'return "Lulus" mengembalikan nilai "Lulus" saat kondisi terpenuhi.'
+                scenario: '🔥 [BOSS FASE 1/3] Logic Demon menyerang! Berikan diskon jika belanja mencapai 100 ribu!',
+                code: 'belanja = 120000\n{0} belanja {1} 100000:\n    diskon = {2}\nelse:\n    diskon = 0',
+                blanks: [
+                  { id: 0, answer: 'if' },
+                  { id: 1, answer: '>=' },
+                  { id: 2, answer: '20000' }
+                ],
+                pool: ['if', '>=', '20000', '<=', 'elif', 'belanja', 'diskon', 'else'],
+                explanation: 'if belanja >= 100000 memeriksa total belanja memenuhi syarat diskon 20000.'
               },
               {
-                scenario: '⚡ [BOSS FASE 2/3] Demon mengerahkan perisai! Deklarasikan parameter fungsi serang!',
-                codePre: 'def serang_demon(',
-                codeBlank: '___',
-                codePost: '):\n    return hp_demon - damage',
-                options: ['damage', '100', '"pedang"', 'True'],
-                answer: 'damage',
-                explanation: 'damage adalah nama parameter penampung nilai kekuatan serangan.'
+                scenario: '⚡ [BOSS FASE 2/3] Demon mengerahkan perisai! Gunakan operator OR untuk memeriksa kelemahan sihir!',
+                code: 'kelemahan_es = True\nkelemahan_petir = False\nif kelemahan_es {0} {1}:\n    {2}("Serangan Berhasil!")',
+                blanks: [
+                  { id: 0, answer: 'or' },
+                  { id: 1, answer: 'kelemahan_petir' },
+                  { id: 2, answer: 'print' }
+                ],
+                pool: ['or', 'kelemahan_petir', 'print', 'and', 'not', 'kelemahan_es', 'return', 'else'],
+                explanation: 'Operator or bernilai True jika salah satu kondisi bernilai True (kelemahan_es bernilai True).'
               },
               {
-                scenario: '💥 [BOSS FASE FINAL] Pukulan Terakhir! Panggil fungsi serangan pamungkas!',
-                codePre: 'darah_akhir = serang_demon(',
-                codeBlank: '___',
-                codePost: ')',
-                options: ['99', 'def', 'return', 'import'],
-                answer: '99',
-                explanation: 'Memanggil fungsi dengan argumen integer 99 untuk menghabisi Logic Demon!'
+                scenario: '💥 [BOSS FASE FINAL] Pukulan Terakhir! Buat keputusan serangan pamungkas pahlawan!',
+                code: 'mana = 50\n{0} mana >= 30:\n    jurus = {1}\n{2}:\n    jurus = "Pukulan Biasa"',
+                blanks: [
+                  { id: 0, answer: 'if' },
+                  { id: 1, answer: '"Meteor"' },
+                  { id: 2, answer: 'else' }
+                ],
+                pool: ['if', '"Meteor"', 'else', 'elif', 'mana', '30', 'while', 'print'],
+                explanation: 'if mana >= 30 memilih jurus "Meteor", dan else menangani jika mana tidak mencukupi.'
               }
             ]
           }
@@ -217,93 +223,93 @@
             stageNum: 1,
             enemy: { name: 'Loop Spider', type: 'spider', hp: 1, isBoss: false },
             question: {
-              scenario: 'Loop Spider menyerang! Buat perulangan 5 kali!',
-              codePre: 'for i in range(',
-              codeBlank: '___',
-              codePost: '):\n    print(i)',
-              options: ['5', '0', '10', '4'],
-              answer: '5',
-              explanation: 'range(5) menghasilkan angka 0,1,2,3,4 — tepat 5 iterasi.'
+              scenario: 'Loop Spider menyerang! Buat perulangan for dengan range untuk memukul 5 kali!',
+              code: '{0} i in {1}(5):\n    {2}("Pukulan ke-", i)',
+              blanks: [
+                { id: 0, answer: 'for' },
+                { id: 1, answer: 'range' },
+                { id: 2, answer: 'print' }
+              ],
+              pool: ['for', 'range', 'print', 'while', 'in', 'len', '5', 'loop'],
+              explanation: 'for i in range(5) mengulang perintah print sebanyak 5 kali berurutan dari 0 sampai 4.'
             }
           },
           {
             stageNum: 2,
             enemy: { name: 'While Ghost', type: 'ghost', hp: 1, isBoss: false },
             question: {
-              scenario: 'While Ghost menghalangi! Lengkapi kondisi perulangan while!',
-              codePre: 'while ',
-              codeBlank: '___',
-              codePost: ' > 0:\n    hitung -= 1',
-              options: ['hitung', 'i', 'n', 'x'],
-              answer: 'hitung',
-              explanation: 'while hitung > 0 akan terus berulang selama variabel hitung lebih besar dari 0.'
+              scenario: 'While Ghost mengurung ruangan! Jalankan hitung mundur dengan perulangan while!',
+              code: 'hitung = 3\n{0} hitung > 0:\n    print(hitung)\n    hitung {1} {2}',
+              blanks: [
+                { id: 0, answer: 'while' },
+                { id: 1, answer: '-=' },
+                { id: 2, answer: '1' }
+              ],
+              pool: ['while', '-=', '1', 'for', '+=', '==', 'hitung', '0'],
+              explanation: 'while hitung > 0 berulang selama syarat bernilai True. hitung -= 1 mengurangi nilai agar tidak loop selamanya.'
             }
           },
           {
             stageNum: 3,
             enemy: { name: 'Function Wraith', type: 'ghost', hp: 1, isBoss: false },
             question: {
-              scenario: 'Function Wraith datang! Kembalikan sapaan dari fungsi!',
-              codePre: 'def sapa(nama):\n    return "Halo, " + ',
-              codeBlank: '___',
-              codePost: '',
-              options: ['nama', '"nama"', 'sapa', '"Halo"'],
-              answer: 'nama',
-              explanation: 'nama (tanpa kutip) merujuk pada parameter fungsi. "Halo, " + nama menggabungkan string dengan nilai parameter.'
+              scenario: 'Function Wraith datang! Definisikan fungsi dan kembalikan nilai hasil perkalian kuadrat!',
+              code: '{0} kuadrat(x):\n    {1} x * x\n\nhasil = kuadrat(5)',
+              blanks: [
+                { id: 0, answer: 'def' },
+                { id: 1, answer: 'return' }
+              ],
+              pool: ['def', 'return', 'function', 'print', 'kuadrat', 'x', '5', 'import'],
+              explanation: 'Kata kunci def digunakan untuk mendefinisikan fungsi, dan return mengembalikan hasil ke pemanggil.'
             }
           },
           {
             stageNum: 4,
             enemy: { name: 'List Demon', type: 'spider', hp: 1, isBoss: false },
             question: {
-              scenario: 'List Demon menyerang! Tambahkan elemen ke list!',
-              codePre: 'buah = ["apel", "mangga"]\nbuah.',
-              codeBlank: '___',
-              codePost: '("jeruk")',
-              options: ['append', 'add', 'push', 'insert'],
-              answer: 'append',
-              explanation: 'append() adalah metode list Python untuk menambahkan elemen di akhir list.'
+              scenario: 'List Demon menyerang! Tambahkan item ke list tas dan ambil item indeks pertama!',
+              code: 'tas = ["Kunci", "Perisai"]\ntas.{0}("Excalibur")\npertama = tas[{1}]',
+              blanks: [
+                { id: 0, answer: 'append' },
+                { id: 1, answer: '0' }
+              ],
+              pool: ['append', '0', 'add', 'push', '1', 'insert', 'tas', 'len'],
+              explanation: 'Metode append() menambah elemen ke akhir list, dan indeks [0] mengakses elemen pertama.'
             }
           },
           {
             stageNum: 5,
             enemy: { name: 'BOSS FINAL: Dragon Rekursif', type: 'dragon', hp: 3, isBoss: true },
-            question: {
-              scenario: 'BOSS FINAL! Dragon Rekursif! Lengkapi fungsi faktorial rekursif!',
-              codePre: 'def faktorial(n):\n    if n == 0:\n        return 1\n    return n * faktorial(',
-              codeBlank: '___',
-              codePost: ')',
-              options: ['n-1', 'n', 'n+1', '0'],
-              answer: 'n-1',
-              explanation: 'faktorial(n) = n * faktorial(n-1). Rekursi memanggil dirinya sendiri dengan n-1 sampai n==0.'
-            },
             bossQuestions: [
               {
-                scenario: '🔥 [FINAL BOSS FASE 1/3] Naga Rekursif menyembur api! Lengkapi pemanggilan fungsi rekursif!',
-                codePre: 'def faktorial(n):\n    if n == 0:\n        return 1\n    return n * faktorial(',
-                codeBlank: '___',
-                codePost: ')',
-                options: ['n-1', 'n', 'n+1', '0'],
-                answer: 'n-1',
-                explanation: 'faktorial(n) = n * faktorial(n-1). Memanggil diri sendiri dengan n-1 menuju base case.'
+                scenario: '🔥 [FINAL BOSS FASE 1/3] Naga Rekursif menyembur api! Definisikan fungsi serangan naga!',
+                code: '{0} serang(daya):\n    {1} daya * 3\n\ntotal = serang(20)',
+                blanks: [
+                  { id: 0, answer: 'def' },
+                  { id: 1, answer: 'return' }
+                ],
+                pool: ['def', 'return', 'print', 'serang', 'daya', 'function', 'total', 'while'],
+                explanation: 'def serang(daya) mendefinisikan fungsi dan return mengembalikan hasil perkalian.'
               },
               {
-                scenario: '⚡ [FINAL BOSS FASE 2/3] Naga meregenerasi sayap! Buat Base Case agar fungsi berhenti di nol!',
-                codePre: 'def mundur(detik):\n    if detik ',
-                codeBlank: '___',
-                codePost: ' 0:\n        return "Maju!"\n    return mundur(detik - 1)',
-                options: ['<=', '>=', '!=', '+='],
-                answer: '<=',
-                explanation: '<= 0 memastikan rekursi berhenti saat detik mencapai atau di bawah nol (Base Case).'
+                scenario: '⚡ [FINAL BOSS FASE 2/3] Naga meregenerasi sayap! Ulangi penjumlahan damage dari daftar serangan!',
+                code: 'combo = [15, 25, 40]\ntotal = 0\n{0} dmg {1} combo:\n    total += dmg',
+                blanks: [
+                  { id: 0, answer: 'for' },
+                  { id: 1, answer: 'in' }
+                ],
+                pool: ['for', 'in', 'while', 'range', 'combo', 'total', 'len', 'dmg'],
+                explanation: 'for dmg in combo mengiterasi setiap elemen nilai di dalam list combo.'
               },
               {
-                scenario: '💥 [FINAL BOSS FASE 3/3] Tebasan Terakhir! Akses senjata pamungkas dari indeks terakhir list!',
-                codePre: 'senjata = ["Kayu", "Besi", "Excalibur"]\nserang = senjata[',
-                codeBlank: '___',
-                codePost: ']',
-                options: ['2', '3', '"terakhir"', '-0'],
-                answer: '2',
-                explanation: 'Elemen ke-3 dalam list berindeks 2 (karena indeks list dimulai dari 0: 0, 1, 2).'
+                scenario: '💥 [FINAL BOSS FASE FINAL] Tebasan Pamungkas! Lengkapi Base Case fungsi rekursif!',
+                code: 'def hitung_mundur(detik):\n    if detik {0} 0:\n        return "Naga Kalah!"\n    {1} hitung_mundur(detik - 1)',
+                blanks: [
+                  { id: 0, answer: '<=' },
+                  { id: 1, answer: 'return' }
+                ],
+                pool: ['<=', 'return', '>=', '==', 'def', 'print', 'detik', 'break'],
+                explanation: 'if detik <= 0 adalah Base Case agar fungsi rekursi berhenti saat mencapai target.'
               }
             ]
           }
@@ -530,6 +536,12 @@
     hit() {
       this._play(150, 'sawtooth', 0.3, 0.25, 0);
     }
+    place() {
+      this._play(520, 'triangle', 0.08, 0.18, 0);
+    }
+    remove() {
+      this._play(320, 'triangle', 0.08, 0.15, 0);
+    }
     toggle() {
       this.enabled = !this.enabled;
       return this.enabled;
@@ -632,7 +644,9 @@
         battlePanel:  document.getElementById('battle-panel'),
         battleScenario: document.getElementById('battle-scenario'),
         codeDisplay:  document.getElementById('code-display'),
-        answerBtns:   document.querySelectorAll('.answer-btn'),
+        chipsPool:    document.getElementById('code-chips-pool'),
+        btnRunCode:   document.getElementById('btn-run-code'),
+        btnResetCode: document.getElementById('btn-reset-code'),
         feedbackEl:   document.getElementById('battle-feedback'),
         explanationEl: document.getElementById('battle-explanation'),
         transitionOverlay: document.getElementById('transition-overlay'),
@@ -679,12 +693,16 @@
           }
         });
       });
-      this.$.answerBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          if (this.state !== GameState.BATTLE) return;
-          this._handleAnswer(btn.dataset.answer);
+      if (this.$.btnRunCode) {
+        this.$.btnRunCode.addEventListener('click', () => {
+          if (this.state === GameState.BATTLE) this._checkAnswer();
         });
-      });
+      }
+      if (this.$.btnResetCode) {
+        this.$.btnResetCode.addEventListener('click', () => {
+          if (this.state === GameState.BATTLE) this._resetSlots();
+        });
+      }
     }
 
     // ----------------------------------------------------------
@@ -853,13 +871,22 @@
     }
 
     // ----------------------------------------------------------
-    //  BATTLE
+    //  BATTLE (DRAG & DROP / CLICK-TO-PLACE FILL-IN-THE-BLANK)
     // ----------------------------------------------------------
     _beginBattle() {
       this.state = GameState.BATTLE;
       const q = this._getCurrentQuestion();
 
       this.$.battleScenario.textContent = q.scenario;
+      this.currentSlots = {};
+      this.draggedValue = null;
+
+      if (q.blanks) {
+        q.blanks.forEach(b => {
+          this.currentSlots[b.id] = null;
+        });
+      }
+
       this._renderCode(q);
       this._renderOptions(q);
       this.$.battlePanel.classList.add('active');
@@ -867,45 +894,230 @@
       this.$.feedbackEl.textContent = '';
       this.$.explanationEl.style.display = 'none';
 
+      if (this.$.btnRunCode) this.$.btnRunCode.disabled = false;
+      if (this.$.btnResetCode) this.$.btnResetCode.disabled = false;
+
+      // Timer 60 detik (1 Menit)
       if (this.timer) this.timer.stop();
-      this.timer = new GameTimer(10,
+      this.timer = new GameTimer(60,
         (rem, total) => this._updateTimerBar(rem, total),
-        () => this._handleAnswer(null)
+        () => this._handleTimeout()
       );
       this.timer.start();
     }
 
+    _escapeHTML(str) {
+      if (typeof str !== 'string') return str;
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
     _renderCode(q) {
-      const pre = this.$.codeDisplay;
-      pre.innerHTML = '';
-      const full = (q.codePre || '') + '___' + (q.codePost || '');
-      const lines = full.split('\n');
-      lines.forEach(line => {
+      const container = this.$.codeDisplay;
+      container.innerHTML = '';
+      const lines = q.code.split('\n');
+
+      lines.forEach(lineText => {
         const lineDiv = document.createElement('div');
         lineDiv.className = 'code-line';
-        const blankIdx = line.indexOf('___');
-        if (blankIdx !== -1) {
-          lineDiv.appendChild(document.createTextNode(line.slice(0, blankIdx)));
-          const blank = document.createElement('span');
-          blank.className = 'code-blank blink-blank';
-          blank.id = 'code-blank-slot';
-          blank.textContent = '___';
-          lineDiv.appendChild(blank);
-          lineDiv.appendChild(document.createTextNode(line.slice(blankIdx + 3)));
-        } else {
-          lineDiv.textContent = line;
+
+        // Token match regex: {0}, {1}, {2}, etc.
+        const tokenRegex = /\{(\d+)\}/g;
+        let lastIndex = 0;
+        let match;
+
+        while ((match = tokenRegex.exec(lineText)) !== null) {
+          const before = lineText.slice(lastIndex, match.index);
+          if (before) {
+            lineDiv.appendChild(document.createTextNode(before));
+          }
+
+          const slotId = parseInt(match[1], 10);
+          const slotEl = document.createElement('span');
+          slotEl.className = 'code-slot';
+          slotEl.id = 'slot-' + slotId;
+          slotEl.dataset.slotId = slotId;
+
+          this._updateSlotDOM(slotEl, slotId);
+
+          // Drag & Drop events for slot
+          slotEl.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            slotEl.classList.add('slot-hover');
+          });
+
+          slotEl.addEventListener('dragleave', () => {
+            slotEl.classList.remove('slot-hover');
+          });
+
+          slotEl.addEventListener('drop', (e) => {
+            e.preventDefault();
+            slotEl.classList.remove('slot-hover');
+            const val = e.dataTransfer.getData('text/plain') || this.draggedValue;
+            if (val) {
+              this._placeChip(val, slotId);
+            }
+          });
+
+          // Click on slot: if filled, clicking removes it
+          slotEl.addEventListener('click', () => {
+            if (this.currentSlots[slotId] !== null) {
+              this._removeChip(slotId);
+            }
+          });
+
+          lineDiv.appendChild(slotEl);
+          lastIndex = tokenRegex.lastIndex;
         }
-        pre.appendChild(lineDiv);
+
+        const remaining = lineText.slice(lastIndex);
+        if (remaining) {
+          lineDiv.appendChild(document.createTextNode(remaining));
+        }
+
+        container.appendChild(lineDiv);
       });
     }
 
+    _updateSlotDOM(slotEl, slotId) {
+      const val = this.currentSlots[slotId];
+      slotEl.innerHTML = '';
+      if (val !== null && val !== undefined) {
+        slotEl.className = 'code-slot filled';
+        const textSpan = document.createElement('span');
+        textSpan.className = 'slot-text';
+        textSpan.textContent = val;
+        slotEl.appendChild(textSpan);
+
+        const rmBtn = document.createElement('button');
+        rmBtn.type = 'button';
+        rmBtn.className = 'slot-remove-btn';
+        rmBtn.innerHTML = '&times;';
+        rmBtn.title = 'Hapus balok';
+        rmBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this._removeChip(slotId);
+        });
+        slotEl.appendChild(rmBtn);
+      } else {
+        slotEl.className = 'code-slot';
+        const placeholder = document.createElement('span');
+        placeholder.className = 'slot-placeholder';
+        placeholder.textContent = '[ ? ]';
+        slotEl.appendChild(placeholder);
+      }
+    }
+
     _renderOptions(q) {
-      const opts = [...q.options].sort(() => Math.random() - 0.5);
-      this.$.answerBtns.forEach((btn, i) => {
-        btn.textContent = opts[i] || '';
-        btn.dataset.answer = opts[i] || '';
-        btn.disabled = false;
-        btn.className = 'answer-btn';
+      if (!this.$.chipsPool) return;
+      const poolEl = this.$.chipsPool;
+      poolEl.innerHTML = '';
+
+      // Shuffle pool choices
+      const pool = [...q.pool].sort(() => Math.random() - 0.5);
+
+      pool.forEach((val, idx) => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'code-chip';
+        chip.draggable = true;
+        chip.dataset.value = val;
+        chip.dataset.chipIdx = idx;
+
+        chip.innerHTML = '<span class="chip-handle">⠿</span><span class="chip-text">' + this._escapeHTML(val) + '</span>';
+
+        // Drag events
+        chip.addEventListener('dragstart', (e) => {
+          if (chip.classList.contains('placed')) {
+            e.preventDefault();
+            return;
+          }
+          this.draggedValue = val;
+          e.dataTransfer.setData('text/plain', val);
+          e.dataTransfer.effectAllowed = 'move';
+          chip.classList.add('dragging');
+        });
+
+        chip.addEventListener('dragend', () => {
+          chip.classList.remove('dragging');
+          this.draggedValue = null;
+        });
+
+        // Click to place in first empty slot
+        chip.addEventListener('click', () => {
+          if (chip.classList.contains('placed')) return;
+          const emptySlotId = Object.keys(this.currentSlots).find(id => this.currentSlots[id] === null);
+          if (emptySlotId !== undefined) {
+            this._placeChip(val, parseInt(emptySlotId, 10));
+          }
+        });
+
+        poolEl.appendChild(chip);
+      });
+    }
+
+    _placeChip(val, slotId) {
+      if (this.currentSlots[slotId] !== null) {
+        this._removeChip(slotId, false);
+      }
+      this.currentSlots[slotId] = val;
+      this.sound.place();
+
+      const slotEl = document.getElementById('slot-' + slotId);
+      if (slotEl) {
+        this._updateSlotDOM(slotEl, slotId);
+      }
+      this._syncChipsState();
+    }
+
+    _removeChip(slotId, playSound = true) {
+      if (this.currentSlots[slotId] !== null) {
+        this.currentSlots[slotId] = null;
+        if (playSound) this.sound.remove();
+
+        const slotEl = document.getElementById('slot-' + slotId);
+        if (slotEl) {
+          this._updateSlotDOM(slotEl, slotId);
+        }
+        this._syncChipsState();
+      }
+    }
+
+    _resetSlots() {
+      Object.keys(this.currentSlots).forEach(id => {
+        this.currentSlots[id] = null;
+        const slotEl = document.getElementById('slot-' + id);
+        if (slotEl) {
+          this._updateSlotDOM(slotEl, parseInt(id, 10));
+        }
+      });
+      this.sound.remove();
+      this._syncChipsState();
+      this.$.feedbackEl.textContent = '';
+      this.$.feedbackEl.className = 'battle-feedback';
+    }
+
+    _syncChipsState() {
+      if (!this.$.chipsPool) return;
+      const usedValues = Object.values(this.currentSlots).filter(v => v !== null);
+      const usedCount = {};
+      usedValues.forEach(v => {
+        usedCount[v] = (usedCount[v] || 0) + 1;
+      });
+
+      const matchedCount = {};
+      const chips = this.$.chipsPool.querySelectorAll('.code-chip');
+      chips.forEach(chip => {
+        const val = chip.dataset.value;
+        matchedCount[val] = (matchedCount[val] || 0);
+        if (matchedCount[val] < (usedCount[val] || 0)) {
+          chip.classList.add('placed');
+          chip.draggable = false;
+          matchedCount[val]++;
+        } else {
+          chip.classList.remove('placed');
+          chip.draggable = true;
+        }
       });
     }
 
@@ -913,34 +1125,76 @@
       const pct = (remaining / total) * 100;
       this.$.timerBar.style.width = pct + '%';
       this.$.timerNum.textContent = remaining;
-      if (pct <= 30) this.$.timerBar.style.background = '#E74C3C';
-      else if (pct <= 60) this.$.timerBar.style.background = '#F39C12';
+      if (pct <= 25) this.$.timerBar.style.background = '#E74C3C';
+      else if (pct <= 50) this.$.timerBar.style.background = '#F39C12';
       else this.$.timerBar.style.background = '#27AE60';
     }
 
+    _checkAnswer() {
+      if (this.state !== GameState.BATTLE) return;
+      const q = this._getCurrentQuestion();
+
+      // Check if all slots are filled
+      const emptySlotIds = Object.keys(this.currentSlots).filter(id => this.currentSlots[id] === null);
+      if (emptySlotIds.length > 0) {
+        this.$.feedbackEl.className = 'battle-feedback feedback-warn';
+        this.$.feedbackEl.textContent = '⚠️ Tarik balok ke semua kotak [ ? ] terlebih dahulu!';
+        this.sound.wrong();
+
+        emptySlotIds.forEach(id => {
+          const slotEl = document.getElementById('slot-' + id);
+          if (slotEl) {
+            slotEl.classList.remove('slot-shake');
+            void slotEl.offsetWidth;
+            slotEl.classList.add('slot-shake');
+          }
+        });
+        return;
+      }
+
+      // Check correctness
+      let isAllCorrect = true;
+      q.blanks.forEach(b => {
+        const slotEl = document.getElementById('slot-' + b.id);
+        const userVal = (this.currentSlots[b.id] || '').trim();
+        const expectedVal = b.answer.trim();
+
+        if (userVal === expectedVal) {
+          if (slotEl) {
+            slotEl.classList.remove('slot-wrong');
+            slotEl.classList.add('slot-correct');
+          }
+        } else {
+          isAllCorrect = false;
+          if (slotEl) {
+            slotEl.classList.remove('slot-correct');
+            slotEl.classList.add('slot-wrong');
+          }
+        }
+      });
+
+      this._handleAnswer(isAllCorrect);
+    }
+
     // ----------------------------------------------------------
-    //  ANSWER
+    //  ANSWER HANDLING
     // ----------------------------------------------------------
-    _handleAnswer(answer) {
+    _handleAnswer(isCorrect) {
       if (this.state !== GameState.BATTLE) return;
       if (this.timer) this.timer.stop();
-      this.$.answerBtns.forEach(btn => { btn.disabled = true; });
 
       const stageData = GAME_DATA.levels[this.currentLevel].stages[this.currentStage];
       const q = this._getCurrentQuestion();
-      const isCorrect = answer !== null && answer === q.answer;
 
-      const slot = document.getElementById('code-blank-slot');
-      if (slot) {
-        slot.textContent = isCorrect ? q.answer : (answer || '(waktu habis)');
-        slot.className = 'code-blank ' + (isCorrect ? 'blank-correct' : 'blank-wrong');
-      }
+      if (this.$.btnRunCode) this.$.btnRunCode.disabled = true;
+      if (this.$.btnResetCode) this.$.btnResetCode.disabled = true;
 
       if (isCorrect) {
         this.sound.correct();
         this.correctAnswers++;
         this.$.feedbackEl.className = 'battle-feedback feedback-correct';
-        this.$.feedbackEl.textContent = '✅ Benar! Serang!';
+        this.$.feedbackEl.textContent = '✅ Benar! Kode berhasil dieksekusi! Serang!';
+        this.$.explanationEl.style.display = 'none';
 
         if (stageData.enemy.isBoss) {
           this.enemyHP--;
@@ -956,20 +1210,55 @@
       } else {
         this.sound.wrong();
         this.$.feedbackEl.className = 'battle-feedback feedback-wrong';
-        this.$.feedbackEl.textContent = answer === null ? '⏰ Waktu Habis!' : '❌ Salah!';
+        this.$.feedbackEl.textContent = '❌ Kode masih belum tepat! Coba periksa kembali!';
         this.$.explanationEl.style.display = 'block';
         this.$.explanationEl.textContent = '💡 ' + q.explanation;
 
         this._playerHurt(() => {
           this.playerHP--;
           this._updateHUD();
+
           if (this.playerHP <= 0) {
             setTimeout(() => this._gameOver(), 900);
           } else {
-            setTimeout(() => this._beginBattle(), 1800);
+            if (this.$.btnRunCode) this.$.btnRunCode.disabled = false;
+            if (this.$.btnResetCode) this.$.btnResetCode.disabled = false;
+            // Restart 60s timer so player can fix the code
+            if (this.timer) this.timer.stop();
+            this.timer = new GameTimer(60,
+              (rem, total) => this._updateTimerBar(rem, total),
+              () => this._handleTimeout()
+            );
+            this.timer.start();
           }
         });
       }
+    }
+
+    _handleTimeout() {
+      if (this.state !== GameState.BATTLE) return;
+      if (this.timer) this.timer.stop();
+
+      const q = this._getCurrentQuestion();
+      if (this.$.btnRunCode) this.$.btnRunCode.disabled = true;
+      if (this.$.btnResetCode) this.$.btnResetCode.disabled = true;
+
+      this.sound.wrong();
+      this.$.feedbackEl.className = 'battle-feedback feedback-wrong';
+      this.$.feedbackEl.textContent = '⏰ Waktu Habis (60 Detik)! Musuh menyerang!';
+      this.$.explanationEl.style.display = 'block';
+      this.$.explanationEl.textContent = '💡 ' + q.explanation;
+
+      this._playerHurt(() => {
+        this.playerHP--;
+        this._updateHUD();
+
+        if (this.playerHP <= 0) {
+          setTimeout(() => this._gameOver(), 900);
+        } else {
+          setTimeout(() => this._beginBattle(), 1500);
+        }
+      });
     }
 
     // ----------------------------------------------------------
@@ -1116,7 +1405,11 @@
         hearts += i < this.playerHP ? '❤️' : '🖤';
       }
       this.$.heartsEl.textContent = hearts;
-      this._updateTimerBar(10, 10);
+      if (this.timer && this.timer.remaining !== undefined) {
+        this._updateTimerBar(this.timer.remaining, this.timer.total);
+      } else {
+        this._updateTimerBar(60, 60);
+      }
     }
 
     // ----------------------------------------------------------

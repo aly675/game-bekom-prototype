@@ -10,7 +10,7 @@ import { UIManager } from "./modules/ui.js";
 class GameApp {
   constructor() {
     this.ui = new UIManager();
-    this.timer = new GameTimer(10); // 10 detik per giliran
+    this.timer = new GameTimer(60); // 60 detik per giliran
 
     this.currentLevel = gameLevels[0];
     this.currentStageIndex = 0;

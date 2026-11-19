@@ -129,7 +129,7 @@
           <div class="timer-track">
             <div class="timer-bar" id="timer-bar"></div>
           </div>
-          <div class="timer-num" id="timer-num">10</div>
+          <div class="timer-num" id="timer-num">60</div>
         </div>
       </div>
       <div class="hud-right">
@@ -200,12 +200,27 @@
           <div class="code-label">🐍 Python Code</div>
           <div class="code-display" id="code-display"></div>
         </div>
-        <div class="answer-grid" id="answer-grid">
-          <button class="answer-btn" data-answer="">...</button>
-          <button class="answer-btn" data-answer="">...</button>
-          <button class="answer-btn" data-answer="">...</button>
-          <button class="answer-btn" data-answer="">...</button>
+        <!-- CODE BANK (DRAGGABLE CHIPS POOL) -->
+        <div class="code-bank-section">
+          <div class="code-bank-header">
+            <span class="code-bank-title">📦 BALOK KODE</span>
+            <span class="code-bank-hint">Tarik atau Klik balok ke kotak kosong [ ? ]</span>
+          </div>
+          <div class="code-chips-pool" id="code-chips-pool">
+            <!-- Chips rendered dynamically -->
+          </div>
         </div>
+
+        <!-- BATTLE ACTIONS -->
+        <div class="battle-actions">
+          <button type="button" id="btn-run-code" class="btn btn-action-run">
+            <span>▶</span> JALANKAN KODE!
+          </button>
+          <button type="button" id="btn-reset-code" class="btn btn-action-reset">
+            <span>🔄</span> Reset Balok
+          </button>
+        </div>
+
         <div class="battle-feedback" id="battle-feedback"></div>
         <div class="battle-explanation" id="battle-explanation" style="display:none;"></div>
       </div>
@@ -223,37 +238,37 @@
         <div class="howto-step">
           <span class="howto-num">1</span>
           <div>
-            <strong>Pahlawan berjalan otomatis</strong> ke kanan dan mendekati musuh.
+            <strong>Pahlawan berjalan otomatis</strong> ke kanan dan mendekati monster penjaga.
           </div>
         </div>
         <div class="howto-step">
           <span class="howto-num">2</span>
           <div>
-            Saat bertemu musuh, <strong>panel kode Python</strong> muncul dengan bagian kosong <code>___</code>.
+            Saat pertempuran dimulai, muncul kode Python dengan kotak kosong <strong>[ ? ]</strong>.
           </div>
         </div>
         <div class="howto-step">
           <span class="howto-num">3</span>
           <div>
-            Pilih <strong>jawaban yang benar</strong> dalam <strong>10 detik</strong>. Jawaban benar → musuh mati!
+            <strong>Tarik (Drag &amp; Drop)</strong> atau <strong>klik</strong> balok kode dari pilihan di bawah untuk mengisi bagian yang kosong.
           </div>
         </div>
         <div class="howto-step">
           <span class="howto-num">4</span>
           <div>
-            <strong>Boss</strong> memiliki ❤️❤️❤️ 3 HP. Butuh 3 jawaban benar berturut-turut!
+            Tekan tombol <strong>▶ JALANKAN KODE!</strong> dalam waktu <strong>1 Menit (60 Detik)</strong> untuk menyerang musuh!
           </div>
         </div>
         <div class="howto-step">
           <span class="howto-num">5</span>
           <div>
-            Kamu punya <strong>3 nyawa ❤️</strong>. Jawaban salah atau waktu habis = -1 nyawa.
+            <strong>Boss</strong> memiliki ❤️❤️❤️ 3 HP dengan 3 tantangan kode berturut-turut!
           </div>
         </div>
         <div class="howto-step">
           <span class="howto-num">6</span>
           <div>
-            Kalahkan semua musuh di stage → <strong>lanjut ke stage berikutnya</strong>!
+            Kamu memiliki <strong>3 nyawa ❤️</strong>. Susun kode yang benar dan selesaikan semua stage!
           </div>
         </div>
       </div>
