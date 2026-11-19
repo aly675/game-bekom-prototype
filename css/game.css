@@ -144,9 +144,57 @@
 }
 .theme-volcano .mtn1 { fill: #BF360C; }
 .theme-volcano .mtn2 { fill: #D84315; opacity: 0.7; }
-.theme-volcano #ground-layer { background: linear-gradient(180deg, #37474F 0%, #263238 40%, #1a0a00 100%); }
+.theme-volcano #ground-layer, .theme-volcano .ground-layer { background: linear-gradient(180deg, #37474F 0%, #263238 40%, #1a0a00 100%); }
 .theme-volcano .sky-bg {
   background: linear-gradient(180deg, #880E4F 0%, #BF360C 50%, #E64A19 100%);
+}
+
+/* Dark Castle Theme (Kerajaan Bernuansa Gelap) */
+.theme-dark-castle, .theme-dark_castle {
+  background: linear-gradient(180deg, #090314 0%, #170729 45%, #2a0845 80%, #120421 100%);
+}
+.theme-dark-castle .mtn1, .theme-dark_castle .mtn1 { fill: #140524; }
+.theme-dark-castle .mtn2, .theme-dark_castle .mtn2 { fill: #240a3d; opacity: 0.85; }
+.theme-dark-castle #ground-layer, .theme-dark-castle .ground-layer,
+.theme-dark_castle #ground-layer, .theme-dark_castle .ground-layer {
+  background: linear-gradient(180deg, #1b0a2a 0%, #10051a 45%, #08020d 100%);
+  border-top: 3px solid #7b2cbf;
+}
+.theme-dark-castle .sky-bg, .theme-dark_castle .sky-bg {
+  background: radial-gradient(ellipse at 50% 20%, #4a0e4e 0%, #1f0730 50%, #080112 100%);
+}
+
+/* Village Peaceful Theme */
+.theme-village-peaceful {
+  background: linear-gradient(180deg, #64B5F6 0%, #B3E5FC 50%, #FFF9C4 100%);
+}
+.theme-village-peaceful .mtn1 { fill: #2E7D32; }
+.theme-village-peaceful .mtn2 { fill: #4CAF50; opacity: 0.8; }
+.theme-village-peaceful .ground-layer { background: linear-gradient(180deg, #66BB6A 0%, #388E3C 35%, #5D4037 100%); }
+.theme-village-peaceful .sky-bg {
+  background: linear-gradient(180deg, #42A5F5 0%, #90CAF9 55%, #FFF59D 100%);
+}
+
+/* Village Attack Theme (Hibat Appearance) */
+.theme-village-attack {
+  background: linear-gradient(180deg, #311B92 0%, #B71C1C 50%, #FF5722 100%);
+}
+.theme-village-attack .mtn1 { fill: #1A050B; }
+.theme-village-attack .mtn2 { fill: #5C0011; opacity: 0.85; }
+.theme-village-attack .ground-layer { background: linear-gradient(180deg, #4A148C 0%, #311B92 35%, #1A050B 100%); }
+.theme-village-attack .sky-bg {
+  background: linear-gradient(180deg, #2A0845 0%, #640D14 50%, #AD2831 100%);
+}
+
+/* Village Destroyed Theme (Burning Embers) */
+.theme-village-destroyed {
+  background: linear-gradient(180deg, #0D0407 0%, #370617 50%, #6A040F 100%);
+}
+.theme-village-destroyed .mtn1 { fill: #0B0205; }
+.theme-village-destroyed .mtn2 { fill: #1F050A; opacity: 0.8; }
+.theme-village-destroyed .ground-layer { background: linear-gradient(180deg, #2E1B1B 0%, #1A0D0D 40%, #0A0505 100%); }
+.theme-village-destroyed .sky-bg {
+  background: linear-gradient(180deg, #050103 0%, #22030B 45%, #5C0011 100%);
 }
 
 /* ---- LAYERS ---- */
@@ -779,4 +827,337 @@
   .battle-actions { flex-direction: column; }
   .btn-action-run { width: 100%; }
   .btn-action-reset { width: 100%; justify-content: center; }
+}
+
+/* ============================================================
+   SCREEN STORY / PROLOGUE
+   ============================================================ */
+#screen-story {
+  display: none;
+  flex-direction: column;
+  height: 100vh;
+  background: #0A0A1E;
+  overflow: hidden;
+  position: relative;
+}
+#screen-story.active {
+  display: flex;
+}
+
+.story-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.story-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 18px;
+  background: rgba(10, 15, 35, 0.95);
+  border-bottom: 2px solid rgba(69, 123, 157, 0.35);
+  z-index: 50;
+  flex-shrink: 0;
+}
+
+.story-chapter-title {
+  font-family: var(--ff-arcade);
+  font-size: 0.65rem;
+  color: var(--clr-accent);
+  letter-spacing: 1px;
+}
+
+.btn-skip {
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #E6EDF3;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-skip:hover {
+  background: rgba(231, 76, 60, 0.25);
+  border-color: #E74C3C;
+  color: #FF6B6B;
+}
+
+.story-world {
+  position: relative;
+  flex: 1;
+  min-height: 220px;
+  overflow: hidden;
+  transition: background 0.6s ease;
+}
+
+.story-actor {
+  position: absolute;
+  bottom: 60px;
+  z-index: 10;
+  transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+}
+.actor-left {
+  left: 18%;
+}
+.actor-right {
+  right: 18%;
+}
+
+.actor-spawn {
+  animation: actorSpawnAnim 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes actorSpawnAnim {
+  0% { opacity: 0; transform: scale(0.2) translateY(-40px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.actor-vanish {
+  animation: actorVanishAnim 0.7s forwards ease-in-out;
+}
+@keyframes actorVanishAnim {
+  0% { opacity: 1; transform: scale(1) translateY(0); filter: drop-shadow(0 0 10px #E74C3C); }
+  50% { opacity: 0.7; transform: scale(1.3) translateY(-25px); filter: drop-shadow(0 0 25px #9B59B6); }
+  100% { opacity: 0; transform: scale(0.1) translateY(-60px); filter: blur(12px); }
+}
+
+.story-fx-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* ============================================================
+   STORY DIALOGUE PANEL (Visual Novel / RPG Style)
+   ============================================================ */
+.story-dialogue-panel {
+  background: rgba(11, 19, 43, 0.98);
+  border-top: 3px solid var(--clr-secondary);
+  padding: 16px 22px 20px;
+  flex-shrink: 0;
+  min-height: 185px;
+  z-index: 40;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  user-select: none;
+}
+
+.dialogue-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.dialogue-avatar-wrap {
+  flex-shrink: 0;
+}
+
+.dialogue-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 12px;
+  background: var(--clr-panel2);
+  border: 2px solid var(--clr-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+.dialogue-avatar svg {
+  width: 60px;
+  height: 60px;
+}
+
+.dialogue-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dialogue-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dialogue-speaker {
+  font-family: var(--ff-arcade);
+  font-size: 0.72rem;
+  color: var(--clr-accent);
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(255, 215, 0, 0.12);
+  border-radius: 6px;
+  border-left: 3px solid var(--clr-accent);
+}
+.dialogue-speaker.speaker-ali {
+  color: #58A6FF;
+  border-left-color: #58A6FF;
+  background: rgba(88, 166, 255, 0.14);
+}
+.dialogue-speaker.speaker-danova {
+  color: #2ECC71;
+  border-left-color: #2ECC71;
+  background: rgba(46, 204, 113, 0.14);
+}
+.dialogue-speaker.speaker-hibat {
+  color: #FF4D4D;
+  border-left-color: #FF4D4D;
+  background: rgba(255, 77, 77, 0.18);
+}
+.dialogue-speaker.speaker-narrator {
+  color: #FFD700;
+  border-left-color: #FFD700;
+  background: rgba(255, 215, 0, 0.14);
+}
+
+.dialogue-text {
+  font-family: var(--ff-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #F0F6FC;
+  min-height: 52px;
+}
+
+.dialogue-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.dialogue-hint {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
+  animation: pulseHint 1.8s infinite;
+}
+@keyframes pulseHint {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.95; }
+}
+
+.btn-dialogue-next {
+  background: var(--clr-panel2);
+  border: 1.5px solid var(--clr-secondary);
+  color: white;
+  font-family: var(--ff-arcade);
+  font-size: 0.55rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-dialogue-next:hover {
+  background: var(--clr-secondary);
+  transform: translateX(2px);
+}
+
+/* ============================================================
+   STAGE INTRO OVERLAY (Mini Narrative Before Gameplay Stage)
+   ============================================================ */
+.stage-intro-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(5px);
+  z-index: 250;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeInIntro 0.3s ease;
+}
+@keyframes fadeInIntro {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.stage-intro-box {
+  background: #111A35;
+  border: 2px solid #58A6FF;
+  border-radius: 14px;
+  max-width: 600px;
+  width: 100%;
+  padding: 16px 20px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+}
+
+.stage-intro-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 10px;
+  background: #1F3A60;
+  border: 1.5px solid #58A6FF;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.stage-intro-avatar svg {
+  width: 48px;
+  height: 48px;
+}
+
+.stage-intro-body {
+  flex: 1;
+}
+
+.stage-intro-speaker {
+  font-family: var(--ff-arcade);
+  font-size: 0.6rem;
+  color: #58A6FF;
+  margin-bottom: 4px;
+}
+
+.stage-intro-text {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #F0F6FC;
+}
+
+.btn-sm {
+  padding: 8px 14px;
+  font-size: 0.65rem;
+  font-family: var(--ff-arcade);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   CAMERA SHAKE & FLASH EFFECTS
+   ============================================================ */
+.screen-shake {
+  animation: screenShakeAnim 0.5s ease-in-out;
+}
+@keyframes screenShakeAnim {
+  0%, 100% { transform: translate(0, 0); }
+  15% { transform: translate(-8px, 6px); }
+  30% { transform: translate(8px, -6px); }
+  45% { transform: translate(-6px, -4px); }
+  60% { transform: translate(6px, 4px); }
+  75% { transform: translate(-3px, 2px); }
+}
+
+.red-flash {
+  animation: redFlashAnim 0.5s ease;
+}
+@keyframes redFlashAnim {
+  0% { background: rgba(231, 76, 60, 0.75); }
+  100% { background: transparent; }
 }

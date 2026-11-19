@@ -385,6 +385,25 @@ html, body {
 }
 .level-card:not(.locked) .lock-icon { display: none; }
 
+/* Story / Prologue Card */
+.level-card.level-card-story {
+  border: 2px dashed #F1C40F;
+  background: linear-gradient(135deg, rgba(241, 196, 15, 0.12) 0%, rgba(26, 26, 46, 0.95) 100%);
+}
+.level-card.level-card-story:hover {
+  border-color: #FFD700;
+  box-shadow: 0 0 25px rgba(241, 196, 15, 0.45);
+  transform: translateY(-6px);
+}
+.level-card.level-card-story .level-card-name {
+  color: #FFD700;
+}
+.level-card.level-card-story .level-card-stages {
+  background: #F39C12;
+  color: #1A1A2E;
+  font-weight: 700;
+}
+
 /* ============================================================
    MODALS
    ============================================================ */

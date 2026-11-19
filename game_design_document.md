@@ -10,7 +10,7 @@ Game edukasi berbasis web interaktif bertema petualangan pahlawan logika Python 
 
 Keterkaitan dengan **4 Pilar Berpikir Komputasi**:
 1. **Dekomposisi**: Memecah blok program Python yang utuh ke dalam token-token komponen (pernyataan kondisi, pemanggilan fungsi, operator perbandingan, kata kunci percabangan).
-2. **Pengenalan Pola**: Mengenali struktur baku percabangan (`if...else`), sintaks fungsi (`def...return`), dan iterasi perulangan (`for...in range`).
+. **Pengenalan Pola**: Mengenali struktur baku percabangan (`if...else`), sintaks fungsi (`def...return`), dan iterasi perulangan (`for...in range`).
 3. **Abstraksi**: Mengidentifikasi variabel penentu keputusan dan menyaring balok kode yang tidak relevan (pengecoh).
 4. **Algoritma**: Menyusun balok-balok kode dalam urutan eksekusi yang valid agar program menghasilkan luaran yang diharapkan.
 

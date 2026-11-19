@@ -8,7 +8,7 @@
     levels: [
       {
         id: 1,
-        name: 'Level 1: Python Dasar',
+        name: 'Level 1: Hutan Sintaks',
         bgTheme: 'forest',
         stages: [
           {
@@ -109,8 +109,8 @@
       },
       {
         id: 2,
-        name: 'Level 2: Kondisi & Percabangan',
-        bgTheme: 'cave',
+        name: 'Level 2: Lembah Magma',
+        bgTheme: 'volcano',
         stages: [
           {
             stageNum: 1,
@@ -216,8 +216,8 @@
       },
       {
         id: 3,
-        name: 'Level 3: Perulangan & Fungsi',
-        bgTheme: 'volcano',
+        name: 'Level 3: Kerajaan Gelap',
+        bgTheme: 'dark-castle',
         stages: [
           {
             stageNum: 1,
@@ -279,7 +279,7 @@
           },
           {
             stageNum: 5,
-            enemy: { name: 'BOSS FINAL: Dragon Rekursif', type: 'dragon', hp: 3, isBoss: true },
+            enemy: { name: 'BOSS FINAL: Shadow Dragon (Penjaga Hibat)', type: 'dragon', hp: 3, isBoss: true },
             bossQuestions: [
               {
                 scenario: '🔥 [FINAL BOSS FASE 1/3] Naga Rekursif menyembur api! Definisikan fungsi serangan naga!',
@@ -319,6 +319,324 @@
   };
 
   // ============================================================
+  //  STORY DATA: PROLOGUE & STAGE INTROS
+  // ============================================================
+  const PROLOGUE_DATA = [
+    {
+      id: 'prologue_part_1',
+      title: 'Prolog 1/3: Pagi di Desa Lembah Python',
+      backgroundTheme: 'village-peaceful',
+      actors: { left: 'hero', right: 'danova' },
+      lines: [
+        {
+          speaker: 'narrator',
+          name: 'Narator',
+          avatar: 'narrator_avatar',
+          text: 'Desa Lembah Python... Sebuah pemukiman damai di mana logika dan alam hidup berdampingan.'
+        },
+        {
+          speaker: 'danova',
+          name: 'Danova',
+          avatar: 'danova_avatar',
+          text: 'Wah, seger banget udara pagi ini! Lu masih ngutak-ngatik baris kode semalam ya, Li?'
+        },
+        {
+          speaker: 'ali',
+          name: 'Ali',
+          avatar: 'ali_avatar',
+          text: 'Haha, iya nih Dan. Gua ngerasa ada yang janggal sama energi di sekitar desa kita belakangan ini.'
+        },
+        {
+          speaker: 'danova',
+          name: 'Danova',
+          avatar: 'danova_avatar',
+          text: 'Ah, lu kebanyakan mikir kali! Selama kita bareng, gak bakal ada hal buruk yang kejadian!'
+        }
+      ]
+    },
+    {
+      id: 'prologue_part_2',
+      title: 'Prolog 2/3: Invasi Entitas Kegelapan',
+      backgroundTheme: 'village-attack',
+      actors: { left: 'hero', right: 'hibat' },
+      lines: [
+        {
+          speaker: 'narrator',
+          name: 'Narator',
+          avatar: 'narrator_avatar',
+          action: 'shake',
+          sfx: 'thunder',
+          text: 'Tiba-tiba, langit pagi yang biru berubah pekat. Tanah bergetar hebat membelah kedamaian desa!'
+        },
+        {
+          speaker: 'danova',
+          name: 'Danova',
+          avatar: 'danova_avatar',
+          action: 'shake',
+          text: 'A-apaan itu?! Langitnya... mendadak berubah jadi merah darah!'
+        },
+        {
+          speaker: 'hibat',
+          name: 'Hibat',
+          avatar: 'hibat_avatar',
+          action: 'spawn_hibat',
+          sfx: 'portal',
+          text: 'Kekeke... Sungguh desa yang rapuh! Manusia bodoh hanya mengandalkan logika semu!'
+        },
+        {
+          speaker: 'ali',
+          name: 'Ali',
+          avatar: 'ali_avatar',
+          text: 'Siapa lu?! Mau apa lu datang dan mengacau di desa kami?!'
+        },
+        {
+          speaker: 'hibat',
+          name: 'Hibat',
+          avatar: 'hibat_avatar',
+          action: 'vanish_danova',
+          sfx: 'thunder',
+          text: 'Aku Hibat, penguasa kekacauan! Gadis ini ikut denganku ke Puncak Rekursif. Coba kejar kalau kalian mampu!'
+        },
+        {
+          speaker: 'danova',
+          name: 'Danova',
+          avatar: 'danova_avatar',
+          action: 'shake',
+          text: 'ALIII! TOLOOONG...!!'
+        }
+      ]
+    },
+    {
+      id: 'prologue_part_3',
+      title: 'Prolog 3/3: Reruntuhan & Sumpah Pahlawan',
+      backgroundTheme: 'village-destroyed',
+      actors: { left: 'hero' },
+      lines: [
+        {
+          speaker: 'narrator',
+          name: 'Narator',
+          avatar: 'narrator_avatar',
+          text: 'Hibat lenyap dalam pusaran asap hitam bersama Danova. Desa yang damai kini menyisakan kobaran api dan puing reruntuhan.'
+        },
+        {
+          speaker: 'ali',
+          name: 'Ali',
+          avatar: 'ali_avatar',
+          action: 'shake',
+          text: 'DANOVA...! Sialan lu, Hibat!!'
+        },
+        {
+          speaker: 'ali',
+          name: 'Ali',
+          avatar: 'ali_avatar',
+          text: 'Gua gak boleh putus asa. Selama gua masih punya ilmu logika dan berpikir komputasi, gua bakal tembus semua sarang monster!'
+        },
+        {
+          speaker: 'ali',
+          name: 'Ali',
+          avatar: 'ali_avatar',
+          text: 'Tunggu gua, Danova. Gua bersumpah bakal bawa lu pulang dengan selamat!'
+        }
+      ]
+    }
+  ];
+
+  const INTER_LEVEL_DATA = {
+    // Selesai Level 1 (Hutan Sintaks) -> Menuju Level 2 (Lembah Magma)
+    1: [
+      {
+        id: 'inter_1_to_2',
+        title: 'Perjalanan: Menuju Lembah Magma',
+        backgroundTheme: 'volcano',
+        actors: { left: 'hero', right: null },
+        lines: [
+          {
+            speaker: 'narrator',
+            name: 'Narator',
+            avatar: 'narrator_avatar',
+            text: 'Ali berhasil menembus lebatnya Hutan Sintaks dan menaklukkan Def Specter dengan penguasaan dasar Python.'
+          },
+          {
+            speaker: 'ali',
+            name: 'Ali',
+            avatar: 'ali_avatar',
+            text: 'Fiuh... akhirnya lolos dari monster hutan! Tapi tunggu... kenapa hawanya mendadak panas membara?!'
+          },
+          {
+            speaker: 'narrator',
+            name: 'Narator',
+            avatar: 'narrator_avatar',
+            text: 'Di hadapan Ali membentang Lembah Magma yang dipenuhi aliran lava mendidih dan jurang terjal.'
+          },
+          {
+            speaker: 'ali',
+            name: 'Ali',
+            avatar: 'ali_avatar',
+            text: 'Jalan setapaknya bercabang di atas lahar mendidih. Salah melangkah sedikit saja bisa fatal!'
+          },
+          {
+            speaker: 'ali',
+            name: 'Ali',
+            avatar: 'ali_avatar',
+            text: 'Gua harus menguasai logika kondisi dan percabangan (if, elif, else) untuk memilih rute yang tepat!'
+          },
+          {
+            speaker: 'ali',
+            name: 'Ali',
+            avatar: 'ali_avatar',
+            text: 'Tunggu gua, Danova! Gua gak bakal biarin Hibat menyakitimu!'
+          }
+        ]
+      }
+    ],
+
+    // Selesai Level 2 (Lembah Magma) -> Menuju Level 3 (Kerajaan Gelap)
+    2: [
+      {
+        id: 'inter_2_to_3',
+        title: 'Perjalanan: Gerbang Kerajaan Gelap',
+        backgroundTheme: 'dark-castle',
+        actors: { left: 'hero', right: null },
+        lines: [
+          {
+            speaker: 'narrator',
+            name: 'Narator',
+            avatar: 'narrator_avatar',
+            text: 'Setelah berjuang melintasi lahar membara di Lembah Magma, Ali tiba di dataran tinggi yang gelap gulita.'
+          },
+          {
+            speaker: 'ali',
+            name: 'Ali',
+            avatar: 'ali_avatar',
+            text: 'Akhirnya berhasil menyeberangi lahar panas itu... Tapi tempat ini... atmosfernya dingin dan mencekam.'
+          },
+          {
+            speaker: 'narrator',
+            name: 'Narator',
+            avatar: 'narrator_avatar',
+            text: 'Sebuah benteng Kerajaan Gelap raksasa berdiri menjulang ke langit hitam. Kilatan petir ungu menyambar tiada henti.',
+            action: 'shake',
+            sfx: 'thunder'
+          },
+          {
+            speaker: 'ali',
+            name: 'Ali',
+            avatar: 'ali_avatar',
+            text: 'Itu dia! Sarang utama Hibat! Danova pasti disekap di ruang tahta tertinggi benteng itu.'
+          },
+          {
+            speaker: 'ali',
+            name: 'Ali',
+            avatar: 'ali_avatar',
+            text: 'Penjaga istana kegelapan ini diperkuat oleh sihir perulangan tanpa henti dan fungsi-fungsi rekursif rumit.'
+          },
+          {
+            speaker: 'ali',
+            name: 'Ali',
+            avatar: 'ali_avatar',
+            text: 'Gua gak boleh gentar! Kekuatan Loops (for, while) dan Fungsi modular (def) akan gua kerahkan untuk meruntuhkan pertahanan Hibat!'
+          },
+          {
+            speaker: 'ali',
+            name: 'Ali',
+            avatar: 'ali_avatar',
+            text: 'Ini pertarungan pamungkas. Danova, tunggu gua datang menjemputmu!'
+          }
+        ]
+      }
+    ],
+
+    // Selesai Level 3 (Kerajaan Gelap) -> Epilog Kemenangan & Penyelamatan Danova
+    3: [
+      {
+        id: 'epilogue_victory',
+        title: 'Epilog: Penyelamatan Danova & Fajar Harapan',
+        backgroundTheme: 'dark-castle',
+        actors: { left: 'hero', right: 'hibat' },
+        lines: [
+          {
+            speaker: 'hibat',
+            name: 'Hibat',
+            avatar: 'hibat_avatar',
+            text: 'T-tidak mungkin...!! Bagaimana bisa logika berpikir komputasi dan fungsi rekursimu menembus sihir kegelapanku?!',
+            action: 'shake',
+            sfx: 'thunder'
+          },
+          {
+            speaker: 'ali',
+            name: 'Ali',
+            avatar: 'ali_avatar',
+            text: 'Karena logika dan tekad kami jauh lebih kuat dari bug ciptaanmu! Lepaskan Danova sekarang juga, Hibat!'
+          },
+          {
+            speaker: 'hibat',
+            name: 'Hibat',
+            avatar: 'hibat_avatar',
+            text: 'ARGHHH! Seluruh baris bug ku terurai... Sistemku hancurrr...!!',
+            action: 'vanish_right'
+          },
+          {
+            speaker: 'narrator',
+            name: 'Narator',
+            avatar: 'narrator_avatar',
+            text: 'Dengan ledakan cahaya, sosok bayangan Hibat lenyap tanpa bekas. Selubung sihir yang mengurung Danova seketika sirna...',
+            sfx: 'portal'
+          },
+          {
+            speaker: 'danova',
+            name: 'Danova',
+            avatar: 'danova_avatar',
+            text: 'Ali!! Lu beneran datang nyelamatin gua!',
+            action: 'spawn_danova'
+          },
+          {
+            speaker: 'ali',
+            name: 'Ali',
+            avatar: 'ali_avatar',
+            text: 'Danova! Syukurlah lu selamat! Gua udah janji bakal bawa lu pulang, apa pun yang terjadi!'
+          },
+          {
+            speaker: 'danova',
+            name: 'Danova',
+            avatar: 'danova_avatar',
+            text: 'Gua selalu percaya sama lu, Li. Jurus Python dan cara berpikir komputasi lu bener-bener luar biasa!'
+          },
+          {
+            speaker: 'ali',
+            name: 'Ali',
+            avatar: 'ali_avatar',
+            text: 'Hehe, semua berkat semangat dari lu juga. Ayo Dan, kita pulang ke desa dan bangun kembali rumah kita!'
+          },
+          {
+            speaker: 'narrator',
+            name: 'Narator',
+            avatar: 'narrator_avatar',
+            text: 'Matahari terbit menyinari fajar baru. Ali dan Danova melangkah pulang sebagai pahlawan logika sejati. TAMAT.'
+          }
+        ]
+      }
+    ]
+  };
+
+  const STAGE_INTROS = {
+    '1-1': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Hutan Sintaks di depan penuh dengan bug dasar. Gua harus ingat konsep variabel dan print untuk membuka jalan!' },
+    '1-2': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Ada Error Slug menghadang jalan setapak. Operasi perkalian aritmatika bakal menghabisi lendirnya!' },
+    '1-3': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Hawa mistis semakin tebal... Type Ghost menjaga gerbang hutan. Konversi tipe data integer adalah kuncinya!' },
+    '1-4': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Kelelawar sintaks beterbangan di atas pohon. Operator perbandingan >= harus tepat sasaran!' },
+    '1-5': { speaker: 'Ali', avatar: 'ali_avatar', text: 'AURANYA MENGERIKAN! Def Specter menjaga gerbang keluar hutan! Gua harus selesaikan 3 fase logika untuk lolos!' },
+    '2-1': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Lembah Magma... Hawanya membara dan jalurnya bercabang di atas lahar panas. Gua harus teliti menyusun logika percabangan if-else!' },
+    '2-2': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Elif Goblin melompat dari celah batu magma! Periksa nilai positif menggunakan operator lebih besar dari (>).' },
+    '2-3': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Input Imp mencoba mencuri perbekalanku di tepi kawah lahar! Gunakan prompt input bertingkat elif untuk mengusirnya!' },
+    '2-4': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Jembatan batu lahar dijaga Elif Troll. Kombinasikan dua kondisi dengan operator logika AND!' },
+    '2-5': { speaker: 'Ali', avatar: 'ali_avatar', text: 'PINTU GERBANG LAHAR TERKUNCI! Logic Demon menghadang! Gua harus tuntaskan 3 fase perhitungan diskon dan sihir!' },
+    '3-1': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Kerajaan Gelap Hibat... Benteng ini menjulang angker dengan petir ungu. Labah-labah loop berpatroli, kalahkan mereka dengan perulangan for in range!' },
+    '3-2': { speaker: 'Ali', avatar: 'ali_avatar', text: 'While Ghost mengurung koridor istana dengan sihir gelap. Buat perulangan while dengan syarat berhenti yang tepat!' },
+    '3-3': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Function Wraith melayang di aula benteng! Susun fungsi def dan return nilai untuk meruntuhkan pertahanannya!' },
+    '3-4': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Hampir sampai di ruang tahta tertinggi tempat Danova dikurung! List Demon menjaga gerbang terakhir, susun item di list tas!' },
+    '3-5': { speaker: 'Ali', avatar: 'ali_avatar', text: 'DANOVA ADA DI DALAM SANA! Naga Pelindung Hibat menghadang di tahta kegelapan! Kerahkan seluruh logika fungsi dan rekursif untuk mengalahkannya dan membawa Danova pulang!' }
+  };
+
+  // ============================================================
   //  SVG SPRITES
   // ============================================================
   const SVG_SPRITES = {
@@ -339,6 +657,87 @@
       <rect x="2" y="22" width="10" height="6" rx="3" fill="#4A90D9"/>
       <rect x="36" y="22" width="10" height="6" rx="3" fill="#4A90D9"/>
       <text x="24" y="31" text-anchor="middle" font-size="8" fill="white" font-family="monospace">Py</text>
+    </svg>`,
+
+    danova: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 64" width="48" height="64">
+      <rect x="12" y="20" width="24" height="22" rx="4" fill="#20B2AA"/>
+      <circle cx="24" cy="14" r="12" fill="#FFE0BD"/>
+      <path d="M12 14 Q24 2 36 14 Q38 24 35 28 Q24 20 13 28 Z" fill="#F4D03F"/>
+      <rect x="11" y="8" width="26" height="4" rx="2" fill="#E67E22"/>
+      <circle cx="19" cy="14" r="2.2" fill="#2C3E50"/>
+      <circle cx="29" cy="14" r="2.2" fill="#2C3E50"/>
+      <circle cx="20" cy="13" r="0.8" fill="#FFF"/>
+      <circle cx="30" cy="13" r="0.8" fill="#FFF"/>
+      <path d="M20 18 Q24 22 28 18" stroke="#E74C3C" stroke-width="1.5" fill="none"/>
+      <rect x="12" y="34" width="24" height="3" fill="#D35400"/>
+      <circle cx="24" cy="35" r="3" fill="#F1C40F"/>
+      <rect x="13" y="42" width="9" height="14" rx="3" fill="#16A085"/>
+      <rect x="26" y="42" width="9" height="14" rx="3" fill="#16A085"/>
+      <rect x="11" y="52" width="12" height="6" rx="3" fill="#784212"/>
+      <rect x="25" y="52" width="12" height="6" rx="3" fill="#784212"/>
+      <rect x="2" y="22" width="10" height="6" rx="3" fill="#20B2AA"/>
+      <rect x="36" y="22" width="10" height="6" rx="3" fill="#20B2AA"/>
+      <text x="24" y="31" text-anchor="middle" font-size="8" fill="white" font-family="monospace">Da</text>
+    </svg>`,
+
+    hibat: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 74" width="64" height="74">
+      <path d="M18 20 Q10 4 4 10 Q14 18 22 24" fill="#C0392B"/>
+      <path d="M46 20 Q54 4 60 10 Q50 18 42 24" fill="#C0392B"/>
+      <path d="M14 26 Q32 10 50 26 Q58 54 52 70 Q32 64 12 70 Q6 54 14 26" fill="#1B0028"/>
+      <ellipse cx="32" cy="38" rx="18" ry="20" fill="#2E0854"/>
+      <ellipse cx="25" cy="30" rx="4" ry="2.5" fill="#FF1744" transform="rotate(-10 25 30)"/>
+      <ellipse cx="39" cy="30" rx="4" ry="2.5" fill="#FF1744" transform="rotate(10 39 30)"/>
+      <circle cx="25" cy="30" r="1.5" fill="#FFF"/>
+      <circle cx="39" cy="30" r="1.5" fill="#FFF"/>
+      <path d="M22 42 Q32 48 42 42 Q38 46 32 46 Q26 46 22 42" fill="#FF5252"/>
+      <circle cx="16" cy="58" r="3" fill="#FF1744" opacity="0.8"/>
+      <circle cx="48" cy="56" r="3.5" fill="#D50000" opacity="0.8"/>
+      <circle cx="32" cy="66" r="2.5" fill="#FF5252" opacity="0.9"/>
+    </svg>`,
+
+    ali_avatar: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+      <circle cx="24" cy="24" r="22" fill="#1D3557"/>
+      <circle cx="24" cy="22" r="14" fill="#FFDAB9"/>
+      <rect x="10" y="10" width="28" height="6" rx="3" fill="#E63946"/>
+      <circle cx="19" cy="21" r="2.5" fill="#333"/>
+      <circle cx="29" cy="21" r="2.5" fill="#333"/>
+      <path d="M19 28 Q24 32 29 28" stroke="#333" stroke-width="2" fill="none"/>
+    </svg>`,
+
+    danova_avatar: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+      <circle cx="24" cy="24" r="22" fill="#0E4439"/>
+      <circle cx="24" cy="23" r="14" fill="#FFE0BD"/>
+      <path d="M12 21 Q24 9 36 21 Q38 30 35 34 Q24 26 13 34 Z" fill="#F4D03F"/>
+      <circle cx="19" cy="22" r="2.2" fill="#2C3E50"/>
+      <circle cx="29" cy="22" r="2.2" fill="#2C3E50"/>
+      <circle cx="20" cy="21" r="0.8" fill="#FFF"/>
+      <circle cx="30" cy="21" r="0.8" fill="#FFF"/>
+      <path d="M20 28 Q24 32 28 28" stroke="#E74C3C" stroke-width="1.8" fill="none"/>
+    </svg>`,
+
+    hibat_avatar: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+      <circle cx="24" cy="24" r="22" fill="#2A0845"/>
+      <path d="M14 16 Q8 4 3 8 Q10 14 17 19" fill="#C0392B"/>
+      <path d="M34 16 Q40 4 45 8 Q38 14 31 19" fill="#C0392B"/>
+      <ellipse cx="24" cy="26" rx="14" ry="14" fill="#1A0022"/>
+      <ellipse cx="19" cy="23" rx="3.5" ry="2" fill="#FF1744" transform="rotate(-10 19 23)"/>
+      <ellipse cx="29" cy="23" rx="3.5" ry="2" fill="#FF1744" transform="rotate(10 29 23)"/>
+      <circle cx="19" cy="23" r="1" fill="#FFF"/>
+      <circle cx="29" cy="23" r="1" fill="#FFF"/>
+      <path d="M17 31 Q24 36 31 31 Q28 35 24 35 Q20 35 17 31" fill="#FF5252"/>
+    </svg>`,
+
+    narrator_avatar: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+      <circle cx="24" cy="24" r="22" fill="#3D2B1F"/>
+      <rect x="12" y="12" width="24" height="24" rx="4" fill="#D4AF37"/>
+      <rect x="14" y="14" width="20" height="20" rx="3" fill="#FFFDD0"/>
+      <line x1="24" y1="14" x2="24" y2="34" stroke="#8B6508" stroke-width="1.5"/>
+      <line x1="17" y1="18" x2="22" y2="18" stroke="#333" stroke-width="1.5"/>
+      <line x1="17" y1="22" x2="22" y2="22" stroke="#333" stroke-width="1.5"/>
+      <line x1="17" y1="26" x2="21" y2="26" stroke="#333" stroke-width="1.5"/>
+      <line x1="26" y1="18" x2="31" y2="18" stroke="#333" stroke-width="1.5"/>
+      <line x1="26" y1="22" x2="31" y2="22" stroke="#333" stroke-width="1.5"/>
+      <line x1="26" y1="26" x2="30" y2="26" stroke="#333" stroke-width="1.5"/>
     </svg>`,
 
     goomba: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 56" width="48" height="56">
@@ -542,6 +941,18 @@
     remove() {
       this._play(320, 'triangle', 0.08, 0.15, 0);
     }
+    thunder() {
+      this._play(85, 'sawtooth', 0.45, 0.35, 0);
+      this._play(60, 'sawtooth', 0.65, 0.4, 0.1);
+    }
+    portal() {
+      this._play(440, 'sine', 0.15, 0.2, 0);
+      this._play(220, 'sine', 0.3, 0.25, 0.08);
+      this._play(110, 'sine', 0.45, 0.3, 0.16);
+    }
+    blip() {
+      this._play(600, 'triangle', 0.035, 0.08, 0);
+    }
     toggle() {
       this.enabled = !this.enabled;
       return this.enabled;
@@ -581,7 +992,9 @@
   // ============================================================
   const GameState = {
     MENU: 'menu',
+    PROLOGUE: 'prologue',
     LEVEL_SELECT: 'level_select',
+    STAGE_INTRO: 'stage_intro',
     WALKING: 'walking',
     BATTLE: 'battle',
     ENEMY_DEAD: 'enemy_dead',
@@ -610,6 +1023,13 @@
       this._walkInterval = null;
       this._sceneryPos = 0;
 
+      // Story & Dialogue state
+      this.currentSceneIdx = 0;
+      this.currentLineIdx = 0;
+      this.isTyping = false;
+      this.typewriterTimer = null;
+      this.currentStageIntroCallback = null;
+
       this._cacheDOM();
       this._bindEvents();
       this._gotoMenu();
@@ -621,6 +1041,7 @@
     _cacheDOM() {
       this.$ = {
         screenMenu:   document.getElementById('screen-menu'),
+        screenStory:  document.getElementById('screen-story'),
         screenLevels: document.getElementById('screen-levels'),
         screenGame:   document.getElementById('screen-game'),
         btnSound:     document.getElementById('btn-sound'),
@@ -660,6 +1081,25 @@
         victoryLevel: document.getElementById('victory-level'),
         gameoverMsg:  document.getElementById('gameover-msg'),
         groundLayer:  document.getElementById('ground-layer'),
+
+        // Story & Dialogue DOM
+        storyChapterTitle: document.getElementById('story-chapter-title'),
+        btnSkipStory:      document.getElementById('btn-skip-story'),
+        storyWorld:        document.getElementById('story-world'),
+        storyScenery:      document.getElementById('story-scenery'),
+        storyActorLeft:    document.getElementById('story-actor-left'),
+        storyActorRight:   document.getElementById('story-actor-right'),
+        storyFxLayer:      document.getElementById('story-fx-layer'),
+        dialoguePanel:     document.getElementById('story-dialogue-panel'),
+        dialogueAvatar:    document.getElementById('dialogue-avatar'),
+        dialogueSpeaker:   document.getElementById('dialogue-speaker'),
+        dialogueText:      document.getElementById('dialogue-text'),
+        btnNextDialogue:   document.getElementById('btn-next-dialogue'),
+        stageIntroOverlay: document.getElementById('stage-intro-overlay'),
+        stageIntroAvatar:  document.getElementById('stage-intro-avatar'),
+        stageIntroSpeaker: document.getElementById('stage-intro-speaker'),
+        stageIntroText:    document.getElementById('stage-intro-text'),
+        btnDismissIntro:   document.getElementById('btn-dismiss-intro'),
       };
     }
 
@@ -667,7 +1107,13 @@
     //  BIND EVENTS
     // ----------------------------------------------------------
     _bindEvents() {
-      this.$.btnPlay.addEventListener('click', () => this._gotoLevelSelect());
+      this.$.btnPlay.addEventListener('click', () => {
+        if (!this.unlockedLevels.prologue) {
+          this._startPrologue();
+        } else {
+          this._gotoLevelSelect();
+        }
+      });
       this.$.btnHowto.addEventListener('click', () => this._showModal(this.$.modalHowto));
       this.$.btnBackMenu.addEventListener('click', () => this._gotoMenu());
       this.$.btnCloseHowto.addEventListener('click', () => this._hideModal(this.$.modalHowto));
@@ -678,7 +1124,7 @@
       if (btnReturnMenu2) {
         btnReturnMenu2.addEventListener('click', () => {
           this._hideModal(this.$.modalVictory);
-          this._gotoMenu();
+          this._gotoLevelSelect();
         });
       }
       this.$.btnSound.addEventListener('click', () => {
@@ -687,9 +1133,20 @@
       });
       this.$.levelCards.forEach(card => {
         card.addEventListener('click', () => {
+          if (card.dataset.story === 'prologue') {
+            this._startPrologue();
+            return;
+          }
           const lid = parseInt(card.dataset.level, 10);
-          if (!card.classList.contains('locked')) {
+          if (this.unlockedLevels[lid]) {
             this._startLevel(lid - 1);
+          } else {
+            this.sound.wrong();
+            if (lid === 1) {
+              alert('Tonton Prolog terlebih dahulu untuk membuka Level 1!');
+            } else {
+              alert(`Selesaikan Level ${lid - 1} terlebih dahulu untuk membuka level ini!`);
+            }
           }
         });
       });
@@ -703,6 +1160,41 @@
           if (this.state === GameState.BATTLE) this._resetSlots();
         });
       }
+
+      // Story Events
+      if (this.$.btnSkipStory) {
+        this.$.btnSkipStory.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this._skipPrologue();
+        });
+      }
+      if (this.$.btnNextDialogue) {
+        this.$.btnNextDialogue.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this._advanceDialogue();
+        });
+      }
+      if (this.$.dialoguePanel) {
+        this.$.dialoguePanel.addEventListener('click', () => {
+          this._advanceDialogue();
+        });
+      }
+      if (this.$.btnDismissIntro) {
+        this.$.btnDismissIntro.addEventListener('click', () => {
+          this._dismissStageIntro();
+        });
+      }
+      window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' || e.code === 'Enter') {
+          if (this.state === GameState.PROLOGUE) {
+            e.preventDefault();
+            this._advanceDialogue();
+          } else if (this.state === GameState.STAGE_INTRO) {
+            e.preventDefault();
+            this._dismissStageIntro();
+          }
+        }
+      });
     }
 
     // ----------------------------------------------------------
@@ -711,8 +1203,16 @@
     _loadProgress() {
       try {
         const saved = JSON.parse(localStorage.getItem('pythonquest_progress') || '{}');
-        return { 1: true, 2: !!saved[2], 3: !!saved[3] };
-      } catch (e) { return { 1: true, 2: false, 3: false }; }
+        const hasPrologue = !!saved.prologue || !!saved[1];
+        return {
+          prologue: hasPrologue,
+          1: hasPrologue,
+          2: hasPrologue && !!saved[2],
+          3: hasPrologue && !!saved[3]
+        };
+      } catch (e) {
+        return { prologue: false, 1: false, 2: false, 3: false };
+      }
     }
     _saveProgress() {
       try { localStorage.setItem('pythonquest_progress', JSON.stringify(this.unlockedLevels)); } catch (e) {}
@@ -722,8 +1222,10 @@
     //  SCREENS
     // ----------------------------------------------------------
     _showScreen(screenEl) {
-      [this.$.screenMenu, this.$.screenLevels, this.$.screenGame].forEach(s => s.classList.remove('active'));
-      screenEl.classList.add('active');
+      [this.$.screenMenu, this.$.screenStory, this.$.screenLevels, this.$.screenGame].forEach(s => {
+        if (s) s.classList.remove('active');
+      });
+      if (screenEl) screenEl.classList.add('active');
     }
     _showModal(modal) { modal.classList.add('active'); }
     _hideModal(modal) { modal.classList.remove('active'); }
@@ -739,6 +1241,10 @@
       this._showScreen(this.$.screenLevels);
       this.state = GameState.LEVEL_SELECT;
       this.$.levelCards.forEach(card => {
+        if (card.dataset.story === 'prologue') {
+          card.classList.remove('locked');
+          return;
+        }
         const lid = parseInt(card.dataset.level, 10);
         if (this.unlockedLevels[lid]) {
           card.classList.remove('locked');
@@ -807,9 +1313,11 @@
       this.$.enemyContainer.style.display = 'block';
       this._spawnEnemy(stageData);
 
-      // Start
-      this.state = GameState.WALKING;
-      setTimeout(() => this._beginWalking(), 300);
+      // Start with Stage Intro Dialogue if available
+      this._showStageIntro(() => {
+        this.state = GameState.WALKING;
+        this._beginWalking();
+      });
     }
 
     _spawnEnemy(stageData) {
@@ -1483,12 +1991,232 @@
     }
 
     // ----------------------------------------------------------
+    //  STORY & PROLOGUE CONTROLLER
+    // ----------------------------------------------------------
+    _startPrologue() {
+      this._stopAll();
+      this.state = GameState.PROLOGUE;
+      this._showScreen(this.$.screenStory);
+      this.currentSceneIdx = 0;
+      this.currentLineIdx = 0;
+      this.isTyping = false;
+      this._loadStoryScene(this.currentSceneIdx);
+    }
+
+    _loadStoryScene(sceneIdx) {
+      if (sceneIdx >= PROLOGUE_DATA.length) {
+        this._finishPrologue();
+        return;
+      }
+      const scene = PROLOGUE_DATA[sceneIdx];
+      this.$.storyChapterTitle.textContent = scene.title;
+      this.$.storyWorld.className = 'story-world theme-' + scene.backgroundTheme;
+      this._buildStoryScenery(scene.backgroundTheme);
+
+      // Reset actors
+      this.$.storyActorLeft.innerHTML = scene.actors.left ? SVG_SPRITES[scene.actors.left] : '';
+      this.$.storyActorRight.innerHTML = scene.actors.right ? SVG_SPRITES[scene.actors.right] : '';
+      this.$.storyActorRight.className = 'story-actor actor-right';
+      this.$.storyActorLeft.className = 'story-actor actor-left';
+
+      this.currentLineIdx = 0;
+      this._renderDialogueLine();
+    }
+
+    _buildStoryScenery(theme) {
+      const sc = this.$.storyScenery;
+      sc.innerHTML = '';
+      if (theme === 'village-peaceful') {
+        [120, 680].forEach(x => {
+          const house = document.createElement('div');
+          house.className = 'scenery-obj';
+          house.style.left = x + 'px';
+          house.style.bottom = '58px';
+          house.innerHTML = '<svg viewBox="0 0 110 90" width="110" height="90">' +
+            '<rect x="75" y="10" width="12" height="25" fill="#8B4513"/>' +
+            '<circle cx="81" cy="5" r="4" fill="#DDD" opacity="0.7"/>' +
+            '<polygon points="55,8 105,45 5,45" fill="#C0392B"/>' +
+            '<rect x="15" y="45" width="80" height="45" fill="#D35400"/>' +
+            '<rect x="45" y="55" width="20" height="35" rx="3" fill="#5D4037"/>' +
+            '<circle cx="60" cy="72" r="2" fill="#F1C40F"/>' +
+            '<rect x="22" y="55" width="16" height="16" rx="2" fill="#87CEEB"/>' +
+            '<line x1="30" y1="55" x2="30" y2="71" stroke="#333" stroke-width="1.5"/>' +
+            '<line x1="22" y1="63" x2="38" y2="63" stroke="#333" stroke-width="1.5"/>' +
+            '</svg>';
+          sc.appendChild(house);
+        });
+        [40, 360, 520, 950].forEach((x, i) => {
+          const tree = document.createElement('div');
+          tree.className = 'scenery-obj';
+          tree.style.left = x + 'px';
+          tree.style.bottom = '60px';
+          tree.innerHTML = '<svg viewBox="0 0 50 80" width="50" height="80">' +
+            '<rect x="20" y="45" width="10" height="35" fill="#5D4037"/>' +
+            '<circle cx="25" cy="35" r="22" fill="#2E7D32"/>' +
+            '<circle cx="18" cy="25" r="16" fill="#388E3C"/>' +
+            '<circle cx="32" cy="25" r="16" fill="#43A047"/>' +
+            '</svg>';
+          sc.appendChild(tree);
+        });
+      } else if (theme === 'village-attack' || theme === 'village-destroyed') {
+        [120, 680].forEach(x => {
+          const ruin = document.createElement('div');
+          ruin.className = 'scenery-obj';
+          ruin.style.left = x + 'px';
+          ruin.style.bottom = '58px';
+          ruin.innerHTML = '<svg viewBox="0 0 110 90" width="110" height="90">' +
+            '<polygon points="35,25 75,45 5,45" fill="#4A1515"/>' +
+            '<rect x="15" y="45" width="70" height="40" fill="#221111"/>' +
+            '<polygon points="65,45 85,85 85,45" fill="#0A0505"/>' +
+            '<path d="M40 70 Q45 40 50 55 Q55 35 60 65 Z" fill="#E65100"/>' +
+            '<path d="M45 70 Q48 50 52 60 Q55 45 58 68 Z" fill="#FFD54F"/>' +
+            '</svg>';
+          sc.appendChild(ruin);
+        });
+        [50, 220, 420, 600, 850, 1020].forEach((x, i) => {
+          const ember = document.createElement('div');
+          ember.className = 'scenery-obj';
+          ember.style.left = x + 'px';
+          ember.style.bottom = (70 + (i % 3) * 25) + 'px';
+          ember.innerHTML = '<svg viewBox="0 0 20 20" width="20" height="20">' +
+            '<circle cx="10" cy="10" r="3" fill="#FF5722" opacity="0.8"/>' +
+            '<circle cx="10" cy="10" r="1.5" fill="#FFEB3B"/>' +
+            '</svg>';
+          sc.appendChild(ember);
+        });
+      }
+    }
+
+    _renderDialogueLine() {
+      const scene = PROLOGUE_DATA[this.currentSceneIdx];
+      const line = scene.lines[this.currentLineIdx];
+
+      // Update speaker badge and avatar
+      this.$.dialogueSpeaker.textContent = line.name;
+      this.$.dialogueSpeaker.className = 'dialogue-speaker speaker-' + line.speaker;
+      this.$.dialogueAvatar.innerHTML = SVG_SPRITES[line.avatar] || SVG_SPRITES.hero;
+
+      // Handle SFX
+      if (line.sfx === 'thunder') this.sound.thunder();
+      else if (line.sfx === 'portal') this.sound.portal();
+      else this.sound.blip();
+
+      // Handle Actions
+      if (line.action === 'shake') {
+        this.$.storyWorld.classList.remove('screen-shake');
+        void this.$.storyWorld.offsetWidth;
+        this.$.storyWorld.classList.add('screen-shake');
+      }
+      if (line.action === 'spawn_hibat') {
+        this.$.storyActorRight.classList.remove('actor-spawn');
+        void this.$.storyActorRight.offsetWidth;
+        this.$.storyActorRight.classList.add('actor-spawn');
+      }
+      if (line.action === 'vanish_danova') {
+        this.$.storyActorRight.classList.add('actor-vanish');
+      }
+
+      // Typewriter effect
+      if (this.typewriterTimer) clearInterval(this.typewriterTimer);
+      this.isTyping = true;
+      this.$.dialogueText.textContent = '';
+      let charIdx = 0;
+      const fullText = line.text;
+
+      this.typewriterTimer = setInterval(() => {
+        if (charIdx < fullText.length) {
+          this.$.dialogueText.textContent += fullText.charAt(charIdx);
+          charIdx++;
+        } else {
+          clearInterval(this.typewriterTimer);
+          this.typewriterTimer = null;
+          this.isTyping = false;
+        }
+      }, 25);
+    }
+
+    _advanceDialogue() {
+      if (this.state !== GameState.PROLOGUE) return;
+      const scene = PROLOGUE_DATA[this.currentSceneIdx];
+      const line = scene.lines[this.currentLineIdx];
+
+      // If still typing, complete line instantly
+      if (this.isTyping) {
+        if (this.typewriterTimer) {
+          clearInterval(this.typewriterTimer);
+          this.typewriterTimer = null;
+        }
+        this.$.dialogueText.textContent = line.text;
+        this.isTyping = false;
+        return;
+      }
+
+      this.currentLineIdx++;
+      if (this.currentLineIdx < scene.lines.length) {
+        this._renderDialogueLine();
+      } else {
+        this.currentSceneIdx++;
+        this._loadStoryScene(this.currentSceneIdx);
+      }
+    }
+
+    _skipPrologue() {
+      if (this.typewriterTimer) {
+        clearInterval(this.typewriterTimer);
+        this.typewriterTimer = null;
+      }
+      this._finishPrologue();
+    }
+
+    _finishPrologue() {
+      if (this.typewriterTimer) {
+        clearInterval(this.typewriterTimer);
+        this.typewriterTimer = null;
+      }
+      this.sound.stageClear();
+      this.unlockedLevels.prologue = true;
+      this.unlockedLevels[1] = true;
+      this._saveProgress();
+      this._gotoLevelSelect();
+    }
+
+    _showStageIntro(cb) {
+      const key = (this.currentLevel + 1) + '-' + (this.currentStage + 1);
+      const intro = STAGE_INTROS[key];
+      if (!intro || !this.$.stageIntroOverlay) {
+        if (cb) cb();
+        return;
+      }
+
+      this.state = GameState.STAGE_INTRO;
+      this.currentStageIntroCallback = cb;
+      this.$.stageIntroSpeaker.textContent = intro.speaker;
+      this.$.stageIntroText.textContent = intro.text;
+      this.$.stageIntroAvatar.innerHTML = SVG_SPRITES[intro.avatar] || SVG_SPRITES.hero;
+      this.$.stageIntroOverlay.style.display = 'flex';
+      this.sound.blip();
+    }
+
+    _dismissStageIntro() {
+      if (this.$.stageIntroOverlay) {
+        this.$.stageIntroOverlay.style.display = 'none';
+      }
+      if (this.currentStageIntroCallback) {
+        const cb = this.currentStageIntroCallback;
+        this.currentStageIntroCallback = null;
+        cb();
+      }
+    }
+
+    // ----------------------------------------------------------
     //  CLEANUP
     // ----------------------------------------------------------
     _stopAll() {
       if (this._walkInterval) { clearInterval(this._walkInterval); this._walkInterval = null; }
       if (this.timer) { this.timer.stop(); this.timer = null; }
+      if (this.typewriterTimer) { clearInterval(this.typewriterTimer); this.typewriterTimer = null; }
       this.$.battlePanel.classList.remove('active');
+      if (this.$.stageIntroOverlay) this.$.stageIntroOverlay.style.display = 'none';
     }
   }
 

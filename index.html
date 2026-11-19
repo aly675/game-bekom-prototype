@@ -75,25 +75,94 @@
     </div>
   </section>
 
+  <!-- ===== SCREEN: STORY / PROLOG ===== -->
+  <section id="screen-story" class="screen">
+    <div class="story-container">
+      <!-- Story Top Bar -->
+      <div class="story-top-bar">
+        <span class="story-chapter-title" id="story-chapter-title">Prolog: Bagian 1</span>
+        <button id="btn-skip-story" class="btn btn-ghost btn-skip" title="Lewati cutscene prolog">
+          <span>⏭️</span> Lewati Cerita
+        </button>
+      </div>
+
+      <!-- Story 2D World Canvas -->
+      <div class="story-world theme-village-peaceful" id="story-world">
+        <div class="sky-bg" id="story-sky-bg"></div>
+        <div class="mountain-layer" id="story-mountain-layer">
+          <svg class="mountains-svg" viewBox="0 0 1200 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="mtn1" points="0,180 150,60 300,180"/>
+            <polygon class="mtn1" points="200,180 400,30 600,180"/>
+            <polygon class="mtn1" points="500,180 700,70 900,180"/>
+            <polygon class="mtn1" points="750,180 950,45 1150,180"/>
+            <polygon class="mtn1" points="1000,180 1150,80 1300,180"/>
+            <polygon class="mtn2" points="0,180 100,100 200,180"/>
+            <polygon class="mtn2" points="300,180 480,90 660,180"/>
+            <polygon class="mtn2" points="650,180 820,100 990,180"/>
+            <polygon class="mtn2" points="900,180 1060,110 1200,180"/>
+          </svg>
+        </div>
+        <div class="scenery" id="story-scenery"></div>
+        <div class="ground-layer" id="story-ground-layer"></div>
+
+        <!-- Actors on stage -->
+        <div class="story-actor actor-left" id="story-actor-left"></div>
+        <div class="story-actor actor-right" id="story-actor-right"></div>
+        
+        <!-- Story effect layer (lightning, smoke poof, red flash) -->
+        <div class="story-fx-layer" id="story-fx-layer"></div>
+      </div>
+
+      <!-- Dialogue Box (Visual Novel / RPG Style) -->
+      <div class="story-dialogue-panel" id="story-dialogue-panel">
+        <div class="dialogue-inner">
+          <div class="dialogue-avatar-wrap">
+            <div class="dialogue-avatar" id="dialogue-avatar"></div>
+          </div>
+          <div class="dialogue-content">
+            <div class="dialogue-header">
+              <span class="dialogue-speaker" id="dialogue-speaker">Ali</span>
+            </div>
+            <div class="dialogue-text" id="dialogue-text">...</div>
+            <div class="dialogue-footer">
+              <span class="dialogue-hint">Klik layar atau tekan Spasi untuk lanjut ▶</span>
+              <button id="btn-next-dialogue" class="btn btn-dialogue-next">Lanjut ▶</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== SCREEN: PILIH LEVEL ===== -->
   <section id="screen-levels" class="screen">
     <div class="levels-container">
       <h2 class="levels-title">Pilih Level</h2>
-      <p class="levels-subtitle">3 Level · 15 Stage · 15 Soal Python</p>
+      <p class="levels-subtitle">Prolog + 3 Wilayah Petualangan · 15 Stage Python</p>
 
       <div class="level-grid">
+        <!-- Kartu Prolog Sinematik (Dapat ditonton ulang kapan saja) -->
+        <div class="level-card level-card-story" id="card-prologue" data-story="prologue">
+          <div class="level-card-num">00</div>
+          <div class="level-card-icon">📖</div>
+          <div class="level-card-name">Prolog: Tragedi Desa</div>
+          <div class="level-card-desc">Awal mula penculikan Danova oleh Hibat</div>
+          <div class="level-card-stages">Sinematik</div>
+        </div>
+
         <div class="level-card" data-level="1">
           <div class="level-card-num">01</div>
           <div class="level-card-icon">🌲</div>
-          <div class="level-card-name">Python Dasar</div>
+          <div class="level-card-name">Hutan Sintaks</div>
           <div class="level-card-desc">Variabel, Print, Tipe Data, Operator</div>
           <div class="level-card-stages">5 Stage</div>
+          <div class="lock-icon">🔒</div>
         </div>
 
         <div class="level-card" data-level="2">
           <div class="level-card-num">02</div>
-          <div class="level-card-icon">🕌</div>
-          <div class="level-card-name">Kondisi &amp; Percabangan</div>
+          <div class="level-card-icon">🌋</div>
+          <div class="level-card-name">Lembah Magma</div>
           <div class="level-card-desc">if, else, elif, Operator Perbandingan</div>
           <div class="level-card-stages">5 Stage</div>
           <div class="lock-icon">🔒</div>
@@ -101,8 +170,8 @@
 
         <div class="level-card" data-level="3">
           <div class="level-card-num">03</div>
-          <div class="level-card-icon">🌋</div>
-          <div class="level-card-name">Perulangan &amp; Fungsi</div>
+          <div class="level-card-icon">🏰</div>
+          <div class="level-card-name">Kerajaan Gelap</div>
           <div class="level-card-desc">for, while, def, return, list</div>
           <div class="level-card-stages">5 Stage</div>
           <div class="lock-icon">🔒</div>
@@ -189,6 +258,18 @@
       <div class="transition-overlay" id="transition-overlay"></div>
     </div>
     <!-- end game-world -->
+
+    <!-- STAGE INTRO OVERLAY (Mini Narrative Before Battle) -->
+    <div class="stage-intro-overlay" id="stage-intro-overlay" style="display:none;">
+      <div class="stage-intro-box">
+        <div class="stage-intro-avatar" id="stage-intro-avatar"></div>
+        <div class="stage-intro-body">
+          <div class="stage-intro-speaker" id="stage-intro-speaker">Ali</div>
+          <p class="stage-intro-text" id="stage-intro-text">...</p>
+        </div>
+        <button id="btn-dismiss-intro" class="btn btn-primary btn-sm">Maju! ▶</button>
+      </div>
+    </div>
 
     <!-- BATTLE PANEL -->
     <div class="battle-panel" id="battle-panel">
@@ -295,11 +376,11 @@
       <div class="modal-icon victory-spin">🏆</div>
       <h2 class="modal-title victory-title">Level Clear!</h2>
       <p class="modal-level-name" id="victory-level">Level 1: Python Dasar</p>
-      <p class="modal-msg">Luar biasa! Kamu menguasai materi ini!</p>
+      <p class="modal-msg" id="victory-msg">Luar biasa! Kamu menguasai materi ini!</p>
       <div class="stars-row">⭐⭐⭐</div>
       <div class="modal-buttons">
         <button id="btn-next-level" class="btn btn-primary">Level Berikutnya →</button>
-        <button id="btn-return-menu2" class="btn btn-secondary" onclick="document.getElementById('modal-victory').classList.remove('active'); document.getElementById('screen-menu').classList.add('active'); document.getElementById('screen-game').classList.remove('active');">🏠 Menu</button>
+        <button id="btn-return-menu2" class="btn btn-secondary">🏠 Menu</button>
       </div>
     </div>
   </div>
