@@ -106,6 +106,32 @@ else:
 
 ---
 
+## 6. Sistem Naratif & Cutscene (Story Progression)
+
+Game memiliki sistem narasi bergaya Visual Novel RPG 2D dengan typewriter effect, ekspresi karakter, SFX, dan kamera shake:
+
+### A. Prolog: Tragedi Desa Lembah Python
+- **Bagian 1**: Kehidupan damai Ali & Danova di desa.
+- **Bagian 2**: Hibat menyerang desa, menimbulkan kegelapan, dan menculik Danova ke Puncak Rekursif.
+- **Bagian 3**: Reruntuhan desa; sumpah Ali menggunakan logika berpikir komputasi untuk menyelamatkan Danova (membuka Level 1).
+
+### B. Inter-Level Cutscene (Perpindahan Scene)
+- **Selesai Level 1 ➔ Menuju Level 2**: Ali berhasil melewati Hutan Sintaks, tiba di Lembah Magma dengan lahar membara dan jurang terjal bercabang (pengantar materi logika `if/elif/else`).
+- **Selesai Level 2 ➔ Menuju Level 3**: Menyeberangi lahar panas menuju benteng Kerajaan Gelap di puncak tebing berselimut petir ungu (pengantar materi `loops` dan `def/functions`).
+
+### C. Epilog & Plot Twist Klimaks (Selesai Level 3)
+- **Runtuhnya Tahta Hibat**: Ali berhasil menaklukkan benteng dan mengajak Danova pulang.
+- **Plot Twist Danova**: Danova menolak pulang dan memilih berdiri bersama Hibat!
+  - Danova mengetahui kebusukan manusia: pembakaran hutan belantara demi komersialisasi, pemindahan paksa satwa liar hingga punah, penambangan liar yang merusak gunung, dan ekspansi perkebunan kelapa sawit monokultur di mana-mana.
+  - Danova sadar manusia jauh lebih jahat dan merusak dari iblis/monster. Hibat adalah antibodi alam untuk menyeimbangkan bumi.
+  - Danova bertekad memusnahkan peradaban manusia yang rakus demi memulihkan alam.
+- **Pilihan Moral Interaktif untuk Ali**:
+  1. **🤝 Ikuti Jalan Danova**: Ali setuju bahwa peradaban manusia yang penuh bug keserakahan harus diformat ulang dari awal. Ali bergabung bersama Danova dan Hibat.
+  2. **🛡️ Lindungi Umat Manusia**: Ali menolak ajakan Danova. Walaupun manusia penuh kesalahan, Ali percaya manusia bisa belajar dan berubah. Ali bersumpah menjadi benteng pelindung manusia walau harus menjadi rival Danova.
+- **Ending**: Layar sinematik dramatis bertuliskan **"TO BE CONTINUED..."** dan kartu Epilog tersimpan permanen di layar Pilih Level untuk ditonton ulang kapan saja.
+
+---
+
 ## 7. Rencana Roadmap Pengerjaan (Milestones)
 
 - [ ] **Milestone 1: Setup Kerangka & Mockup UI**  

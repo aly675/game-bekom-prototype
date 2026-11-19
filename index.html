@@ -124,10 +124,25 @@
               <span class="dialogue-speaker" id="dialogue-speaker">Ali</span>
             </div>
             <div class="dialogue-text" id="dialogue-text">...</div>
-            <div class="dialogue-footer">
-              <span class="dialogue-hint">Klik layar atau tekan Spasi untuk lanjut ▶</span>
+            <div class="dialogue-choices" id="dialogue-choices" style="display:none;"></div>
+            <div class="dialogue-footer" id="dialogue-footer">
+              <span class="dialogue-hint" id="dialogue-hint">Klik layar atau tekan Spasi untuk lanjut ▶</span>
               <button id="btn-next-dialogue" class="btn btn-dialogue-next">Lanjut ▶</button>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dramatic "TO BE CONTINUED" Overlay Screen -->
+      <div class="story-tbc-overlay" id="story-tbc-overlay" style="display:none;">
+        <div class="tbc-content">
+          <div class="tbc-badge">AKHIR BABAK 1</div>
+          <h1 class="tbc-title">TO BE CONTINUED...</h1>
+          <p class="tbc-subtitle" id="tbc-subtitle">Ali & Danova — Dua Sahabat yang Kini Berseberangan</p>
+          <div class="tbc-decision-badge" id="tbc-decision-badge">Pilihanmu: Lindungi Umat Manusia</div>
+          <div class="tbc-actions">
+            <button id="btn-tbc-replay" class="btn btn-secondary">🔄 Tonton Ulang Epilog</button>
+            <button id="btn-tbc-menu" class="btn btn-primary">🏠 Kembali ke Pilih Level</button>
           </div>
         </div>
       </div>
@@ -138,7 +153,7 @@
   <section id="screen-levels" class="screen">
     <div class="levels-container">
       <h2 class="levels-title">Pilih Level</h2>
-      <p class="levels-subtitle">Prolog + 3 Wilayah Petualangan · 15 Stage Python</p>
+      <p class="levels-subtitle">Prolog + 3 Wilayah Petualangan + Epilog Pilihan · 15 Stage Python</p>
 
       <div class="level-grid">
         <!-- Kartu Prolog Sinematik (Dapat ditonton ulang kapan saja) -->
@@ -174,6 +189,16 @@
           <div class="level-card-name">Kerajaan Gelap</div>
           <div class="level-card-desc">for, while, def, return, list</div>
           <div class="level-card-stages">5 Stage</div>
+          <div class="lock-icon">🔒</div>
+        </div>
+
+        <!-- Kartu Epilog Sinematik (Terbuka setelah tamat Level 3) -->
+        <div class="level-card level-card-story locked" id="card-epilogue" data-story="epilogue">
+          <div class="level-card-num">END</div>
+          <div class="level-card-icon">⚡</div>
+          <div class="level-card-name">Epilog: Pilihan Terakhir</div>
+          <div class="level-card-desc">Kebenaran Danova, Hibat, dan Pilihan Ali</div>
+          <div class="level-card-stages">Klimaks Interaktif</div>
           <div class="lock-icon">🔒</div>
         </div>
       </div>

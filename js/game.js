@@ -466,25 +466,25 @@
             speaker: 'narrator',
             name: 'Narator',
             avatar: 'narrator_avatar',
-            text: 'Di hadapan Ali membentang Lembah Magma yang dipenuhi aliran lava mendidih dan jurang terjal.'
+            text: 'Di hadapan Ali membentang Lembah Magma yang dipenuhi aliran lava mendidih dan jurang terjal bercabang.'
           },
           {
             speaker: 'ali',
             name: 'Ali',
             avatar: 'ali_avatar',
-            text: 'Jalan setapaknya bercabang di atas lahar mendidih. Salah melangkah sedikit saja bisa fatal!'
+            text: 'Jalan setapaknya bercabang di atas lahar mendidih. Salah melangkah sedikit saja bisa fatal tercebur!'
           },
           {
             speaker: 'ali',
             name: 'Ali',
             avatar: 'ali_avatar',
-            text: 'Gua harus menguasai logika kondisi dan percabangan (if, elif, else) untuk memilih rute yang tepat!'
+            text: 'Gua harus menguasai logika kondisi dan percabangan (if, elif, else) untuk memilih rute yang selamat!'
           },
           {
             speaker: 'ali',
             name: 'Ali',
             avatar: 'ali_avatar',
-            text: 'Tunggu gua, Danova! Gua gak bakal biarin Hibat menyakitimu!'
+            text: 'Tunggu gua, Danova! Gua udah semakin dekat ke sarang Hibat!'
           }
         ]
       }
@@ -494,7 +494,7 @@
     2: [
       {
         id: 'inter_2_to_3',
-        title: 'Perjalanan: Gerbang Kerajaan Gelap',
+        title: 'Perjalanan: Menembus Gerbang Kerajaan Gelap',
         backgroundTheme: 'dark-castle',
         actors: { left: 'hero', right: null },
         lines: [
@@ -508,7 +508,7 @@
             speaker: 'ali',
             name: 'Ali',
             avatar: 'ali_avatar',
-            text: 'Akhirnya berhasil menyeberangi lahar panas itu... Tapi tempat ini... atmosfernya dingin dan mencekam.'
+            text: 'Akhirnya berhasil menyeberangi lahar panas itu... Tapi tempat ini... atmosfernya dingin menusuk dan mencekam.'
           },
           {
             speaker: 'narrator',
@@ -528,13 +528,13 @@
             speaker: 'ali',
             name: 'Ali',
             avatar: 'ali_avatar',
-            text: 'Penjaga istana kegelapan ini diperkuat oleh sihir perulangan tanpa henti dan fungsi-fungsi rekursif rumit.'
+            text: 'Penjaga istana kegelapan ini diperkuat oleh sihir perulangan tanpa henti dan fungsi-fungsi modular yang rumit.'
           },
           {
             speaker: 'ali',
             name: 'Ali',
             avatar: 'ali_avatar',
-            text: 'Gua gak boleh gentar! Kekuatan Loops (for, while) dan Fungsi modular (def) akan gua kerahkan untuk meruntuhkan pertahanan Hibat!'
+            text: 'Gua gak boleh gentar! Kekuatan Loops (for, while) dan Fungsi sakti (def) akan gua kerahkan untuk meruntuhkan pertahanan Hibat!'
           },
           {
             speaker: 'ali',
@@ -544,79 +544,279 @@
           }
         ]
       }
-    ],
-
-    // Selesai Level 3 (Kerajaan Gelap) -> Epilog Kemenangan & Penyelamatan Danova
-    3: [
-      {
-        id: 'epilogue_victory',
-        title: 'Epilog: Penyelamatan Danova & Fajar Harapan',
-        backgroundTheme: 'dark-castle',
-        actors: { left: 'hero', right: 'hibat' },
-        lines: [
-          {
-            speaker: 'hibat',
-            name: 'Hibat',
-            avatar: 'hibat_avatar',
-            text: 'T-tidak mungkin...!! Bagaimana bisa logika berpikir komputasi dan fungsi rekursimu menembus sihir kegelapanku?!',
-            action: 'shake',
-            sfx: 'thunder'
-          },
-          {
-            speaker: 'ali',
-            name: 'Ali',
-            avatar: 'ali_avatar',
-            text: 'Karena logika dan tekad kami jauh lebih kuat dari bug ciptaanmu! Lepaskan Danova sekarang juga, Hibat!'
-          },
-          {
-            speaker: 'hibat',
-            name: 'Hibat',
-            avatar: 'hibat_avatar',
-            text: 'ARGHHH! Seluruh baris bug ku terurai... Sistemku hancurrr...!!',
-            action: 'vanish_right'
-          },
-          {
-            speaker: 'narrator',
-            name: 'Narator',
-            avatar: 'narrator_avatar',
-            text: 'Dengan ledakan cahaya, sosok bayangan Hibat lenyap tanpa bekas. Selubung sihir yang mengurung Danova seketika sirna...',
-            sfx: 'portal'
-          },
-          {
-            speaker: 'danova',
-            name: 'Danova',
-            avatar: 'danova_avatar',
-            text: 'Ali!! Lu beneran datang nyelamatin gua!',
-            action: 'spawn_danova'
-          },
-          {
-            speaker: 'ali',
-            name: 'Ali',
-            avatar: 'ali_avatar',
-            text: 'Danova! Syukurlah lu selamat! Gua udah janji bakal bawa lu pulang, apa pun yang terjadi!'
-          },
-          {
-            speaker: 'danova',
-            name: 'Danova',
-            avatar: 'danova_avatar',
-            text: 'Gua selalu percaya sama lu, Li. Jurus Python dan cara berpikir komputasi lu bener-bener luar biasa!'
-          },
-          {
-            speaker: 'ali',
-            name: 'Ali',
-            avatar: 'ali_avatar',
-            text: 'Hehe, semua berkat semangat dari lu juga. Ayo Dan, kita pulang ke desa dan bangun kembali rumah kita!'
-          },
-          {
-            speaker: 'narrator',
-            name: 'Narator',
-            avatar: 'narrator_avatar',
-            text: 'Matahari terbit menyinari fajar baru. Ali dan Danova melangkah pulang sebagai pahlawan logika sejati. TAMAT.'
-          }
-        ]
-      }
     ]
   };
+
+  const EPILOGUE_DATA = [
+    {
+      id: 'epilogue_part_1',
+      title: 'Epilog 1/3: Runtuhnya Tahta & Reuni Janggal',
+      backgroundTheme: 'dark-castle',
+      actors: { left: 'hero', right: 'hibat' },
+      lines: [
+        {
+          speaker: 'narrator',
+          name: 'Narator',
+          avatar: 'narrator_avatar',
+          text: 'Dengan eksekusi algoritma rekursif dan fungsi pamungkas, pertahanan tahta Kerajaan Gelap runtuh berserakan.',
+          action: 'shake',
+          sfx: 'thunder'
+        },
+        {
+          speaker: 'hibat',
+          name: 'Hibat',
+          avatar: 'hibat_avatar',
+          text: 'ARGHHH...! Tak kusangka... logika komputasi manusia biasa mampu menembus selubung kegelapan abadiku...!',
+          action: 'shake',
+          sfx: 'thunder'
+        },
+        {
+          speaker: 'ali',
+          name: 'Ali',
+          avatar: 'ali_avatar',
+          text: 'Selesai sudah, Hibat! Lepaskan Danova sekarang juga! Gua udah bersumpah bakal bawa dia pulang dengan selamat!'
+        },
+        {
+          speaker: 'narrator',
+          name: 'Narator',
+          avatar: 'narrator_avatar',
+          text: 'Namun... dari balik kabut kegelapan di samping singgasana tahta, langkah kaki pelan terdengar mendekat...',
+          sfx: 'portal'
+        },
+        {
+          speaker: 'narrator',
+          name: 'Narator',
+          avatar: 'narrator_avatar',
+          text: 'Ali membelalakkan mata. Danova melangkah maju... bukan berlari meminta tolong, melainkan berdiri tegak dan tenang di sisi Hibat!',
+          action: 'show_danova'
+        },
+        {
+          speaker: 'ali',
+          name: 'Ali',
+          avatar: 'ali_avatar',
+          text: 'Danova...?! Syukurlah lu gak apa-apa! Ayo cepat ke sini Dan, kita pulang ke desa!'
+        },
+        {
+          speaker: 'danova',
+          name: 'Danova',
+          avatar: 'danova_avatar',
+          text: 'Pulang, Li...? Ke mana? Ke peradaban manusia yang penuh kebohongan dan ketamakan itu?'
+        },
+        {
+          speaker: 'ali',
+          name: 'Ali',
+          avatar: 'ali_avatar',
+          text: 'Danova... apa maksud lu?! Lu... lu pasti di bawah pengaruh sihir cuci otak Hibat, kan?!',
+          action: 'shake'
+        }
+      ]
+    },
+    {
+      id: 'epilogue_part_2',
+      title: 'Epilog 2/3: Kebusukan Manusia & Pilihan Danova',
+      backgroundTheme: 'dark-castle',
+      actors: { left: 'hero', right: 'danova' },
+      lines: [
+        {
+          speaker: 'danova',
+          name: 'Danova',
+          avatar: 'danova_avatar',
+          text: 'Gua sadar sepenuhnya, Li! Hibat gak pernah menyihir pikiran gua. Justru Hibat membuka tabir kebenaran yang selama ini ditutupi manusia!'
+        },
+        {
+          speaker: 'danova',
+          name: 'Danova',
+          avatar: 'danova_avatar',
+          text: 'Lihat dunia luar dengan mata kepala lu sendiri, Ali! Hutan-hutan belantara dibakar habis tanpa ampun demi keuntungan segelintir penguasa!'
+        },
+        {
+          speaker: 'danova',
+          name: 'Danova',
+          avatar: 'danova_avatar',
+          text: 'Satwa liar dan hewan tak berdosa diusir, dipindahkan ke habitat tak semestinya hingga punah dan mati kelaparan!'
+        },
+        {
+          speaker: 'danova',
+          name: 'Danova',
+          avatar: 'danova_avatar',
+          text: 'Gunung-gunung dibelah untuk tambang liar dan jutaan hektar kebun kelapa sawit ditanam di mana-mana membunuh keanekaragaman hayati bumi!',
+          action: 'shake',
+          sfx: 'thunder'
+        },
+        {
+          speaker: 'ali',
+          name: 'Ali',
+          avatar: 'ali_avatar',
+          text: 'Danova... gua tahu kerusakan itu nyata... tapi manusia punya potensi untuk belajar dan memperbaiki diri!'
+        },
+        {
+          speaker: 'danova',
+          name: 'Danova',
+          avatar: 'danova_avatar',
+          text: 'Manusia tidak pernah berubah, Li! Manusia jauh lebih jahat, kejam, dan merusak dibanding iblis mana pun di dunia ini!'
+        },
+        {
+          speaker: 'danova',
+          name: 'Danova',
+          avatar: 'danova_avatar',
+          text: 'Hibat bukan monster perusak... Mereka adalah antibodi alam yang bangkit karena bumi tak lagi sanggup menahan keserakahan manusia!'
+        },
+        {
+          speaker: 'danova',
+          name: 'Danova',
+          avatar: 'danova_avatar',
+          text: 'Walaupun gua sendiri manusia... gua rela menanggung dosa ini. Gua memilih jalan bersama Hibat: memusnahkan manusia demi kelangsungan bumi!'
+        },
+        {
+          speaker: 'hibat',
+          name: 'Hibat',
+          avatar: 'hibat_avatar',
+          text: 'Kekeke... Dengarkanlah ratapan bumi, Pahlawan Logika! Sahabatmu sendiri telah melihat borok peradabanmu!',
+          action: 'show_hibat',
+          sfx: 'portal'
+        }
+      ]
+    },
+    {
+      id: 'epilogue_part_3',
+      title: 'Epilog 3/3: Persimpangan Takdir & Pilihan Ali',
+      backgroundTheme: 'dark-castle',
+      actors: { left: 'hero', right: 'danova' },
+      lines: [
+        {
+          speaker: 'danova',
+          name: 'Danova',
+          avatar: 'danova_avatar',
+          text: 'Gua gak mau bermusuhan sama lu, Ali. Lu punya kecerdasan dan kekuatan logika berpikir komputasi terhebat yang pernah gua kenal.'
+        },
+        {
+          speaker: 'danova',
+          name: 'Danova',
+          avatar: 'danova_avatar',
+          text: 'Bergabunglah dengan gua dan Hibat... Kita gunakan logika kita untuk merestrukturisasi dunia dan memformat ulang parasit manusia!'
+        },
+        {
+          speaker: 'narrator',
+          name: 'Narator',
+          avatar: 'narrator_avatar',
+          text: 'Ruang tahta sunyi senyap. Di hadapan Ali berdiri Danova, sahabatnya, menatap dengan perih namun penuh tekad membara.'
+        },
+        {
+          speaker: 'ali',
+          name: 'Ali',
+          avatar: 'ali_avatar',
+          text: 'Dua jalan terbentang di hadapanku... Apa yang harus gua pilih...?',
+          choices: [
+            {
+              id: 'join_danova',
+              icon: '🤝',
+              title: 'Ikuti Jalan Danova',
+              desc: 'Bersama Danova & Hibat memformat ulang dunia dan menghukum ketamakan manusia',
+              variant: 'danova'
+            },
+            {
+              id: 'protect_humans',
+              icon: '🛡️',
+              title: 'Lindungi Umat Manusia',
+              desc: 'Menolak Danova & bersumpah menjadi benteng pelindung manusia walau harus menjadi rival',
+              variant: 'ali'
+            }
+          ]
+        }
+      ]
+    }
+  ];
+
+  const EPILOGUE_BRANCH_JOIN = [
+    {
+      speaker: 'ali',
+      name: 'Ali',
+      avatar: 'ali_avatar',
+      text: 'Lu benar, Danova... Gua udah muak melihat manusia membakar hutan, memindahkan hewan, dan mengeruk tambang tanpa rasa bersalah.'
+    },
+    {
+      speaker: 'ali',
+      name: 'Ali',
+      avatar: 'ali_avatar',
+      text: 'Jika kode peradaban manusia dipenuhi bug ketamakan yang merusak bumi... dekomposisi total adalah solusinya. Gua jalan bareng lu, Dan!'
+    },
+    {
+      speaker: 'danova',
+      name: 'Danova',
+      avatar: 'danova_avatar',
+      text: 'Terima kasih, Li... Gua tahu di balik kepala dingin lu, lu bisa melihat kebenaran ini. Bersama kita dan Hibat, tatanan baru akan ditegakkan!',
+      action: 'show_danova'
+    },
+    {
+      speaker: 'hibat',
+      name: 'Hibat',
+      avatar: 'hibat_avatar',
+      text: 'Kekeke... Kombinasi yang luar biasa mengerikan! Hari penghakiman bagi umat manusia resmi dimulai!',
+      action: 'show_hibat',
+      sfx: 'thunder'
+    },
+    {
+      speaker: 'narrator',
+      name: 'Narator',
+      avatar: 'narrator_avatar',
+      text: 'Ali melangkah ke sisi Danova dan Hibat. Pahlawan logika yang dulu membela desa, kini memilih jalan kegelapan demi memurnikan bumi...'
+    },
+    {
+      speaker: 'narrator',
+      name: 'Narator',
+      avatar: 'narrator_avatar',
+      text: 'Masa depan peradaban manusia kini berada di ujung tanduk kepunahan mutlak...'
+    }
+  ];
+
+  const EPILOGUE_BRANCH_PROTECT = [
+    {
+      speaker: 'ali',
+      name: 'Ali',
+      avatar: 'ali_avatar',
+      text: 'Gua paham sakit hati lu, Dan. Lu benar soal hutan dibakar, hewan terusir, tambang liar, dan sawit di mana-mana... Tapi memusnahkan semua manusia bukan jawaban!'
+    },
+    {
+      speaker: 'ali',
+      name: 'Ali',
+      avatar: 'ali_avatar',
+      text: 'Manusia memang penuh salah dan cacat logika, tapi masih banyak orang baik yang berjuang memperbaiki bumi! Gua gak akan biarkan kalian memusnahkan mereka!'
+    },
+    {
+      speaker: 'ali',
+      name: 'Ali',
+      avatar: 'ali_avatar',
+      text: 'Gua bersumpah bakal tetap berdiri melindungi umat manusia... walau harus berhadapan langsung dengan lu, Danova!',
+      action: 'shake'
+    },
+    {
+      speaker: 'danova',
+      name: 'Danova',
+      avatar: 'danova_avatar',
+      text: 'Kalau itu pilihan lu, Ali... Sungguh mengecewakan. Sahabat yang paling gua percaya memilih membela parasit peradaban.',
+      action: 'show_danova'
+    },
+    {
+      speaker: 'danova',
+      name: 'Danova',
+      avatar: 'danova_avatar',
+      text: 'Persahabatan kita selesai di sini. Di medan perang berikutnya, gua gak akan menahan diri sedikit pun!'
+    },
+    {
+      speaker: 'hibat',
+      name: 'Hibat',
+      avatar: 'hibat_avatar',
+      text: 'Kekeke... Sungguh ironi yang indah! Dua sahabat masa kecil kini menjadi musuh bebuyutan! Saksikanlah kehancuran rasmu, Ali!',
+      action: 'show_hibat',
+      sfx: 'thunder'
+    },
+    {
+      speaker: 'narrator',
+      name: 'Narator',
+      avatar: 'narrator_avatar',
+      text: 'Ali berdiri kokoh menggenggam mantra kodenya. Di hadapannya, sahabat terbaiknya kini telah menjadi rival abadi pembawa petaka...'
+    }
+  ];
 
   const STAGE_INTROS = {
     '1-1': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Hutan Sintaks di depan penuh dengan bug dasar. Gua harus ingat konsep variabel dan print untuk membuka jalan!' },
@@ -1024,9 +1224,14 @@
       this._sceneryPos = 0;
 
       // Story & Dialogue state
+      this.currentStory = 'prologue';
+      this.currentStoryScenes = PROLOGUE_DATA;
+      this.onStoryFinishCallback = null;
       this.currentSceneIdx = 0;
       this.currentLineIdx = 0;
       this.isTyping = false;
+      this.isWaitingChoice = false;
+      this.lastEndingChoice = 'protect_humans';
       this.typewriterTimer = null;
       this.currentStageIntroCallback = null;
 
@@ -1095,6 +1300,14 @@
         dialogueSpeaker:   document.getElementById('dialogue-speaker'),
         dialogueText:      document.getElementById('dialogue-text'),
         btnNextDialogue:   document.getElementById('btn-next-dialogue'),
+        dialogueChoices:   document.getElementById('dialogue-choices'),
+        dialogueFooter:    document.getElementById('dialogue-footer'),
+        dialogueHint:      document.getElementById('dialogue-hint'),
+        storyTbcOverlay:   document.getElementById('story-tbc-overlay'),
+        tbcSubtitle:       document.getElementById('tbc-subtitle'),
+        tbcDecisionBadge:  document.getElementById('tbc-decision-badge'),
+        btnTbcReplay:      document.getElementById('btn-tbc-replay'),
+        btnTbcMenu:        document.getElementById('btn-tbc-menu'),
         stageIntroOverlay: document.getElementById('stage-intro-overlay'),
         stageIntroAvatar:  document.getElementById('stage-intro-avatar'),
         stageIntroSpeaker: document.getElementById('stage-intro-speaker'),
@@ -1137,6 +1350,15 @@
             this._startPrologue();
             return;
           }
+          if (card.dataset.story === 'epilogue') {
+            if (this.unlockedLevels.epilogue) {
+              this._startEpilogue();
+            } else {
+              this.sound.wrong();
+              alert('Selesaikan Level 3 terlebih dahulu untuk membuka Epilog cerita penutup!');
+            }
+            return;
+          }
           const lid = parseInt(card.dataset.level, 10);
           if (this.unlockedLevels[lid]) {
             this._startLevel(lid - 1);
@@ -1165,7 +1387,7 @@
       if (this.$.btnSkipStory) {
         this.$.btnSkipStory.addEventListener('click', (e) => {
           e.stopPropagation();
-          this._skipPrologue();
+          this._skipStory();
         });
       }
       if (this.$.btnNextDialogue) {
@@ -1175,7 +1397,9 @@
         });
       }
       if (this.$.dialoguePanel) {
-        this.$.dialoguePanel.addEventListener('click', () => {
+        this.$.dialoguePanel.addEventListener('click', (e) => {
+          // Jangan lanjut jika mengklik tombol pilihan
+          if (e.target.closest('.btn-story-choice')) return;
           this._advanceDialogue();
         });
       }
@@ -1184,6 +1408,21 @@
           this._dismissStageIntro();
         });
       }
+
+      // TBC Overlay buttons
+      if (this.$.btnTbcReplay) {
+        this.$.btnTbcReplay.addEventListener('click', () => {
+          if (this.$.storyTbcOverlay) this.$.storyTbcOverlay.style.display = 'none';
+          this._startEpilogue();
+        });
+      }
+      if (this.$.btnTbcMenu) {
+        this.$.btnTbcMenu.addEventListener('click', () => {
+          if (this.$.storyTbcOverlay) this.$.storyTbcOverlay.style.display = 'none';
+          this._gotoLevelSelect();
+        });
+      }
+
       window.addEventListener('keydown', (e) => {
         if (e.code === 'Space' || e.code === 'Enter') {
           if (this.state === GameState.PROLOGUE) {
@@ -1208,10 +1447,11 @@
           prologue: hasPrologue,
           1: hasPrologue,
           2: hasPrologue && !!saved[2],
-          3: hasPrologue && !!saved[3]
+          3: hasPrologue && !!saved[3],
+          epilogue: hasPrologue && !!saved.epilogue
         };
       } catch (e) {
-        return { prologue: false, 1: false, 2: false, 3: false };
+        return { prologue: false, 1: false, 2: false, 3: false, epilogue: false };
       }
     }
     _saveProgress() {
@@ -1243,6 +1483,14 @@
       this.$.levelCards.forEach(card => {
         if (card.dataset.story === 'prologue') {
           card.classList.remove('locked');
+          return;
+        }
+        if (card.dataset.story === 'epilogue') {
+          if (this.unlockedLevels.epilogue) {
+            card.classList.remove('locked');
+          } else {
+            card.classList.add('locked');
+          }
           return;
         }
         const lid = parseInt(card.dataset.level, 10);
@@ -1871,11 +2119,17 @@
       const levelData = GAME_DATA.levels[this.currentLevel];
       this.$.victoryLevel.textContent = levelData.name;
       const isLast = this.currentLevel >= GAME_DATA.levels.length - 1;
-      this.$.btnNextLevel.style.display = isLast ? 'none' : 'inline-block';
 
       if (!isLast) {
         this.unlockedLevels[this.currentLevel + 2] = true;
         this._saveProgress();
+        this.$.btnNextLevel.style.display = 'inline-block';
+        this.$.btnNextLevel.innerHTML = '<span>🎬</span> Cerita & Level Berikutnya →';
+      } else {
+        this.unlockedLevels.epilogue = true;
+        this._saveProgress();
+        this.$.btnNextLevel.style.display = 'inline-block';
+        this.$.btnNextLevel.innerHTML = '<span>⚡</span> Tonton Epilog Ending →';
       }
 
       this._showModal(this.$.modalVictory);
@@ -1897,10 +2151,21 @@
 
     _onNextLevel() {
       this._hideModal(this.$.modalVictory);
-      if (this.currentLevel < GAME_DATA.levels.length - 1) {
-        this._startLevel(this.currentLevel + 1);
+      if (this.currentLevel === 0) {
+        // Dari Level 1 menuju Level 2: putar Inter-Level Cutscene 1
+        this._playInterLevelScene(1, () => {
+          this._startLevel(1);
+        });
+      } else if (this.currentLevel === 1) {
+        // Dari Level 2 menuju Level 3: putar Inter-Level Cutscene 2
+        this._playInterLevelScene(2, () => {
+          this._startLevel(2);
+        });
+      } else if (this.currentLevel === 2) {
+        // Tamat Level 3: Putar Epilog Ending
+        this._startEpilogue();
       } else {
-        this._gotoMenu();
+        this._gotoLevelSelect();
       }
     }
 
@@ -1991,24 +2256,73 @@
     }
 
     // ----------------------------------------------------------
-    //  STORY & PROLOGUE CONTROLLER
+    //  STORY & PROLOGUE & EPILOGUE CONTROLLER
     // ----------------------------------------------------------
-    _startPrologue() {
+    _playStory(scenes, storyKey, onFinish) {
       this._stopAll();
       this.state = GameState.PROLOGUE;
-      this._showScreen(this.$.screenStory);
+      this.currentStory = storyKey;
+      this.currentStoryScenes = scenes;
+      this.onStoryFinishCallback = onFinish;
       this.currentSceneIdx = 0;
       this.currentLineIdx = 0;
       this.isTyping = false;
-      this._loadStoryScene(this.currentSceneIdx);
+      this.isWaitingChoice = false;
+
+      if (this.$.dialogueChoices) {
+        this.$.dialogueChoices.style.display = 'none';
+        this.$.dialogueChoices.innerHTML = '';
+      }
+      if (this.$.storyTbcOverlay) this.$.storyTbcOverlay.style.display = 'none';
+      if (this.$.btnNextDialogue) this.$.btnNextDialogue.style.display = 'inline-block';
+      if (this.$.dialogueHint) this.$.dialogueHint.style.display = 'inline-block';
+
+      this._showScreen(this.$.screenStory);
+      this._loadStoryScene(0);
+    }
+
+    _startPrologue() {
+      this._playStory(PROLOGUE_DATA, 'prologue', () => {
+        this._finishPrologue();
+      });
+    }
+
+    _playInterLevelScene(levelNum, callback) {
+      const scenes = INTER_LEVEL_DATA[levelNum];
+      if (!scenes || scenes.length === 0) {
+        if (callback) callback();
+        return;
+      }
+      this._playStory(scenes, 'inter_' + levelNum, () => {
+        if (callback) callback();
+      });
+    }
+
+    _startEpilogue() {
+      // Deep clone EPILOGUE_DATA so user can make different choices on replays
+      const scenes = JSON.parse(JSON.stringify(EPILOGUE_DATA));
+      this._playStory(scenes, 'epilogue', () => {
+        this._finishEpilogue();
+      });
     }
 
     _loadStoryScene(sceneIdx) {
-      if (sceneIdx >= PROLOGUE_DATA.length) {
-        this._finishPrologue();
+      if (!this.currentStoryScenes || sceneIdx >= this.currentStoryScenes.length) {
+        if (this.currentStory === 'prologue') {
+          this._finishPrologue();
+        } else if (this.currentStory === 'epilogue') {
+          this._finishEpilogue();
+        } else {
+          if (this.onStoryFinishCallback) {
+            const cb = this.onStoryFinishCallback;
+            this.onStoryFinishCallback = null;
+            cb();
+          }
+        }
         return;
       }
-      const scene = PROLOGUE_DATA[sceneIdx];
+
+      const scene = this.currentStoryScenes[sceneIdx];
       this.$.storyChapterTitle.textContent = scene.title;
       this.$.storyWorld.className = 'story-world theme-' + scene.backgroundTheme;
       this._buildStoryScenery(scene.backgroundTheme);
@@ -2084,11 +2398,61 @@
             '</svg>';
           sc.appendChild(ember);
         });
+      } else if (theme === 'volcano') {
+        [150, 480, 820].forEach((x, i) => {
+          const rock = document.createElement('div');
+          rock.className = 'scenery-obj';
+          rock.style.left = x + 'px';
+          rock.style.bottom = '55px';
+          rock.innerHTML = '<svg viewBox="0 0 90 70" width="90" height="70">' +
+            '<polygon points="10,70 35,20 65,35 85,70" fill="#2E1B1B"/>' +
+            '<polygon points="25,70 45,30 60,70" fill="#BF360C"/>' +
+            '<line x1="35" y1="20" x2="45" y2="70" stroke="#FF5722" stroke-width="2"/>' +
+            '<circle cx="35" cy="20" r="3" fill="#FFEB3B"/>' +
+            '</svg>';
+          sc.appendChild(rock);
+        });
+        [60, 280, 620, 960].forEach((x, i) => {
+          const ember = document.createElement('div');
+          ember.className = 'scenery-obj';
+          ember.style.left = x + 'px';
+          ember.style.bottom = (65 + (i % 3) * 30) + 'px';
+          ember.innerHTML = '<svg viewBox="0 0 20 20" width="20" height="20">' +
+            '<circle cx="10" cy="10" r="3.5" fill="#FF5722" opacity="0.85"/>' +
+            '<circle cx="10" cy="10" r="1.5" fill="#FFEB3B"/>' +
+            '</svg>';
+          sc.appendChild(ember);
+        });
+      } else if (theme === 'dark-castle') {
+        [100, 320, 700, 920].forEach((x, i) => {
+          const pillar = document.createElement('div');
+          pillar.className = 'scenery-obj';
+          pillar.style.left = x + 'px';
+          pillar.style.bottom = '58px';
+          pillar.innerHTML = '<svg viewBox="0 0 60 120" width="60" height="120">' +
+            '<rect x="15" y="20" width="30" height="100" fill="#140524"/>' +
+            '<polygon points="10,20 30,0 50,20" fill="#240A3D"/>' +
+            '<rect x="22" y="35" width="16" height="30" rx="3" fill="#7B2CBF" opacity="0.5"/>' +
+            '<circle cx="30" cy="50" r="4" fill="#E0AAFF"/>' +
+            '</svg>';
+          sc.appendChild(pillar);
+        });
+        [200, 520, 840].forEach((x, i) => {
+          const spark = document.createElement('div');
+          spark.className = 'scenery-obj';
+          spark.style.left = x + 'px';
+          spark.style.bottom = (75 + (i % 2) * 35) + 'px';
+          spark.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24">' +
+            '<circle cx="12" cy="12" r="4" fill="#9D4EDD" opacity="0.8"/>' +
+            '<circle cx="12" cy="12" r="1.5" fill="#FFF"/>' +
+            '</svg>';
+          sc.appendChild(spark);
+        });
       }
     }
 
     _renderDialogueLine() {
-      const scene = PROLOGUE_DATA[this.currentSceneIdx];
+      const scene = this.currentStoryScenes[this.currentSceneIdx];
       const line = scene.lines[this.currentLineIdx];
 
       // Update speaker badge and avatar
@@ -2112,8 +2476,53 @@
         void this.$.storyActorRight.offsetWidth;
         this.$.storyActorRight.classList.add('actor-spawn');
       }
-      if (line.action === 'vanish_danova') {
+      if (line.action === 'vanish_danova' || line.action === 'vanish_right') {
         this.$.storyActorRight.classList.add('actor-vanish');
+      }
+      if (line.action === 'show_danova') {
+        this.$.storyActorRight.innerHTML = SVG_SPRITES.danova;
+        this.$.storyActorRight.classList.remove('actor-vanish');
+        this.$.storyActorRight.classList.add('actor-spawn');
+      }
+      if (line.action === 'show_hibat') {
+        this.$.storyActorRight.innerHTML = SVG_SPRITES.hibat;
+        this.$.storyActorRight.classList.remove('actor-vanish');
+        this.$.storyActorRight.classList.add('actor-spawn');
+      }
+
+      // Check choices
+      if (line.choices && line.choices.length > 0) {
+        this.isWaitingChoice = true;
+        if (this.$.dialogueChoices) {
+          this.$.dialogueChoices.innerHTML = '';
+          line.choices.forEach(ch => {
+            const btn = document.createElement('button');
+            btn.className = 'btn-story-choice choice-' + (ch.variant || 'ali');
+            btn.innerHTML = `
+              <span class="choice-icon">${ch.icon || '⚔️'}</span>
+              <div class="choice-text-col">
+                <div class="choice-title">${ch.title}</div>
+                <div class="choice-desc">${ch.desc}</div>
+              </div>
+            `;
+            btn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              this._chooseEnding(ch.id);
+            });
+            this.$.dialogueChoices.appendChild(btn);
+          });
+          this.$.dialogueChoices.style.display = 'flex';
+        }
+        if (this.$.btnNextDialogue) this.$.btnNextDialogue.style.display = 'none';
+        if (this.$.dialogueHint) this.$.dialogueHint.style.display = 'none';
+      } else {
+        this.isWaitingChoice = false;
+        if (this.$.dialogueChoices) {
+          this.$.dialogueChoices.style.display = 'none';
+          this.$.dialogueChoices.innerHTML = '';
+        }
+        if (this.$.btnNextDialogue) this.$.btnNextDialogue.style.display = 'inline-block';
+        if (this.$.dialogueHint) this.$.dialogueHint.style.display = 'inline-block';
       }
 
       // Typewriter effect
@@ -2137,7 +2546,9 @@
 
     _advanceDialogue() {
       if (this.state !== GameState.PROLOGUE) return;
-      const scene = PROLOGUE_DATA[this.currentSceneIdx];
+      if (this.isWaitingChoice) return;
+
+      const scene = this.currentStoryScenes[this.currentSceneIdx];
       const line = scene.lines[this.currentLineIdx];
 
       // If still typing, complete line instantly
@@ -2160,12 +2571,43 @@
       }
     }
 
-    _skipPrologue() {
+    _chooseEnding(choiceId) {
+      this.lastEndingChoice = choiceId;
+      this.sound.thunder();
+      this.isWaitingChoice = false;
+      if (this.$.dialogueChoices) this.$.dialogueChoices.style.display = 'none';
+      if (this.$.btnNextDialogue) this.$.btnNextDialogue.style.display = 'inline-block';
+      if (this.$.dialogueHint) this.$.dialogueHint.style.display = 'inline-block';
+
+      // Load branching lines
+      const branchLines = choiceId === 'join_danova' 
+        ? EPILOGUE_BRANCH_JOIN 
+        : EPILOGUE_BRANCH_PROTECT;
+      
+      const currentScene = this.currentStoryScenes[this.currentSceneIdx];
+      currentScene.lines = currentScene.lines.slice(0, this.currentLineIdx + 1).concat(branchLines);
+
+      this.currentLineIdx++;
+      this._renderDialogueLine();
+    }
+
+    _skipStory() {
       if (this.typewriterTimer) {
         clearInterval(this.typewriterTimer);
         this.typewriterTimer = null;
       }
-      this._finishPrologue();
+      if (this.currentStory === 'epilogue') {
+        if (!this.lastEndingChoice) this.lastEndingChoice = 'protect_humans';
+        this._finishEpilogue();
+      } else if (this.currentStory === 'prologue') {
+        this._finishPrologue();
+      } else {
+        if (this.onStoryFinishCallback) {
+          const cb = this.onStoryFinishCallback;
+          this.onStoryFinishCallback = null;
+          cb();
+        }
+      }
     }
 
     _finishPrologue() {
@@ -2178,6 +2620,36 @@
       this.unlockedLevels[1] = true;
       this._saveProgress();
       this._gotoLevelSelect();
+    }
+
+    _finishEpilogue() {
+      if (this.typewriterTimer) {
+        clearInterval(this.typewriterTimer);
+        this.typewriterTimer = null;
+      }
+      this.sound.stageClear();
+      this.unlockedLevels.epilogue = true;
+      this._saveProgress();
+      this._showTBCOverlay();
+    }
+
+    _showTBCOverlay() {
+      if (!this.$.storyTbcOverlay) return;
+      const isJoin = this.lastEndingChoice === 'join_danova';
+      if (this.$.tbcSubtitle) {
+        this.$.tbcSubtitle.textContent = isJoin
+          ? 'Ali & Danova — Memilih Memformat Ulang Peradaban Bersama Hibat'
+          : 'Ali & Danova — Sahabat Masa Kecil yang Kini Menjadi Rival Abadi';
+      }
+      if (this.$.tbcDecisionBadge) {
+        this.$.tbcDecisionBadge.textContent = isJoin
+          ? 'Keputusanmu: Ikuti Jalan Danova (Bersama Hibat)'
+          : 'Keputusanmu: Tetap Lindungi Umat Manusia';
+        this.$.tbcDecisionBadge.style.borderColor = isJoin ? '#2ECC71' : '#4A90D9';
+        this.$.tbcDecisionBadge.style.color = isJoin ? '#2ECC71' : '#58A6FF';
+      }
+      this.$.storyTbcOverlay.style.display = 'flex';
+      this.sound.thunder();
     }
 
     _showStageIntro(cb) {
@@ -2217,6 +2689,8 @@
       if (this.typewriterTimer) { clearInterval(this.typewriterTimer); this.typewriterTimer = null; }
       this.$.battlePanel.classList.remove('active');
       if (this.$.stageIntroOverlay) this.$.stageIntroOverlay.style.display = 'none';
+      if (this.$.storyTbcOverlay) this.$.storyTbcOverlay.style.display = 'none';
+      if (this.$.dialogueChoices) this.$.dialogueChoices.style.display = 'none';
     }
   }
 
