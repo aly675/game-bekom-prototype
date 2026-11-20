@@ -48,7 +48,10 @@
 
   var soundBtn = document.getElementById('btn-sound');
   function syncSound() {
-    if (soundBtn) soundBtn.textContent = PQProgress.getSound() ? '🔊' : '🔇';
+    if (!soundBtn) return;
+    var on = PQProgress.getSound();
+    soundBtn.textContent = on ? 'SFX ON' : 'SFX OFF';
+    soundBtn.classList.toggle('sound-off', !on);
   }
   syncSound();
   if (soundBtn) {

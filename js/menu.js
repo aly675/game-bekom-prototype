@@ -8,7 +8,7 @@
   var hasProgress = progress.prologue || progress[1] || progress[2] || progress[3] || progress.epilogue;
 
   if (btnPlay && hasProgress) {
-    btnPlay.innerHTML = '<span>▶</span> LANJUTKAN PETUALANGAN';
+    btnPlay.textContent = 'LANJUTKAN PETUALANGAN';
   }
 
   if (progressText) {
@@ -47,7 +47,10 @@
 
   var soundBtn = document.getElementById('btn-sound');
   function syncSound() {
-    if (soundBtn) soundBtn.textContent = PQProgress.getSound() ? '🔊' : '🔇';
+    if (!soundBtn) return;
+    var on = PQProgress.getSound();
+    soundBtn.textContent = on ? 'SFX ON' : 'SFX OFF';
+    soundBtn.classList.toggle('sound-off', !on);
   }
   syncSound();
   if (soundBtn) {

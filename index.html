@@ -15,76 +15,55 @@
   <!-- ===== APP HEADER ===== -->
   <header class="app-header">
     <a class="brand" href="index.html">
-      <span class="brand-icon">🐍</span>
-      <span class="brand-name">Python Quest</span>
+      <span class="brand-mark">PQ</span>
+      <span class="brand-name">PYTHON QUEST</span>
     </a>
     <div class="header-actions">
       <span class="subtitle-tag">Berpikir Komputasi</span>
-      <button id="btn-sound" class="icon-btn" title="Toggle Sound">🔊</button>
+      <button id="btn-sound" class="sound-btn" title="Toggle Sound">SFX ON</button>
     </div>
   </header>
 
   <!-- ===== HALAMAN AWAL ===== -->
   <section id="screen-menu" class="screen active">
+    <div class="menu-bg" aria-hidden="true"></div>
+
     <div class="menu-container">
-      <!-- Animated hero on menu -->
-      <div class="menu-hero-anim" id="menu-hero">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 80" width="80" height="106">
-          <rect x="15" y="26" width="30" height="28" rx="5" fill="#4A90D9"/>
-          <circle cx="30" cy="18" r="15" fill="#FFDAB9"/>
-          <rect x="12" y="5" width="36" height="8" rx="4" fill="#E63946"/>
-          <rect x="17" y="1" width="26" height="6" rx="3" fill="#E63946"/>
-          <circle cx="24" cy="17" r="2.5" fill="#333"/>
-          <circle cx="36" cy="17" r="2.5" fill="#333"/>
-          <path d="M24 23 Q30 27 36 23" stroke="#333" stroke-width="2" fill="none"/>
-          <rect x="15" y="44" width="12" height="18" rx="4" fill="#2C3E50"/>
-          <rect x="33" y="44" width="12" height="18" rx="4" fill="#2C3E50"/>
-          <rect x="13" y="57" width="15" height="8" rx="4" fill="#8B4513"/>
-          <rect x="32" y="57" width="15" height="8" rx="4" fill="#8B4513"/>
-          <rect x="2" y="28" width="13" height="8" rx="4" fill="#4A90D9"/>
-          <rect x="45" y="28" width="13" height="8" rx="4" fill="#4A90D9"/>
-          <text x="30" y="38" text-anchor="middle" font-size="10" fill="white" font-family="monospace" font-weight="bold">Py</text>
-        </svg>
-      </div>
+      <div class="menu-panel">
+        <p class="menu-kicker">PIXEL LOGIC ADVENTURE</p>
 
-      <h1 class="menu-title">
-        <span class="title-line1">PYTHON</span>
-        <span class="title-line2">QUEST</span>
-      </h1>
-      <p class="menu-tagline">Kalahkan Musuh dengan Kode Python!</p>
+        <h1 class="menu-title">
+          <span class="title-line1">PYTHON</span>
+          <span class="title-line2">QUEST</span>
+        </h1>
 
-      <div class="menu-buttons">
-        <button id="btn-play" class="btn btn-primary btn-large">
-          <span>▶</span> MULAI PETUALANGAN
-        </button>
-        <button id="btn-howto" class="btn btn-secondary">
-          <span>❓</span> CARA BERMAIN
-        </button>
-      </div>
+        <p class="menu-tagline">Kalahkan monster dengan kode Python.</p>
 
-      <p class="menu-progress" id="menu-progress">Memuat progress...</p>
-
-      <div class="menu-decorations">
-        <div class="deco-cloud cloud1">☁️</div>
-        <div class="deco-cloud cloud2">☁️</div>
-        <div class="deco-enemy-preview">
-          <div class="preview-enemy" style="animation-delay:0s">🐛</div>
-          <div class="preview-enemy" style="animation-delay:0.5s">🦇</div>
-          <div class="preview-enemy" style="animation-delay:1s">👹</div>
+        <div class="menu-buttons">
+          <button id="btn-play" class="btn btn-pixel btn-pixel-primary btn-large">
+            MULAI PETUALANGAN
+          </button>
+          <button id="btn-howto" class="btn btn-pixel btn-pixel-stone">
+            CARA BERMAIN
+          </button>
         </div>
+
+        <p class="menu-progress" id="menu-progress">Memuat progress...</p>
       </div>
+
+      <p class="menu-footer">Berpikir Komputasi · Semester 1</p>
     </div>
   </section>
 
   <!-- ===== MODAL: CARA BERMAIN ===== -->
   <div class="modal-overlay" id="modal-howto">
     <div class="modal-box">
-      <h2 class="modal-title">🎮 Cara Bermain</h2>
+      <h2 class="modal-title">CARA BERMAIN</h2>
       <div class="howto-content">
         <div class="howto-step">
           <span class="howto-num">1</span>
           <div>
-            <strong>Pahlawan berjalan otomatis</strong> ke kanan dan mendekati monster penjaga.
+            Pahlawan berjalan otomatis ke kanan dan mendekati monster penjaga.
           </div>
         </div>
         <div class="howto-step">
@@ -102,23 +81,23 @@
         <div class="howto-step">
           <span class="howto-num">4</span>
           <div>
-            Tekan tombol <strong>▶ JALANKAN KODE!</strong> dalam waktu <strong>1 Menit (60 Detik)</strong> untuk menyerang musuh!
+            Tekan tombol <strong>JALANKAN KODE!</strong> dalam waktu <strong>1 Menit (60 Detik)</strong> untuk menyerang musuh.
           </div>
         </div>
         <div class="howto-step">
           <span class="howto-num">5</span>
           <div>
-            <strong>Boss</strong> memiliki ❤️❤️❤️ 3 HP dengan 3 tantangan kode berturut-turut!
+            <strong>Boss</strong> memiliki 3 HP dengan 3 tantangan kode berturut-turut.
           </div>
         </div>
         <div class="howto-step">
           <span class="howto-num">6</span>
           <div>
-            Kamu memiliki <strong>3 nyawa ❤️</strong>. Susun kode yang benar dan selesaikan semua stage!
+            Kamu memiliki <strong>3 nyawa</strong>. Susun kode yang benar dan selesaikan semua stage.
           </div>
         </div>
       </div>
-      <button id="btn-close-howto" class="btn btn-primary">Siap Bermain! 🐍</button>
+      <button id="btn-close-howto" class="btn btn-pixel btn-pixel-primary">SIAP BERMAIN</button>
     </div>
   </div>
 

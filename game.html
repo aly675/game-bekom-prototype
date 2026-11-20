@@ -16,13 +16,13 @@
   <!-- ===== APP HEADER ===== -->
   <header class="app-header">
     <a class="brand" href="index.html">
-      <span class="brand-icon">🐍</span>
-      <span class="brand-name">Python Quest</span>
+      <span class="brand-mark">PQ</span>
+      <span class="brand-name">PYTHON QUEST</span>
     </a>
     <div class="header-actions">
       <span class="subtitle-tag">Mode Petualangan</span>
       <a class="header-link" href="levels.html">Pilih Level</a>
-      <button id="btn-sound" class="icon-btn" title="Toggle Sound">🔊</button>
+      <button id="btn-sound" class="sound-btn" title="Toggle Sound">SFX ON</button>
     </div>
   </header>
 
@@ -93,8 +93,8 @@
           <p class="tbc-subtitle" id="tbc-subtitle">Ali &amp; Danova — Dua Sahabat yang Kini Berseberangan</p>
           <div class="tbc-decision-badge" id="tbc-decision-badge">Pilihanmu: Lindungi Umat Manusia</div>
           <div class="tbc-actions">
-            <button id="btn-tbc-replay" class="btn btn-secondary">🔄 Tonton Ulang Epilog</button>
-            <button id="btn-tbc-menu" class="btn btn-primary">🏠 Kembali ke Pilih Level</button>
+            <button id="btn-tbc-replay" class="btn btn-pixel btn-pixel-stone">TONTON ULANG EPILOG</button>
+            <button id="btn-tbc-menu" class="btn btn-pixel btn-pixel-primary">KEMBALI KE PILIH LEVEL</button>
           </div>
         </div>
       </div>
@@ -231,12 +231,11 @@
   <!-- ===== MODAL: GAME OVER ===== -->
   <div class="modal-overlay" id="modal-gameover">
     <div class="modal-box modal-gameover">
-      <div class="modal-icon">💀</div>
-      <h2 class="modal-title">Game Over!</h2>
+      <h2 class="modal-title">GAME OVER</h2>
       <p class="modal-msg" id="gameover-msg">Kamu dikalahkan. Jangan menyerah!</p>
       <div class="modal-buttons">
-        <button id="btn-restart" class="btn btn-primary">🔄 Coba Lagi</button>
-        <button id="btn-return-menu" class="btn btn-secondary">🏠 Menu</button>
+        <button id="btn-restart" class="btn btn-pixel btn-pixel-primary">COBA LAGI</button>
+        <button id="btn-return-menu" class="btn btn-pixel btn-pixel-stone">MENU UTAMA</button>
       </div>
     </div>
   </div>
@@ -244,14 +243,13 @@
   <!-- ===== MODAL: VICTORY ===== -->
   <div class="modal-overlay" id="modal-victory">
     <div class="modal-box modal-victory">
-      <div class="modal-icon victory-spin">🏆</div>
-      <h2 class="modal-title victory-title">Level Clear!</h2>
+      <div class="victory-badge">BABAK SELESAI</div>
+      <h2 class="modal-title victory-title">LEVEL CLEAR</h2>
       <p class="modal-level-name" id="victory-level">Level 1: Python Dasar</p>
       <p class="modal-msg" id="victory-msg">Luar biasa! Kamu menguasai materi ini!</p>
-      <div class="stars-row">⭐⭐⭐</div>
       <div class="modal-buttons">
-        <button id="btn-next-level" class="btn btn-primary">Level Berikutnya →</button>
-        <button id="btn-return-menu2" class="btn btn-secondary">🏠 Menu</button>
+        <button id="btn-next-level" class="btn btn-pixel btn-pixel-primary">LANJUT KE BABAK BERIKUTNYA</button>
+        <button id="btn-return-menu2" class="btn btn-pixel btn-pixel-stone">PILIH LEVEL</button>
       </div>
     </div>
   </div>

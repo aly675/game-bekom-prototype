@@ -15,18 +15,20 @@
   <!-- ===== APP HEADER ===== -->
   <header class="app-header">
     <a class="brand" href="index.html">
-      <span class="brand-icon">🐍</span>
-      <span class="brand-name">Python Quest</span>
+      <span class="brand-mark">PQ</span>
+      <span class="brand-name">PYTHON QUEST</span>
     </a>
     <div class="header-actions">
       <span class="subtitle-tag">Pilih Level</span>
       <a class="header-link" href="index.html">← Menu</a>
-      <button id="btn-sound" class="icon-btn" title="Toggle Sound">🔊</button>
+      <button id="btn-sound" class="sound-btn" title="Toggle Sound">SFX ON</button>
     </div>
   </header>
 
   <!-- ===== HALAMAN PILIH LEVEL ===== -->
   <section id="screen-levels" class="screen active">
+    <div class="levels-bg" aria-hidden="true"></div>
+
     <div class="levels-container">
       <h2 class="levels-title">Pilih Level</h2>
       <p class="levels-subtitle">Prolog + 3 Wilayah Petualangan + Epilog Pilihan · 15 Stage Python</p>
@@ -35,7 +37,6 @@
         <!-- Kartu Prolog Sinematik (Dapat ditonton ulang kapan saja) -->
         <div class="level-card level-card-story" id="card-prologue" data-story="prologue">
           <div class="level-card-num">00</div>
-          <div class="level-card-icon">📖</div>
           <div class="level-card-name">Prolog: Tragedi Desa</div>
           <div class="level-card-desc">Awal mula penculikan Danova oleh Hibat</div>
           <div class="level-card-stages">Sinematik</div>
@@ -43,43 +44,39 @@
 
         <div class="level-card" data-level="1">
           <div class="level-card-num">01</div>
-          <div class="level-card-icon">🌲</div>
           <div class="level-card-name">Hutan Sintaks</div>
           <div class="level-card-desc">Variabel, Print, Tipe Data, Operator</div>
           <div class="level-card-stages">5 Stage</div>
-          <div class="lock-icon">🔒</div>
+          <div class="lock-icon">TERKUNCI</div>
         </div>
 
         <div class="level-card" data-level="2">
           <div class="level-card-num">02</div>
-          <div class="level-card-icon">🌋</div>
           <div class="level-card-name">Lembah Magma</div>
           <div class="level-card-desc">if, else, elif, Operator Perbandingan</div>
           <div class="level-card-stages">5 Stage</div>
-          <div class="lock-icon">🔒</div>
+          <div class="lock-icon">TERKUNCI</div>
         </div>
 
         <div class="level-card" data-level="3">
           <div class="level-card-num">03</div>
-          <div class="level-card-icon">🏰</div>
           <div class="level-card-name">Kerajaan Gelap</div>
           <div class="level-card-desc">for, while, def, return, list</div>
           <div class="level-card-stages">5 Stage</div>
-          <div class="lock-icon">🔒</div>
+          <div class="lock-icon">TERKUNCI</div>
         </div>
 
         <!-- Kartu Epilog Sinematik (Terbuka setelah tamat Level 3) -->
         <div class="level-card level-card-story locked" id="card-epilogue" data-story="epilogue">
           <div class="level-card-num">END</div>
-          <div class="level-card-icon">⚡</div>
           <div class="level-card-name">Epilog: Pilihan Terakhir</div>
           <div class="level-card-desc">Kebenaran Danova, Hibat, dan Pilihan Ali</div>
           <div class="level-card-stages">Klimaks Interaktif</div>
-          <div class="lock-icon">🔒</div>
+          <div class="lock-icon">TERKUNCI</div>
         </div>
       </div>
 
-      <a href="index.html" class="btn btn-ghost">← Kembali ke Menu</a>
+      <a href="index.html" class="btn btn-pixel btn-pixel-stone btn-pixel-inline">← Kembali ke Menu</a>
     </div>
   </section>
 

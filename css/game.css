@@ -267,6 +267,39 @@
   border-top: 2px solid #8b8b9e;
 }
 
+/* ---- LATAR JPG DESA (prolog) ---- */
+.story-world.theme-village-peaceful,
+.story-world.theme-village-attack,
+.story-world.theme-village-destroyed {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.story-world.theme-village-peaceful {
+  background-image: url("../assets/background_gameplay/village/village.jpg");
+}
+.story-world.theme-village-attack,
+.story-world.theme-village-destroyed {
+  background-image: url("../assets/background_gameplay/village/village-destroy.jpg");
+}
+.story-world.theme-village-peaceful .sky-bg,
+.story-world.theme-village-peaceful .mountain-layer,
+.story-world.theme-village-attack .sky-bg,
+.story-world.theme-village-attack .mountain-layer,
+.story-world.theme-village-destroyed .sky-bg,
+.story-world.theme-village-destroyed .mountain-layer {
+  display: none;
+}
+.story-world.theme-village-peaceful #story-ground-layer {
+  background: linear-gradient(180deg, #5b7c3d 0%, #3b5a2a 50%, #1d2a15 100%);
+  border-top: 2px solid #8fbf6a;
+}
+.story-world.theme-village-attack #story-ground-layer,
+.story-world.theme-village-destroyed #story-ground-layer {
+  background: linear-gradient(180deg, #3a2a24 0%, #1c1210 60%, #0b0706 100%);
+  border-top: 2px solid #6b4a3a;
+}
+
 /* ---- LAYERS ---- */
 .sky-bg {
   position: absolute;
@@ -1424,66 +1457,69 @@
 .story-tbc-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(18, 10, 35, 0.96) 0%, rgba(5, 2, 10, 0.99) 100%);
+  background: rgba(4, 7, 10, 0.82);
+  backdrop-filter: blur(4px);
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 24px;
-  animation: tbcFadeIn 0.8s ease-out;
+  animation: tbcFadeIn 0.4s ease-out;
 }
 @keyframes tbcFadeIn {
-  from { opacity: 0; transform: scale(1.05); }
+  from { opacity: 0; transform: scale(1.02); }
   to { opacity: 1; transform: scale(1); }
 }
 
 .tbc-content {
-  max-width: 640px;
+  max-width: 680px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
+  padding: 34px 38px;
+  background: rgba(9, 13, 18, 0.94);
+  border: 3px solid #4d5967;
+  border-radius: 2px;
+  box-shadow: 0 0 0 3px #05080b, 10px 10px 0 rgba(0, 0, 0, 0.35);
 }
 .tbc-badge {
   font-family: var(--ff-arcade);
-  font-size: 0.7rem;
-  color: #FFD700;
-  background: rgba(255, 215, 0, 0.15);
-  border: 1px solid #FFD700;
-  padding: 6px 16px;
-  border-radius: 20px;
+  font-size: 0.5rem;
+  color: #ffd84a;
+  background: #2b333c;
+  border: 2px solid #d8b324;
+  padding: 7px 14px;
+  border-radius: 0;
   letter-spacing: 2px;
 }
 .tbc-title {
   font-family: var(--ff-arcade);
-  font-size: 2.2rem;
-  color: #FFD700;
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 0 40px rgba(231, 76, 60, 0.5);
-  letter-spacing: 3px;
-  animation: glowPulse 2s infinite alternate;
-}
-@keyframes glowPulse {
-  from { text-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
-  to { text-shadow: 0 0 30px rgba(255, 215, 0, 0.9), 0 0 50px rgba(255, 80, 0, 0.7); }
+  font-size: 1.8rem;
+  color: #ffd84a;
+  text-shadow: 4px 4px 0 #7a5a00, 8px 8px 0 rgba(0, 0, 0, 0.4);
+  letter-spacing: 2px;
+  animation: none;
 }
 .tbc-subtitle {
-  font-size: 1.05rem;
-  color: #E6EDF3;
+  font-size: 1rem;
+  color: #c7d2dd;
   line-height: 1.6;
 }
 .tbc-decision-badge {
   font-family: var(--ff-arcade);
-  font-size: 0.65rem;
-  color: #A8DADC;
-  background: rgba(255, 255, 255, 0.08);
-  padding: 8px 18px;
-  border-radius: 8px;
-  border: 1px dashed rgba(255, 255, 255, 0.3);
+  font-size: 0.55rem;
+  color: #c5d0da;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 9px 16px;
+  border-radius: 0;
+  border: 2px dashed #4d5967;
 }
 .tbc-actions {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   margin-top: 10px;
   flex-wrap: wrap;
   justify-content: center;

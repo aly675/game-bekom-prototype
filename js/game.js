@@ -338,7 +338,7 @@
           speaker: 'danova',
           name: 'Danova',
           avatar: 'danova_avatar',
-          text: 'Wah, seger banget udara pagi ini! Lu masih ngutak-ngatik baris kode semalam ya, Li?'
+          text: 'Wah, seger banget udara pagi ini! Kamu masih ngutak-ngatik baris kode semalam ya, Li?'
         },
         {
           speaker: 'ali',
@@ -350,7 +350,7 @@
           speaker: 'danova',
           name: 'Danova',
           avatar: 'danova_avatar',
-          text: 'Ah, lu kebanyakan mikir kali! Selama kita bareng, gak bakal ada hal buruk yang kejadian!'
+          text: 'Ah, kamu kebanyakan mikir kali! Selama kita bareng, gak bakal ada hal buruk yang kejadian!'
         }
       ]
     },
@@ -387,7 +387,7 @@
           speaker: 'ali',
           name: 'Ali',
           avatar: 'ali_avatar',
-          text: 'Siapa lu?! Mau apa lu datang dan mengacau di desa kami?!'
+          text: 'Siapa kamu?! Mau apa kamu datang dan mengacau di desa kami?!'
         },
         {
           speaker: 'hibat',
@@ -395,7 +395,7 @@
           avatar: 'hibat_avatar',
           action: 'vanish_danova',
           sfx: 'thunder',
-          text: 'Aku Hibat, penguasa kekacauan! Gadis ini ikut denganku ke Puncak Rekursif. Coba kejar kalau kalian mampu!'
+          text: 'Aku Hibat, penguasa kekacauan! Sahabatmu ini ikut denganku ke Puncak Rekursif. Coba kejar kalau kalian mampu!'
         },
         {
           speaker: 'danova',
@@ -423,7 +423,7 @@
           name: 'Ali',
           avatar: 'ali_avatar',
           action: 'shake',
-          text: 'DANOVA...! Sialan lu, Hibat!!'
+          text: 'DANOVA...! Sialan kamu, Hibat!!'
         },
         {
           speaker: 'ali',
@@ -435,7 +435,7 @@
           speaker: 'ali',
           name: 'Ali',
           avatar: 'ali_avatar',
-          text: 'Tunggu gua, Danova. Gua bersumpah bakal bawa lu pulang dengan selamat!'
+          text: 'Tunggu gua, Danova. Gua bersumpah bakal bawa kamu pulang dengan selamat!'
         }
       ]
     }
@@ -594,7 +594,7 @@
           speaker: 'ali',
           name: 'Ali',
           avatar: 'ali_avatar',
-          text: 'Danova...?! Syukurlah lu gak apa-apa! Ayo cepat ke sini Dan, kita pulang ke desa!'
+          text: 'Danova...?! Syukurlah kamu gak apa-apa! Ayo cepat ke sini Dan, kita pulang ke desa!'
         },
         {
           speaker: 'danova',
@@ -606,7 +606,7 @@
           speaker: 'ali',
           name: 'Ali',
           avatar: 'ali_avatar',
-          text: 'Danova... apa maksud lu?! Lu... lu pasti di bawah pengaruh sihir cuci otak Hibat, kan?!',
+          text: 'Danova... apa maksud kamu?! Kamu... kamu pasti di bawah pengaruh sihir cuci otak Hibat, kan?!',
           action: 'shake'
         }
       ]
@@ -627,7 +627,7 @@
           speaker: 'danova',
           name: 'Danova',
           avatar: 'danova_avatar',
-          text: 'Lihat dunia luar dengan mata kepala lu sendiri, Ali! Hutan-hutan belantara dibakar habis tanpa ampun demi keuntungan segelintir penguasa!'
+          text: 'Lihat dunia luar dengan mata kepalamu sendiri, Ali! Hutan-hutan belantara dibakar habis tanpa ampun demi keuntungan segelintir penguasa!'
         },
         {
           speaker: 'danova',
@@ -687,7 +687,7 @@
           speaker: 'danova',
           name: 'Danova',
           avatar: 'danova_avatar',
-          text: 'Gua gak mau bermusuhan sama lu, Ali. Lu punya kecerdasan dan kekuatan logika berpikir komputasi terhebat yang pernah gua kenal.'
+          text: 'Gua gak mau bermusuhan sama kamu, Ali. Kamu punya kecerdasan dan kekuatan logika berpikir komputasi terhebat yang pernah gua kenal.'
         },
         {
           speaker: 'danova',
@@ -732,19 +732,19 @@
       speaker: 'ali',
       name: 'Ali',
       avatar: 'ali_avatar',
-      text: 'Lu benar, Danova... Gua udah muak melihat manusia membakar hutan, memindahkan hewan, dan mengeruk tambang tanpa rasa bersalah.'
+      text: 'Kamu benar, Danova... Gua udah muak melihat manusia membakar hutan, memindahkan hewan, dan mengeruk tambang tanpa rasa bersalah.'
     },
     {
       speaker: 'ali',
       name: 'Ali',
       avatar: 'ali_avatar',
-      text: 'Jika kode peradaban manusia dipenuhi bug ketamakan yang merusak bumi... dekomposisi total adalah solusinya. Gua jalan bareng lu, Dan!'
+      text: 'Jika kode peradaban manusia dipenuhi bug ketamakan yang merusak bumi... dekomposisi total adalah solusinya. Gua jalan bareng kamu, Dan!'
     },
     {
       speaker: 'danova',
       name: 'Danova',
       avatar: 'danova_avatar',
-      text: 'Terima kasih, Li... Gua tahu di balik kepala dingin lu, lu bisa melihat kebenaran ini. Bersama kita dan Hibat, tatanan baru akan ditegakkan!',
+      text: 'Terima kasih, Li... Gua tahu di balik kepala dinginmu, kamu bisa melihat kebenaran ini. Bersama kita dan Hibat, tatanan baru akan ditegakkan!',
       action: 'show_danova'
     },
     {
@@ -774,7 +774,7 @@
       speaker: 'ali',
       name: 'Ali',
       avatar: 'ali_avatar',
-      text: 'Gua paham sakit hati lu, Dan. Lu benar soal hutan dibakar, hewan terusir, tambang liar, dan sawit di mana-mana... Tapi memusnahkan semua manusia bukan jawaban!'
+      text: 'Gua paham sakit hati kamu, Dan. Kamu benar soal hutan dibakar, hewan terusir, tambang liar, dan sawit di mana-mana... Tapi memusnahkan semua manusia bukan jawaban!'
     },
     {
       speaker: 'ali',
@@ -786,14 +786,14 @@
       speaker: 'ali',
       name: 'Ali',
       avatar: 'ali_avatar',
-      text: 'Gua bersumpah bakal tetap berdiri melindungi umat manusia... walau harus berhadapan langsung dengan lu, Danova!',
+      text: 'Gua bersumpah bakal tetap berdiri melindungi umat manusia... walau harus berhadapan langsung dengan kamu, Danova!',
       action: 'shake'
     },
     {
       speaker: 'danova',
       name: 'Danova',
       avatar: 'danova_avatar',
-      text: 'Kalau itu pilihan lu, Ali... Sungguh mengecewakan. Sahabat yang paling gua percaya memilih membela parasit peradaban.',
+      text: 'Kalau itu pilihan kamu, Ali... Sungguh mengecewakan. Sahabat yang paling gua percaya memilih membela parasit peradaban.',
       action: 'show_danova'
     },
     {
@@ -1626,11 +1626,15 @@
         });
       }
       if (this.$.btnSound) {
-        this.$.btnSound.textContent = this.sound.enabled ? '🔊' : '🔇';
+        const syncSound = () => {
+          this.$.btnSound.textContent = this.sound.enabled ? 'SFX ON' : 'SFX OFF';
+          this.$.btnSound.classList.toggle('sound-off', !this.sound.enabled);
+        };
+        syncSound();
         this.$.btnSound.addEventListener('click', () => {
           const on = this.sound.toggle();
           PQProgress.setSound(on);
-          this.$.btnSound.textContent = on ? '🔊' : '🔇';
+          syncSound();
         });
       }
       if (this.$.btnRunCode) {
@@ -2528,13 +2532,13 @@
         this.unlockedLevels[this.currentLevel + 2] = true;
         this._saveProgress();
         this.$.btnNextLevel.style.display = 'inline-block';
-        this.$.btnNextLevel.innerHTML = '<span>🎬</span> Cerita & Level Berikutnya →';
+        this.$.btnNextLevel.textContent = 'LANJUT KE BABAK BERIKUTNYA';
       } else {
         this.unlockedLevels[this.currentLevel + 1] = true;
         this.unlockedLevels.epilogue = true;
         this._saveProgress();
         this.$.btnNextLevel.style.display = 'inline-block';
-        this.$.btnNextLevel.innerHTML = '<span>⚡</span> Tonton Epilog Ending →';
+        this.$.btnNextLevel.textContent = 'TONTON EPILOG ENDING';
       }
 
       this._showModal(this.$.modalVictory);
@@ -2857,52 +2861,9 @@
       const sc = this.$.storyScenery;
       sc.innerHTML = '';
       if (theme === 'village-peaceful') {
-        [120, 680].forEach(x => {
-          const house = document.createElement('div');
-          house.className = 'scenery-obj';
-          house.style.left = x + 'px';
-          house.style.bottom = '58px';
-          house.innerHTML = '<svg viewBox="0 0 110 90" width="110" height="90">' +
-            '<rect x="75" y="10" width="12" height="25" fill="#8B4513"/>' +
-            '<circle cx="81" cy="5" r="4" fill="#DDD" opacity="0.7"/>' +
-            '<polygon points="55,8 105,45 5,45" fill="#C0392B"/>' +
-            '<rect x="15" y="45" width="80" height="45" fill="#D35400"/>' +
-            '<rect x="45" y="55" width="20" height="35" rx="3" fill="#5D4037"/>' +
-            '<circle cx="60" cy="72" r="2" fill="#F1C40F"/>' +
-            '<rect x="22" y="55" width="16" height="16" rx="2" fill="#87CEEB"/>' +
-            '<line x1="30" y1="55" x2="30" y2="71" stroke="#333" stroke-width="1.5"/>' +
-            '<line x1="22" y1="63" x2="38" y2="63" stroke="#333" stroke-width="1.5"/>' +
-            '</svg>';
-          sc.appendChild(house);
-        });
-        [40, 360, 520, 950].forEach((x, i) => {
-          const tree = document.createElement('div');
-          tree.className = 'scenery-obj';
-          tree.style.left = x + 'px';
-          tree.style.bottom = '60px';
-          tree.innerHTML = '<svg viewBox="0 0 50 80" width="50" height="80">' +
-            '<rect x="20" y="45" width="10" height="35" fill="#5D4037"/>' +
-            '<circle cx="25" cy="35" r="22" fill="#2E7D32"/>' +
-            '<circle cx="18" cy="25" r="16" fill="#388E3C"/>' +
-            '<circle cx="32" cy="25" r="16" fill="#43A047"/>' +
-            '</svg>';
-          sc.appendChild(tree);
-        });
+        // Latar JPG desa sudah berisi rumah dan pepohonan.
       } else if (theme === 'village-attack' || theme === 'village-destroyed') {
-        [120, 680].forEach(x => {
-          const ruin = document.createElement('div');
-          ruin.className = 'scenery-obj';
-          ruin.style.left = x + 'px';
-          ruin.style.bottom = '58px';
-          ruin.innerHTML = '<svg viewBox="0 0 110 90" width="110" height="90">' +
-            '<polygon points="35,25 75,45 5,45" fill="#4A1515"/>' +
-            '<rect x="15" y="45" width="70" height="40" fill="#221111"/>' +
-            '<polygon points="65,45 85,85 85,45" fill="#0A0505"/>' +
-            '<path d="M40 70 Q45 40 50 55 Q55 35 60 65 Z" fill="#E65100"/>' +
-            '<path d="M45 70 Q48 50 52 60 Q55 45 58 68 Z" fill="#FFD54F"/>' +
-            '</svg>';
-          sc.appendChild(ruin);
-        });
+        // Latar JPG desa hancur sudah berisi reruntuhan; sisakan bara.
         [50, 220, 420, 600, 850, 1020].forEach((x, i) => {
           const ember = document.createElement('div');
           ember.className = 'scenery-obj';

@@ -64,11 +64,14 @@ Game ini telah disempurnakan dengan sistem **Drag & Drop Code Puzzle (Fill-in-th
 Game sekarang dipisah menjadi tiga halaman supaya refresh tidak mengulang dari awal:
 
 1. **`index.html` — Halaman Awal**
+   - Desain pixel sederhana dengan latar **desa yang di-blur** (`village.jpg`) dan panel menu bergaya block/pixel.
    - Menampilkan menu utama dan tombol **MULAI / LANJUTKAN PETUALANGAN**.
    - Kalau prolog belum ditonton, tombol membuka `game.html?mode=prologue`.
    - Kalau sudah ada progress, tombol membuka `levels.html`.
 
 2. **`levels.html` — Pilih Level**
+   - Tema pixel sama seperti halaman awal, dengan latar desa blur.
+   - Setiap kartu memakai latar map-nya sendiri (Hutan / Lembah Magma / Kerajaan Gelap) yang sedikit di-blur, dan nomor level di tengah kartu.
    - Refresh di halaman ini tetap di daftar level.
    - Level terkunci/terbuka dibaca dari progress tersimpan.
    - Memilih level membuka `game.html?level=N` (mulai dari Stage 1 level itu).
@@ -133,7 +136,8 @@ project_akhir/
 │   ├── background_gameplay/
 │   │   ├── forest/forest.jpg     # Latar gameplay Hutan Sintaks
 │   │   ├── volcano/volcano.jpg   # Latar gameplay Lembah Magma
-│   │   └── castle/castle.jpg     # Latar gameplay Kerajaan Gelap
+│   │   ├── castle/castle.jpg     # Latar gameplay Kerajaan Gelap
+│   │   └── village/              # Latar desa: village.jpg & village-destroy.jpg
 │   └── portraits/                # Potret wajah Ali, Ali Armored, Danova untuk dialog
 ├── css/
 │   ├── style.css                 # Styling global: header, menu, level select, modal
@@ -169,7 +173,7 @@ Semua sprite PNG dimuat lewat `js/data/sprite-manifest.js`, lalu dianimasikan ol
 | `enemy_castle/hammer` | Ksatria Palu (Level 3 Stage 2 & 4) | `idle`, `attack`, `death` |
 | `enemy_castle/boss` | **Raja Ksatria Bayangan** (Level 3 Stage 5, 3 HP) | `idle`, `attack`, `hurt`, `death` |
 
-- **Latar gameplay** memakai JPG dari `assets/background_gameplay/` untuk Hutan, Lembah Magma, dan Kerajaan Gelap. Latar desa masih menunggu aset berikutnya.
+- **Latar** memakai JPG dari `assets/background_gameplay/`: hutan, lembah magma, kerajaan gelap, serta desa (damai dan hancur) untuk prolog dan background menu yang di-blur.
 - **Wajah Ali di dialog** memakai potret dari `assets/portraits/` — Ali biasa saat prolog, Ali berzirah setelahnya.
 - **Goblin** saat berjalan/idle hanya memakai frame `sprite-1-1` dan `sprite-1-2` (posisi siap, belum menyerang); frame 3–4 yang berpose memukul tidak dipakai di animasi jalan.
 - **Prolog**: Ali dan Danova diam di tempat karena sedang berbicara. Hibat tetap beranimasi di prolog sampai ia menghilang.
