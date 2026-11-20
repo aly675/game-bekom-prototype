@@ -1,8 +1,8 @@
-# 🐍 PYTHON QUEST: Petualangan Berpikir Komputasi (Mario Bros Style)
+# 🐍 PYTHON QUEST: Petualangan Berpikir Komputasi 
 
 > **Tugas Akhir Mata Kuliah**: Berpikir Komputasi (Semester 1)  
 > **Teknologi**: Native HTML5, CSS3, Modern Vanilla JavaScript — *100% Murni Tanpa Framework/Library Eksternal*.  
-> **Gaya Permainan**: Side-Scrolling Platformer (Mario Bros Style) dengan Pertarungan Kode Python.
+> **Gaya Permainan**: Side-Scrolling Platformer dengan Pertarungan Kode Python.
 
 ---
 
