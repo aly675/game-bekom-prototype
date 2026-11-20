@@ -262,10 +262,38 @@
   bottom: 65px;
   left: 10%;
   z-index: 10;
-  width: 48px;
-  height: 64px;
+  width: 0;
+  height: 0;
   transform-origin: bottom center;
-  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+}
+
+/* ============================================================
+   PNG SPRITE RIG — frame animations (idle / run / attack / hit / death)
+   ============================================================ */
+.sprite-rig {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-50%);
+  transform-origin: bottom center;
+  pointer-events: none;
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.55));
+  will-change: width, height;
+}
+.sprite-rig .sprite-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+.sprite-rig.sprite-smooth .sprite-img {
+  image-rendering: auto;
+}
+.sprite-rig.sprite-flip {
+  transform: translateX(-50%) scaleX(-1);
+}
+.player .sprite-rig {
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.55)) drop-shadow(0 0 8px rgba(56,189,248,0.25));
 }
 
 /* Walking: subtle bounce */
@@ -304,12 +332,25 @@
   animation: heroHurt 0.5s ease-in-out forwards;
 }
 @keyframes heroHurt {
-  0%   { transform: translateX(0); filter: drop-shadow(0 0 0 transparent); }
-  20%  { transform: translateX(-8px); filter: drop-shadow(0 0 10px #E74C3C); }
-  40%  { transform: translateX(8px); filter: drop-shadow(0 0 10px #E74C3C); }
-  60%  { transform: translateX(-6px); filter: drop-shadow(0 0 8px #E74C3C); }
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(-8px); }
+  40%  { transform: translateX(8px); }
+  60%  { transform: translateX(-6px); }
   80%  { transform: translateX(4px); }
-  100% { transform: translateX(0); filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5)); }
+  100% { transform: translateX(0); }
+}
+.player.hero-hurt .sprite-rig {
+  filter: drop-shadow(0 0 10px #E74C3C) brightness(1.5);
+}
+
+/* Death (Armored Ali) */
+.hero-death {
+  animation: heroDeath 0.95s ease forwards;
+}
+@keyframes heroDeath {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+  30%  { transform: translateY(-8px) rotate(-5deg); opacity: 0.95; }
+  100% { transform: translateY(0) rotate(0deg); opacity: 0.85; }
 }
 
 /* ============================================================
@@ -320,55 +361,113 @@
   bottom: 65px;
   left: 85%;
   right: auto;
+  width: 0;
+  height: 0;
   z-index: 9;
 }
 
 .enemy {
+  position: relative;
   display: inline-block;
   transform-origin: bottom center;
+}
+.enemy.has-rig {
+  width: 0;
+  height: 0;
+}
+.enemy .sprite-rig {
+  filter: drop-shadow(2px 6px 8px rgba(0,0,0,0.6));
+}
+.enemy-boss .sprite-rig {
+  filter: drop-shadow(0 0 14px rgba(231,76,60,0.75)) drop-shadow(2px 6px 8px rgba(0,0,0,0.65));
+}
+.enemy-svg {
+  line-height: 0;
   filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.6));
+}
+.enemy-svg-attack {
+  animation: enemySvgAttack 0.5s ease !important;
+}
+@keyframes enemySvgAttack {
+  0%   { transform: translateX(0) rotate(0deg); }
+  30%  { transform: translateX(-26px) rotate(-6deg); }
+  60%  { transform: translateX(-26px) rotate(4deg); }
+  100% { transform: translateX(0) rotate(0deg); }
 }
 
 .enemy-walk {
   animation: enemyWalk 0.5s steps(2) infinite;
 }
 @keyframes enemyWalk {
-  0%   { transform: translateY(0) scaleX(-1); }
-  50%  { transform: translateY(-4px) scaleX(-1); }
-  100% { transform: translateY(0) scaleX(-1); }
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
 }
 
 .enemy-boss {
-  transform: scale(1.4);
   transform-origin: bottom center;
   animation: bossWalk 0.6s steps(2) infinite;
-  filter: drop-shadow(0 0 12px rgba(231,76,60,0.7)) drop-shadow(2px 4px 6px rgba(0,0,0,0.6));
 }
 @keyframes bossWalk {
-  0%   { transform: scale(1.4) scaleX(-1) translateY(0); }
-  50%  { transform: scale(1.4) scaleX(-1) translateY(-6px); }
-  100% { transform: scale(1.4) scaleX(-1) translateY(0); }
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* Enemy lunges toward the player before its attack frames land */
+.enemy-container.enemy-attacking {
+  animation: enemyLunge 0.72s ease-in-out;
+}
+@keyframes enemyLunge {
+  0%   { transform: translateX(0); }
+  22%  { transform: translateX(-38px); }
+  55%  { transform: translateX(-38px); }
+  100% { transform: translateX(0); }
 }
 
 .enemy-hit {
   animation: enemyHitAnim 0.4s ease forwards !important;
 }
 @keyframes enemyHitAnim {
-  0%   { filter: drop-shadow(0 0 0 transparent); transform: scaleX(-1) scale(1); }
-  30%  { filter: drop-shadow(0 0 16px #FFD700) brightness(2); transform: scaleX(-1) scale(1.2); }
-  70%  { filter: drop-shadow(0 0 10px #FF4444) brightness(1.5); transform: scaleX(-1) scale(0.95); }
-  100% { filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.6)); transform: scaleX(-1) scale(1); }
+  0%   { filter: drop-shadow(0 0 0 transparent); transform: scale(1); }
+  30%  { filter: drop-shadow(0 0 16px #FFD700) brightness(2); transform: scale(1.12); }
+  70%  { filter: drop-shadow(0 0 10px #FF4444) brightness(1.5); transform: scale(0.97); }
+  100% { filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.6)); transform: scale(1); }
+}
+.enemy.has-rig.enemy-hit {
+  animation: none !important;
+}
+.enemy.has-rig.enemy-hit .sprite-img {
+  animation: enemyHitRig 0.4s ease forwards !important;
+  transform-origin: bottom center;
+}
+@keyframes enemyHitRig {
+  0%   { transform: scale(1); filter: none; }
+  30%  { transform: scale(1.12); filter: drop-shadow(0 0 14px #FFD700) brightness(2); }
+  70%  { transform: scale(0.97); filter: drop-shadow(0 0 10px #FF4444) brightness(1.5); }
+  100% { transform: scale(1); filter: none; }
 }
 
 .enemy-dying {
   animation: enemyDie 0.7s ease forwards !important;
 }
 @keyframes enemyDie {
-  0%   { transform: scaleX(-1) scale(1) translateY(0); opacity: 1; }
-  30%  { transform: scaleX(-1) scale(1.3) translateY(-10px) rotate(10deg); opacity: 0.9;
+  0%   { transform: scale(1) translateY(0); opacity: 1; }
+  30%  { transform: scale(1.2) translateY(-10px) rotate(10deg); opacity: 0.9;
          filter: drop-shadow(0 0 20px #FFD700) brightness(2); }
-  60%  { transform: scaleX(-1) scale(0.6) translateY(5px) rotate(-15deg); opacity: 0.5; }
-  100% { transform: scaleX(-1) scale(0) translateY(10px) rotate(30deg); opacity: 0; }
+  60%  { transform: scale(0.6) translateY(5px) rotate(-15deg); opacity: 0.5; }
+  100% { transform: scale(0) translateY(10px) rotate(30deg); opacity: 0; }
+}
+
+/* Fallback death for enemies that only ship idle/attack frames (Goblin) */
+.sprite-rig.sprite-fall {
+  animation: spriteFall 0.85s ease-in forwards;
+}
+@keyframes spriteFall {
+  0%   { transform: translateX(-50%) rotate(0deg) translateY(0); opacity: 1; filter: none; }
+  35%  { transform: translateX(-50%) rotate(30deg) translateY(-4px); opacity: 0.95; filter: brightness(2); }
+  70%  { transform: translateX(-50%) rotate(58deg) translateY(4px); opacity: 0.7; }
+  100% { transform: translateX(-50%) rotate(84deg) translateY(12px); opacity: 0; }
 }
 
 /* ============================================================
@@ -902,13 +1001,27 @@
   position: absolute;
   bottom: 60px;
   z-index: 10;
+  width: 0;
+  height: 0;
   transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+}
+.story-actor .sprite-rig {
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.55));
 }
 .actor-left {
   left: 18%;
 }
 .actor-right {
   right: 18%;
+}
+/* Danova berdiri di samping kiri Hibat pada ending */
+.actor-right2 {
+  right: 34%;
+}
+@media (max-width: 1000px) {
+  .actor-right2 {
+    right: 37%;
+  }
 }
 
 .actor-spawn {
@@ -977,6 +1090,13 @@
 .dialogue-avatar svg {
   width: 60px;
   height: 60px;
+}
+.dialogue-avatar .portrait-img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  image-rendering: pixelated;
+  border-radius: 6px;
 }
 
 .dialogue-content {
@@ -1113,6 +1233,13 @@
 .stage-intro-avatar svg {
   width: 48px;
   height: 48px;
+}
+.stage-intro-avatar .portrait-img {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  image-rendering: pixelated;
+  border-radius: 6px;
 }
 
 .stage-intro-body {

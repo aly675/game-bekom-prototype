@@ -32,22 +32,23 @@ Game ini telah disempurnakan dengan sistem **Drag & Drop Code Puzzle (Fill-in-th
 
 ### 🌲 Level 1: Python Dasar (Tema Hutan / Forest)
 - **Background**: Langit biru cerah, pegunungan hijau, pepohonan rindang.
-- **Stage 1**: Bug Goomba — *Variabel & String `nama = "Budi"`*
-- **Stage 2**: Error Slug — *Fungsi Output `print()`*
-- **Stage 3**: Type Ghost — *Pemeriksaan Tipe Data `type(42)`*
-- **Stage 4**: Syntax Bat — *Operator Perkalian `10 * 3`*
-- **Stage 5 (BOSS)**: Def Specter (3 HP) — *Kondisi Percabangan If & Else KKM*
+- **Stage 1**: Orc Perusak — *Variabel & String `nama = "Budi"`*
+- **Stage 2**: Goblin Sintaks — *Fungsi Output `print()`*
+- **Stage 3**: Orc Pengintai — *Pemeriksaan Tipe Data `type(42)`*
+- **Stage 4**: Goblin Bayangan — *Operator Perkalian `10 * 3`*
+- **Stage 5 (BOSS)**: Raja Iblis Hutan (3 HP) — *Kondisi Percabangan If & Else KKM*
+- **Pola Musuh**: Orc dan Goblin tampil bergantian di Stage 1–4, lalu boss hutan menjadi musuh terakhir.
 
-### 🕌 Level 2: Kondisi & Percabangan (Tema Gua / Cave)
-- **Background**: Langit gua gelap berbintang, stalaktit batu, kristal ungu bercahaya.
+### 🌋 Level 2: Kondisi & Percabangan (Tema Lembah Magma)
+- **Background**: Langit magma membara, aliran lahar, dan batu pijar.
 - **Stage 1**: Condition Bat — *Percabangan If-Else Kelulusan Nilai Siswa (`if`, `nilai >= 70`, `print`, `else`)*
 - **Stage 2**: Elif Goblin — *Operator Pembanding Numerik Positif (`if angka > 0: ... else:`)*
 - **Stage 3**: Input Imp — *Percabangan Bertingkat Elif Grade Nilai (`elif skor >= 70:`)*
 - **Stage 4**: Elif Troll — *Operator Logika Gabungan AND (`if tiket and password_benar:`)*
 - **Stage 5 (BOSS)**: Logic Demon (3 HP) — *Diskon Belanja, Logika OR Kelemahan Sihir, & Percabangan Mana Jurus Pamungkas*
 
-### 🌋 Level 3: Perulangan & Fungsi (Tema Gunung Berapi / Volcano)
-- **Background**: Langit merah membara, gunung berapi aktif, batu magma pijar.
+### 🏰 Level 3: Perulangan & Fungsi (Tema Kerajaan Gelap)
+- **Background**: Benteng hitam, petir ungu, dan pilar sihir.
 - **Stage 1**: Loop Spider — *Perulangan `for i in range(5):`*
 - **Stage 2**: While Ghost — *Perulangan Bersyarat `while hitung > 0:`*
 - **Stage 3**: Function Wraith — *Penggabungan Parameter String Fungsi `sapa(nama)`*
@@ -78,12 +79,50 @@ Lalu buka `http://localhost:3000`.
 
 ```
 project_akhir/
-├── index.html            # Halaman utama game (HUD, Game-World side-scrolling, Battle Panel, Modals)
-├── README.md             # Dokumentasi proyek & penjelasan akademik
-├── package.json          # Metadata proyek
+├── index.html                    # Halaman utama game (HUD, Game-World side-scrolling, Battle Panel, Modals)
+├── README.md                     # Dokumentasi proyek & penjelasan akademik
+├── package.json                  # Metadata proyek
+├── assets/
+│   ├── karakter_utama/
+│   │   ├── ali/                  # Ali biasa: idle (baris 1), walk (2), attack (3)
+│   │   ├── ali_armored/          # Ali berzirah: idle, run, attack, hit, death
+│   │   ├── danova/               # Danova: idle & walk (tampak depan + belakang)
+│   │   └── hibat/                # Hibat: idle melayang 8 frame
+│   ├── enemy_karakter/enemy_forest/
+│   │   ├── sprites/              # Orc: idle, attack, hurt, death
+│   │   ├── goblin/               # Goblin: idle, attack
+│   │   └── boss/                 # Raja Iblis Hutan: idle, attack, hurt, death
+│   └── portraits/                # Potret wajah Ali, Ali Armored, Danova untuk dialog
 ├── css/
-│   ├── style.css         # Styling global: UI menu, level select cards, typography arcade, modal
-│   └── game.css          # Styling dunia game side-scrolling: langit, gunung, platform tanah, pohon, animasi hero & enemy
+│   ├── style.css                 # Styling global: UI menu, level select cards, typography arcade, modal
+│   └── game.css                  # Dunia game, HUD, sprite rig, animasi attack/hit/death, dialog
 └── js/
-    └── game.js           # Engine game lengkap Mario-style (State Machine, Audio Synth, Soal Python, 3 Fase Boss, Parallax Scenery)
+    ├── data/
+    │   └── sprite-manifest.js    # Daftar frame + ukuran + fps + skala tiap karakter
+    └── game.js                   # Engine game (State Machine, Audio Synth, Sprite Rig, Soal Python, Boss 3 Fase)
 ```
+
+---
+
+## 🎞️ Integrasi Aset & Animasi
+
+Semua sprite PNG dimuat lewat `js/data/sprite-manifest.js`, lalu dianimasikan oleh `SpriteRig` di `js/game.js` (frame swapping + ukuran per frame, jadi karakter tidak berubah ukuran saat animasi berganti).
+
+| Folder aset | Dipakai untuk | Animasi |
+|---|---|---|
+| `assets/karakter_utama/ali` | Ali biasa di **Prolog** (adegan desa) | `idle`, `walk`, `attack` |
+| `assets/karakter_utama/ali_armored` | Ali berzirah dari **Level 1 sampai Epilog** (gameplay & cutscene) | `idle`, `run`, `attack`, `hit`, `death` |
+| `assets/karakter_utama/danova` | Danova di Prolog & Epilog | `idle`, `idle_back`, `walk`, `walk_back` |
+| `assets/karakter_utama/hibat` | Hibat sebagai antagonis di cutscene | `idle` (loop, prolog) + `relaxed` (pose diam `sprite-1-8` di ending) |
+| `enemy_forest/sprites` | Orc hutan (Stage 1 & 3) | `idle`, `attack`, `hurt`, `death` |
+| `enemy_forest/goblin` | Goblin hutan (Stage 2 & 4) | `idle`, `attack` + jatuh (fallback) |
+| `enemy_forest/boss` | **Boss terakhir Hutan Sintaks** (Stage 5, 3 HP) | `idle`, `attack`, `hurt`, `death` |
+
+- **Wajah Ali di dialog** memakai potret dari `assets/portraits/` — Ali biasa saat prolog, Ali berzirah setelahnya.
+- **Goblin** saat berjalan/idle hanya memakai frame `sprite-1-1` dan `sprite-1-2` (posisi siap, belum menyerang); frame 3–4 yang berpose memukul tidak dipakai di animasi jalan.
+- **Prolog**: Ali dan Danova diam di tempat karena sedang berbicara. Hibat tetap beranimasi di prolog sampai ia menghilang.
+- **Ending**: Danova tampil di samping Hibat (slot aktor ketiga) dan Hibat tetap ada; Hibat diam memakai pose santai `sprite-1-8.png`.
+- **Musuh menyerang** memutar frame `attack` sambil maju (lunge) saat jawaban salah / waktu habis.
+- **Musuh mati** memutar frame `death` (Goblin memakai animasi jatuh karena foldernya belum punya frame death).
+- **Ali mati** memutar frame `death` sebelum modal Game Over muncul.
+- Menambah aset baru cukup taruh frame di folder yang sesuai lalu tambahkan entrinya di `sprite-manifest.js`.

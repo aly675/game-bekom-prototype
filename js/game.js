@@ -13,9 +13,9 @@
         stages: [
           {
             stageNum: 1,
-            enemy: { name: 'Bug Goomba', type: 'goomba', hp: 1, isBoss: false },
+            enemy: { name: 'Orc Perusak', type: 'orc', hp: 1, isBoss: false },
             question: {
-              scenario: 'Bug Goomba menghalangi jalan! Inisialisasi variabel nama dan cetak pesan sapaan ke layar!',
+              scenario: 'Orc Perusak menghalangi jalan! Inisialisasi variabel nama dan cetak pesan sapaan ke layar!',
               code: 'nama = {0}\n{1}("Halo, " + nama)',
               blanks: [
                 { id: 0, answer: '"Budi"' },
@@ -27,9 +27,9 @@
           },
           {
             stageNum: 2,
-            enemy: { name: 'Error Slug', type: 'goomba', hp: 1, isBoss: false },
+            enemy: { name: 'Goblin Sintaks', type: 'goblin', hp: 1, isBoss: false },
             question: {
-              scenario: 'Error Slug menyerang! Hitung total biaya 3 ramuan menggunakan operasi perkalian!',
+              scenario: 'Goblin Sintaks menyerang! Hitung total biaya 3 ramuan menggunakan operasi perkalian!',
               code: 'harga = 20\njumlah = 3\ntotal = harga {0} {1}\nprint("Total:", total)',
               blanks: [
                 { id: 0, answer: '*' },
@@ -41,9 +41,9 @@
           },
           {
             stageNum: 3,
-            enemy: { name: 'Type Ghost', type: 'goomba', hp: 1, isBoss: false },
+            enemy: { name: 'Orc Pengintai', type: 'orc', hp: 1, isBoss: false },
             question: {
-              scenario: 'Type Ghost muncul! Ambil masukan usia dan ubah teks string menjadi tipe integer!',
+              scenario: 'Orc Pengintai muncul! Ambil masukan usia dan ubah teks string menjadi tipe integer!',
               code: 'teks = input("Usia: ")\nusia = {0}({1})\nprint("Tipe:", type(usia))',
               blanks: [
                 { id: 0, answer: 'int' },
@@ -55,9 +55,9 @@
           },
           {
             stageNum: 4,
-            enemy: { name: 'Syntax Bat', type: 'bat', hp: 1, isBoss: false },
+            enemy: { name: 'Goblin Bayangan', type: 'goblin', hp: 1, isBoss: false },
             question: {
-              scenario: 'Syntax Bat menghadang! Tentukan apakah skor pemain mencukupi batas KKM (minimal 75)!',
+              scenario: 'Goblin Bayangan menghadang! Tentukan apakah skor pemain mencukupi batas KKM (minimal 75)!',
               code: 'skor = 85\nkkm = 75\nlulus = {0} {1} {2}\nprint("Lulus:", lulus)',
               blanks: [
                 { id: 0, answer: 'skor' },
@@ -70,10 +70,10 @@
           },
           {
             stageNum: 5,
-            enemy: { name: 'BOSS: Def Specter', type: 'boss_specter', hp: 3, isBoss: true },
+            enemy: { name: 'BOSS: Raja Iblis Hutan', type: 'orc_boss', hp: 3, isBoss: true },
             bossQuestions: [
               {
-                scenario: '🔥 [BOSS FASE 1/3] Def Specter muncul! Siapkan status kesiapan bertarung pahlawan!',
+                scenario: '🔥 [BOSS FASE 1/3] Raja Iblis Hutan muncul! Siapkan status kesiapan bertarung pahlawan!',
                 code: 'hero_hp = 100\nstatus = {0}\n{1}("Hero siap bertarung!")',
                 blanks: [
                   { id: 0, answer: '"Siap"' },
@@ -83,7 +83,7 @@
                 explanation: 'Variabel status diisi string "Siap" dan fungsi print() menampilkan status ke layar.'
               },
               {
-                scenario: '⚡ [BOSS FASE 2/3] Def Specter menyerang! Hitung kekuatan pukulan kombo pahlawan!',
+                scenario: '⚡ [BOSS FASE 2/3] Raja Iblis Hutan mengamuk! Hitung kekuatan pukulan kombo pahlawan!',
                 code: 'pukulan = 30\ncombo = 2\ntotal_damage = {0} {1} {2}',
                 blanks: [
                   { id: 0, answer: 'pukulan' },
@@ -130,7 +130,7 @@
           },
           {
             stageNum: 2,
-            enemy: { name: 'Elif Goblin', type: 'goblin', hp: 1, isBoss: false },
+            enemy: { name: 'Elif Goblin', type: 'svg_goblin', hp: 1, isBoss: false },
             question: {
               scenario: 'Elif Goblin muncul! Periksa apakah nilai bilangan merupakan angka positif!',
               code: 'angka = 15\n{0} angka {1} 0:\n    print("Positif")\n{2}:\n    print("Bukan Positif")',
@@ -145,7 +145,7 @@
           },
           {
             stageNum: 3,
-            enemy: { name: 'Input Imp', type: 'goblin', hp: 1, isBoss: false },
+            enemy: { name: 'Input Imp', type: 'svg_goblin', hp: 1, isBoss: false },
             question: {
               scenario: 'Input Imp menghalangi! Lengkapi percabangan bertingkat elif untuk menentukan Grade B!',
               code: 'skor = 78\nif skor >= 85:\n    grade = "A"\n{0} skor {1} 70:\n    grade = "B"\n{2}:\n    grade = "C"',
@@ -160,7 +160,7 @@
           },
           {
             stageNum: 4,
-            enemy: { name: 'Elif Troll', type: 'goblin', hp: 1, isBoss: false },
+            enemy: { name: 'Elif Troll', type: 'svg_goblin', hp: 1, isBoss: false },
             question: {
               scenario: 'Elif Troll menjaga gerbang! Akses hanya dibuka jika punya tiket DAN punya password!',
               code: 'tiket = True\npassword_benar = True\nif tiket {0} {1}:\n    {2}("Pintu Terbuka!")\nelse:\n    print("Akses Ditolak!")',
@@ -454,7 +454,7 @@
             speaker: 'narrator',
             name: 'Narator',
             avatar: 'narrator_avatar',
-            text: 'Ali berhasil menembus lebatnya Hutan Sintaks dan menaklukkan Def Specter dengan penguasaan dasar Python.'
+            text: 'Ali berhasil menembus lebatnya Hutan Sintaks dan menaklukkan Raja Iblis Hutan dengan penguasaan dasar Python.'
           },
           {
             speaker: 'ali',
@@ -615,7 +615,7 @@
       id: 'epilogue_part_2',
       title: 'Epilog 2/3: Kebusukan Manusia & Pilihan Danova',
       backgroundTheme: 'dark-castle',
-      actors: { left: 'hero', right: 'danova' },
+      actors: { left: 'hero', right: null, right2: 'danova' },
       lines: [
         {
           speaker: 'danova',
@@ -681,7 +681,7 @@
       id: 'epilogue_part_3',
       title: 'Epilog 3/3: Persimpangan Takdir & Pilihan Ali',
       backgroundTheme: 'dark-castle',
-      actors: { left: 'hero', right: 'danova' },
+      actors: { left: 'hero', right: 'hibat', right2: 'danova' },
       lines: [
         {
           speaker: 'danova',
@@ -819,11 +819,11 @@
   ];
 
   const STAGE_INTROS = {
-    '1-1': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Hutan Sintaks di depan penuh dengan bug dasar. Gua harus ingat konsep variabel dan print untuk membuka jalan!' },
-    '1-2': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Ada Error Slug menghadang jalan setapak. Operasi perkalian aritmatika bakal menghabisi lendirnya!' },
-    '1-3': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Hawa mistis semakin tebal... Type Ghost menjaga gerbang hutan. Konversi tipe data integer adalah kuncinya!' },
-    '1-4': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Kelelawar sintaks beterbangan di atas pohon. Operator perbandingan >= harus tepat sasaran!' },
-    '1-5': { speaker: 'Ali', avatar: 'ali_avatar', text: 'AURANYA MENGERIKAN! Def Specter menjaga gerbang keluar hutan! Gua harus selesaikan 3 fase logika untuk lolos!' },
+    '1-1': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Hutan Sintaks di depan penuh dengan orc dan goblin. Gua harus ingat konsep variabel dan print untuk membuka jalan!' },
+    '1-2': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Ada Goblin Sintaks menghadang jalan setapak. Operasi perkalian aritmatika bakal menghabisi pentungnya!' },
+    '1-3': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Hawa mistis semakin tebal... Orc Pengintai menjaga gerbang hutan. Konversi tipe data integer adalah kuncinya!' },
+    '1-4': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Goblin Bayangan melompat dari balik pepohonan. Operator perbandingan >= harus tepat sasaran!' },
+    '1-5': { speaker: 'Ali', avatar: 'ali_avatar', text: 'AURANYA MENGERIKAN! Raja Iblis Hutan menjaga gerbang keluar hutan! Gua harus selesaikan 3 fase logika untuk lolos!' },
     '2-1': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Lembah Magma... Hawanya membara dan jalurnya bercabang di atas lahar panas. Gua harus teliti menyusun logika percabangan if-else!' },
     '2-2': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Elif Goblin melompat dari celah batu magma! Periksa nilai positif menggunakan operator lebih besar dari (>).' },
     '2-3': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Input Imp mencoba mencuri perbekalanku di tepi kawah lahar! Gunakan prompt input bertingkat elif untuk mengusirnya!' },
@@ -1075,6 +1075,187 @@
   };
 
   // ============================================================
+  //  PNG SPRITE ENGINE — frame animations from js/data/sprite-manifest.js
+  // ============================================================
+  const SPRITE_LIB = window.SPRITE_ASSETS || {};
+  const SPRITE_PORTRAITS = window.SPRITE_PORTRAITS || {};
+  const SPRITE_STORY_SCALES = {
+    ali: 2.8,
+    ali_armored: 4.0,
+    danova: 5.2,
+    hibat: 2.0
+  };
+
+  const _preloadedSpriteFrames = new Set();
+
+  function _preloadSpriteFrames(def) {
+    if (!def || def._preloaded) return;
+    def._preloaded = true;
+    Object.keys(def.anims).forEach(animName => {
+      def.anims[animName].frames.forEach(frameData => {
+        const src = def.dir + frameData[0];
+        if (_preloadedSpriteFrames.has(src)) return;
+        _preloadedSpriteFrames.add(src);
+        const preload = new Image();
+        preload.decoding = 'async';
+        preload.src = src;
+      });
+    });
+  }
+
+  function _portraitMarkup(key) {
+    const src = SPRITE_PORTRAITS[key];
+    if (src) {
+      return '<img class="portrait-img" src="' + src + '" alt="" draggable="false">';
+    }
+    return SVG_SPRITES[key] || SVG_SPRITES.hero;
+  }
+
+  class SpriteRig {
+    constructor(host, key, options) {
+      options = options || {};
+      const def = SPRITE_LIB[key];
+      if (!def) throw new Error('Sprite asset tidak ditemukan: ' + key);
+      this.host = host;
+      this.key = key;
+      this.def = def;
+      this.scale = options.scale || def.scale || 1;
+      this.smooth = options.smooth !== undefined ? options.smooth : !!def.smooth;
+      this.animName = null;
+      this.frames = [];
+      this.frameIndex = 0;
+      this.loop = true;
+      this.fps = 8;
+      this.timer = null;
+      this.onEnd = null;
+      this.destroyed = false;
+
+      this.root = document.createElement('div');
+      this.root.className = 'sprite-rig';
+      if (this.smooth) this.root.classList.add('sprite-smooth');
+      if (options.className) this.root.classList.add(options.className);
+
+      this.img = document.createElement('img');
+      this.img.className = 'sprite-img';
+      this.img.alt = '';
+      this.img.draggable = false;
+      this.img.decoding = 'async';
+      this.root.appendChild(this.img);
+
+      if (options.flip) this.root.classList.add('sprite-flip');
+      host.appendChild(this.root);
+
+      _preloadSpriteFrames(def);
+      this.play(options.animation || 'idle', { restart: true, loop: !options.static });
+      if (options.static) this.stop();
+    }
+
+    hasAnimation(name) {
+      return !!(this.def.anims && this.def.anims[name]);
+    }
+
+    stop() {
+      this._clearTimer();
+      this.onEnd = null;
+      return this;
+    }
+
+    getAnimationDuration(name) {
+      const anim = this.def.anims && this.def.anims[name];
+      if (!anim || !anim.frames.length) return 0;
+      return (anim.frames.length / (anim.fps || 8)) * 1000;
+    }
+
+    play(name, options) {
+      options = options || {};
+      if (this.destroyed) return this;
+      if (!this.hasAnimation(name)) name = 'idle';
+      if (this.animName === name && !options.restart) {
+        if (options.onEnd) this.onEnd = options.onEnd;
+        return this;
+      }
+
+      const anim = this.def.anims[name];
+      this._clearTimer();
+      this.animName = name;
+      this.frames = anim.frames;
+      this.frameIndex = 0;
+      this.loop = options.loop !== undefined ? options.loop : (anim.loop !== false);
+      this.fps = options.fps || anim.fps || 8;
+      this.onEnd = options.onEnd || null;
+      this.root.setAttribute('data-anim', name);
+      this._renderFrame();
+      this._startTimer();
+      return this;
+    }
+
+    _renderFrame() {
+      const frameData = this.frames[this.frameIndex];
+      if (!frameData) return;
+      const src = this.def.dir + frameData[0];
+      if (this.img.getAttribute('src') !== src) this.img.src = src;
+      const w = Math.max(1, Math.round(frameData[1] * this.scale));
+      const h = Math.max(1, Math.round(frameData[2] * this.scale));
+      this.root.style.width = w + 'px';
+      this.root.style.height = h + 'px';
+    }
+
+    _startTimer() {
+      const delay = Math.max(30, Math.round(1000 / this.fps));
+      this.timer = setInterval(() => this._tick(), delay);
+    }
+
+    _clearTimer() {
+      if (this.timer) {
+        clearInterval(this.timer);
+        this.timer = null;
+      }
+    }
+
+    _tick() {
+      if (this.destroyed) {
+        this._clearTimer();
+        return;
+      }
+      if (this.frameIndex < this.frames.length - 1) {
+        this.frameIndex++;
+        this._renderFrame();
+      } else if (this.loop) {
+        this.frameIndex = 0;
+        this._renderFrame();
+      } else {
+        this._clearTimer();
+        const cb = this.onEnd;
+        this.onEnd = null;
+        if (cb) cb();
+      }
+    }
+
+    setFlip(flip) {
+      if (this.root) this.root.classList.toggle('sprite-flip', !!flip);
+    }
+
+    addClass(className) {
+      if (this.root) this.root.classList.add(className);
+    }
+
+    removeClass(className) {
+      if (this.root) this.root.classList.remove(className);
+    }
+
+    destroy() {
+      this._clearTimer();
+      this.destroyed = true;
+      if (this.root && this.root.parentNode) this.root.parentNode.removeChild(this.root);
+    }
+
+    static create(host, key, options) {
+      if (!host || !SPRITE_LIB[key]) return null;
+      return new SpriteRig(host, key, options);
+    }
+  }
+
+  // ============================================================
   //  SOUND FX (Web Audio API — works offline)
   // ============================================================
   class SoundFX {
@@ -1223,6 +1404,11 @@
       this._walkInterval = null;
       this._sceneryPos = 0;
 
+      // PNG sprite animators (gameplay + story)
+      this.playerAnim = null;
+      this.enemyAnim = null;
+      this.storyAnims = { left: null, right: null };
+
       // Story & Dialogue state
       this.currentStory = 'prologue';
       this.currentStoryScenes = PROLOGUE_DATA;
@@ -1294,6 +1480,7 @@
         storyScenery:      document.getElementById('story-scenery'),
         storyActorLeft:    document.getElementById('story-actor-left'),
         storyActorRight:   document.getElementById('story-actor-right'),
+        storyActorRight2:  document.getElementById('story-actor-right2'),
         storyFxLayer:      document.getElementById('story-fx-layer'),
         dialoguePanel:     document.getElementById('story-dialogue-panel'),
         dialogueAvatar:    document.getElementById('dialogue-avatar'),
@@ -1478,6 +1665,7 @@
     }
 
     _gotoLevelSelect() {
+      this._stopAll();
       this._showScreen(this.$.screenLevels);
       this.state = GameState.LEVEL_SELECT;
       this.$.levelCards.forEach(card => {
@@ -1545,10 +1733,9 @@
       // Scenery
       this._buildScenery();
 
-      // Player
+      // Player (Armored Ali dari Level 1 sampai ending)
       this._playerX = 8;
-      this.$.playerEl.innerHTML = SVG_SPRITES.hero;
-      this.$.playerEl.className = 'player hero-idle';
+      this._createPlayer();
       this.$.playerEl.style.transition = 'none';
       this.$.playerEl.style.left = this._playerX + '%';
       this.$.playerEl.style.bottom = '65px';
@@ -1568,16 +1755,52 @@
       });
     }
 
+    _createPlayer() {
+      this.$.playerEl.innerHTML = '';
+      this.$.playerEl.className = 'player hero-idle';
+      this.playerAnim = SpriteRig.create(this.$.playerEl, 'ali_armored', {
+        scale: 2.4,
+        smooth: false,
+        className: 'player-rig'
+      });
+      if (!this.playerAnim) this.$.playerEl.innerHTML = SVG_SPRITES.hero;
+    }
+
     _spawnEnemy(stageData) {
-      const type = stageData.enemy.type;
+      const rawType = stageData.enemy.type;
       const isBoss = stageData.enemy.isBoss;
+      const isSvgFallback = rawType.indexOf('svg_') === 0;
+      const assetType = isSvgFallback ? rawType.slice(4) : rawType;
+      const asset = isSvgFallback ? null : SPRITE_LIB[assetType];
+
+      if (this.enemyAnim) {
+        this.enemyAnim.destroy();
+        this.enemyAnim = null;
+      }
       this.$.enemyContainer.innerHTML = '';
+      this.$.enemyContainer.classList.remove('enemy-attacking');
+
       const enemyEl = document.createElement('div');
       enemyEl.className = 'enemy enemy-walk' + (isBoss ? ' enemy-boss' : '');
       enemyEl.id = 'current-enemy';
-      const svgKey = SVG_SPRITES[type] ? type : (isBoss ? (this.currentLevel === 2 ? 'dragon' : (this.currentLevel === 1 ? 'boss_logic' : 'boss_specter')) : 'goomba');
-      enemyEl.innerHTML = SVG_SPRITES[svgKey];
-      this.$.enemyContainer.appendChild(enemyEl);
+
+      if (asset) {
+        enemyEl.classList.add('has-rig');
+        this.$.enemyContainer.appendChild(enemyEl);
+        this.enemyAnim = SpriteRig.create(enemyEl, assetType, {
+          scale: asset.scale || 1,
+          smooth: true,
+          className: 'enemy-rig',
+          flip: false
+        });
+      } else {
+        const svgKey = SVG_SPRITES[assetType]
+          ? assetType
+          : (isBoss ? (this.currentLevel === 2 ? 'dragon' : (this.currentLevel === 1 ? 'boss_logic' : 'boss_specter')) : 'goomba');
+        enemyEl.classList.add('enemy-svg');
+        enemyEl.innerHTML = SVG_SPRITES[svgKey];
+        this.$.enemyContainer.appendChild(enemyEl);
+      }
     }
 
     // ----------------------------------------------------------
@@ -1587,6 +1810,8 @@
       if (this.state !== GameState.WALKING) return;
       this._walkStartTime = Date.now();
       this.$.playerEl.className = 'player hero-walk';
+      if (this.playerAnim) this.playerAnim.play('run');
+      if (this.enemyAnim) this.enemyAnim.play('idle');
       this._walkInterval = setInterval(() => this._walkTick(), 40);
     }
 
@@ -1615,6 +1840,8 @@
     _stopWalking() {
       if (this._walkInterval) { clearInterval(this._walkInterval); this._walkInterval = null; }
       this.$.playerEl.className = 'player hero-idle';
+      if (this.playerAnim) this.playerAnim.play('idle');
+      if (this.enemyAnim) this.enemyAnim.play('idle');
     }
 
     _getCurrentQuestion() {
@@ -1970,12 +2197,12 @@
         this.$.explanationEl.style.display = 'block';
         this.$.explanationEl.textContent = '💡 ' + q.explanation;
 
-        this._playerHurt(() => {
+        this._enemyAttack(() => this._playerHurt(() => {
           this.playerHP--;
           this._updateHUD();
 
           if (this.playerHP <= 0) {
-            setTimeout(() => this._gameOver(), 900);
+            this._playerDie(() => this._gameOver());
           } else {
             if (this.$.btnRunCode) this.$.btnRunCode.disabled = false;
             if (this.$.btnResetCode) this.$.btnResetCode.disabled = false;
@@ -1987,7 +2214,7 @@
             );
             this.timer.start();
           }
-        });
+        }));
       }
     }
 
@@ -2005,16 +2232,16 @@
       this.$.explanationEl.style.display = 'block';
       this.$.explanationEl.textContent = '💡 ' + q.explanation;
 
-      this._playerHurt(() => {
+      this._enemyAttack(() => this._playerHurt(() => {
         this.playerHP--;
         this._updateHUD();
 
         if (this.playerHP <= 0) {
-          setTimeout(() => this._gameOver(), 900);
+          this._playerDie(() => this._gameOver());
         } else {
           setTimeout(() => this._beginBattle(), 1500);
         }
-      });
+      }));
     }
 
     // ----------------------------------------------------------
@@ -2022,42 +2249,121 @@
     // ----------------------------------------------------------
     _heroAttack(cb) {
       this.sound.jump();
+      if (this.playerAnim) {
+        this.playerAnim.play('attack', { loop: false, restart: true });
+      }
       this.$.playerEl.className = 'player hero-jump-attack';
       setTimeout(() => {
         this.$.playerEl.className = 'player hero-idle';
+        if (this.playerAnim) this.playerAnim.play('idle');
         if (cb) cb();
       }, 650);
     }
 
+    _enemyAttack(cb) {
+      const enemy = document.getElementById('current-enemy');
+      if (!enemy) {
+        if (cb) cb();
+        return;
+      }
+
+      enemy.classList.remove('enemy-walk');
+      this.$.enemyContainer.classList.add('enemy-attacking');
+
+      if (this.enemyAnim) {
+        this.enemyAnim.play('attack', { loop: false, restart: true });
+        const duration = Math.max(520, this.enemyAnim.getAnimationDuration('attack') + 120);
+        setTimeout(() => {
+          this.$.enemyContainer.classList.remove('enemy-attacking');
+          enemy.classList.add('enemy-walk');
+          if (this.enemyAnim) this.enemyAnim.play('idle');
+          if (cb) cb();
+        }, duration);
+      } else {
+        enemy.classList.add('enemy-svg-attack');
+        setTimeout(() => {
+          enemy.classList.remove('enemy-svg-attack');
+          this.$.enemyContainer.classList.remove('enemy-attacking');
+          enemy.classList.add('enemy-walk');
+          if (cb) cb();
+        }, 550);
+      }
+    }
+
     _bossHit(cb) {
       const enemy = document.getElementById('current-enemy');
-      if (enemy) {
-        enemy.classList.add('enemy-hit');
-        setTimeout(() => { enemy.classList.remove('enemy-hit'); if (cb) cb(); }, 400);
-      } else if (cb) cb();
+      if (!enemy) {
+        if (cb) cb();
+        return;
+      }
+
+      enemy.classList.add('enemy-hit');
+      if (this.enemyAnim) {
+        this.enemyAnim.play('hurt', {
+          loop: false,
+          restart: true,
+          onEnd: () => { if (this.enemyAnim) this.enemyAnim.play('idle'); }
+        });
+      }
+      setTimeout(() => {
+        enemy.classList.remove('enemy-hit');
+        if (cb) cb();
+      }, 480);
     }
 
     _playerHurt(cb) {
       this.sound.hit();
+      if (this.playerAnim) {
+        this.playerAnim.play('hit', { loop: false, restart: true });
+      }
       this.$.playerEl.className = 'player hero-hurt';
       setTimeout(() => {
         this.$.playerEl.className = 'player hero-idle';
+        if (this.playerAnim) this.playerAnim.play('idle');
         if (cb) cb();
-      }, 500);
+      }, 520);
+    }
+
+    _playerDie(cb) {
+      this.sound.hit();
+      if (this.playerAnim) {
+        this.playerAnim.play('death', { loop: false, restart: true });
+      }
+      this.$.playerEl.className = 'player hero-death';
+      setTimeout(() => { if (cb) cb(); }, 950);
     }
 
     _enemyDie() {
       this.state = GameState.ENEMY_DEAD;
       this.sound.enemyDie();
       const enemy = document.getElementById('current-enemy');
-      if (enemy) {
-        enemy.classList.add('enemy-dying');
-        setTimeout(() => {
-          enemy.style.display = 'none';
-          this._stageClear();
-        }, 700);
-      } else {
+      if (!enemy) {
         this._stageClear();
+        return;
+      }
+
+      enemy.classList.remove('enemy-walk', 'enemy-boss');
+      let finished = false;
+      const finish = () => {
+        if (finished) return;
+        finished = true;
+        enemy.style.display = 'none';
+        if (this.enemyAnim) this.enemyAnim.root.style.display = 'none';
+        this._stageClear();
+      };
+
+      if (this.enemyAnim && this.enemyAnim.hasAnimation('death')) {
+        this.enemyAnim.play('death', { loop: false, restart: true, onEnd: finish });
+        setTimeout(finish, Math.max(1000, this.enemyAnim.getAnimationDuration('death') + 350));
+      } else if (this.enemyAnim) {
+        if (this.enemyAnim.hasAnimation('hurt')) {
+          this.enemyAnim.play('hurt', { loop: false, restart: true });
+        }
+        this.enemyAnim.addClass('sprite-fall');
+        setTimeout(finish, 850);
+      } else {
+        enemy.classList.add('enemy-dying');
+        setTimeout(finish, 700);
       }
     }
 
@@ -2073,10 +2379,12 @@
       this.state = GameState.STAGE_CLEAR;
       this.sound.stageClear();
       this.$.battlePanel.classList.remove('active');
+      this.$.bossHpBar.style.display = 'none';
       this.$.stageFlag.style.display = 'block';
 
       // Player runs to flag
       this.$.playerEl.className = 'player hero-walk';
+      if (this.playerAnim) this.playerAnim.play('run');
       this.$.playerEl.style.transition = 'left 1.3s linear';
       this.$.playerEl.style.left = '88%';
 
@@ -2327,14 +2635,109 @@
       this.$.storyWorld.className = 'story-world theme-' + scene.backgroundTheme;
       this._buildStoryScenery(scene.backgroundTheme);
 
-      // Reset actors
-      this.$.storyActorLeft.innerHTML = scene.actors.left ? SVG_SPRITES[scene.actors.left] : '';
-      this.$.storyActorRight.innerHTML = scene.actors.right ? SVG_SPRITES[scene.actors.right] : '';
+      // Reset actors (animated PNG sprites)
       this.$.storyActorRight.className = 'story-actor actor-right';
+      this.$.storyActorRight2.className = 'story-actor actor-right2';
       this.$.storyActorLeft.className = 'story-actor actor-left';
+      this.$.storyActorRight.removeAttribute('data-actor-key');
+      this.$.storyActorRight2.removeAttribute('data-actor-key');
+      this.$.storyActorLeft.removeAttribute('data-actor-key');
+      this._setStoryActor('left', scene.actors.left);
+      this._setStoryActor('right', scene.actors.right);
+      this._setStoryActor('right2', scene.actors.right2);
 
       this.currentLineIdx = 0;
       this._renderDialogueLine();
+    }
+
+    _storyActorHost(side) {
+      if (side === 'left') return this.$.storyActorLeft;
+      if (side === 'right2') return this.$.storyActorRight2;
+      return this.$.storyActorRight;
+    }
+
+    _resolveActorKey(key) {
+      if (!key) return null;
+      if (key === 'hero') return this.currentStory === 'prologue' ? 'ali' : 'ali_armored';
+      return key;
+    }
+
+    _resolveAvatarKey(key) {
+      if (key === 'ali_avatar' && this.currentStory !== 'prologue') {
+        return 'ali_armored_avatar';
+      }
+      return key;
+    }
+
+    // Prolog = orang sedang ngobrol, jadi diam. Hibat hanya bergerak di prolog;
+    // di ending Hibat diam saja.
+    _isStoryActorStatic(key) {
+      if (key === 'danova') return true;
+      if (key === 'hibat') return this.currentStory !== 'prologue';
+      if (key === 'ali') return this.currentStory === 'prologue';
+      return false;
+    }
+
+    _setStoryActor(side, key, options) {
+      options = options || {};
+      const host = this._storyActorHost(side);
+      if (!host) return;
+
+      const resolved = this._resolveActorKey(key);
+      const previous = host.getAttribute('data-actor-key') || '';
+
+      if (!resolved || !SPRITE_LIB[resolved]) {
+        if (host._spriteRig) {
+          host._spriteRig.destroy();
+          host._spriteRig = null;
+        }
+        host.innerHTML = '';
+        host.removeAttribute('data-actor-key');
+        return;
+      }
+
+      if (previous === resolved && host._spriteRig) {
+        if (options.animation && !this._isStoryActorStatic(resolved)) {
+          host._spriteRig.play(options.animation, { restart: true });
+        }
+        return;
+      }
+
+      if (host._spriteRig) {
+        host._spriteRig.destroy();
+        host._spriteRig = null;
+      }
+      host.innerHTML = '';
+
+      const scale = SPRITE_STORY_SCALES[resolved] || SPRITE_LIB[resolved].scale || 1;
+      const isStatic = options.static !== undefined
+        ? options.static
+        : this._isStoryActorStatic(resolved);
+      // Hibat yang sedang diam memakai pose santai sprite-1-8.
+      const animationName = options.animation
+        || (isStatic && resolved === 'hibat' ? 'relaxed' : 'idle');
+      host._spriteRig = SpriteRig.create(host, resolved, {
+        scale: scale,
+        smooth: false,
+        className: 'story-rig',
+        flip: false,
+        animation: animationName,
+        static: isStatic
+      });
+      host.setAttribute('data-actor-key', resolved);
+    }
+
+    _spawnStoryActor(side) {
+      const host = this._storyActorHost(side);
+      if (!host) return;
+      host.classList.remove('actor-spawn');
+      void host.offsetWidth;
+      host.classList.add('actor-spawn');
+    }
+
+    _vanishStoryActor(side) {
+      const host = this._storyActorHost(side);
+      if (host) host.classList.add('actor-vanish');
     }
 
     _buildStoryScenery(theme) {
@@ -2458,7 +2861,7 @@
       // Update speaker badge and avatar
       this.$.dialogueSpeaker.textContent = line.name;
       this.$.dialogueSpeaker.className = 'dialogue-speaker speaker-' + line.speaker;
-      this.$.dialogueAvatar.innerHTML = SVG_SPRITES[line.avatar] || SVG_SPRITES.hero;
+      this.$.dialogueAvatar.innerHTML = _portraitMarkup(this._resolveAvatarKey(line.avatar));
 
       // Handle SFX
       if (line.sfx === 'thunder') this.sound.thunder();
@@ -2472,22 +2875,21 @@
         this.$.storyWorld.classList.add('screen-shake');
       }
       if (line.action === 'spawn_hibat') {
-        this.$.storyActorRight.classList.remove('actor-spawn');
-        void this.$.storyActorRight.offsetWidth;
-        this.$.storyActorRight.classList.add('actor-spawn');
+        this._setStoryActor('right', 'hibat');
+        this._spawnStoryActor('right');
       }
       if (line.action === 'vanish_danova' || line.action === 'vanish_right') {
-        this.$.storyActorRight.classList.add('actor-vanish');
+        this._vanishStoryActor('right');
       }
       if (line.action === 'show_danova') {
-        this.$.storyActorRight.innerHTML = SVG_SPRITES.danova;
-        this.$.storyActorRight.classList.remove('actor-vanish');
-        this.$.storyActorRight.classList.add('actor-spawn');
+        this._setStoryActor('right2', 'danova');
+        this.$.storyActorRight2.classList.remove('actor-vanish');
+        this._spawnStoryActor('right2');
       }
       if (line.action === 'show_hibat') {
-        this.$.storyActorRight.innerHTML = SVG_SPRITES.hibat;
+        this._setStoryActor('right', 'hibat');
         this.$.storyActorRight.classList.remove('actor-vanish');
-        this.$.storyActorRight.classList.add('actor-spawn');
+        this._spawnStoryActor('right');
       }
 
       // Check choices
@@ -2630,6 +3032,8 @@
       this.sound.stageClear();
       this.unlockedLevels.epilogue = true;
       this._saveProgress();
+      this._stopAll();
+      this.$.storyWorld.className = 'story-world theme-dark-castle';
       this._showTBCOverlay();
     }
 
@@ -2664,7 +3068,7 @@
       this.currentStageIntroCallback = cb;
       this.$.stageIntroSpeaker.textContent = intro.speaker;
       this.$.stageIntroText.textContent = intro.text;
-      this.$.stageIntroAvatar.innerHTML = SVG_SPRITES[intro.avatar] || SVG_SPRITES.hero;
+      this.$.stageIntroAvatar.innerHTML = _portraitMarkup('ali_armored_avatar');
       this.$.stageIntroOverlay.style.display = 'flex';
       this.sound.blip();
     }
@@ -2687,6 +3091,19 @@
       if (this._walkInterval) { clearInterval(this._walkInterval); this._walkInterval = null; }
       if (this.timer) { this.timer.stop(); this.timer = null; }
       if (this.typewriterTimer) { clearInterval(this.typewriterTimer); this.typewriterTimer = null; }
+      if (this.playerAnim) { this.playerAnim.destroy(); this.playerAnim = null; }
+      if (this.enemyAnim) { this.enemyAnim.destroy(); this.enemyAnim = null; }
+
+      ['left', 'right', 'right2'].forEach(side => {
+        const host = this._storyActorHost(side);
+        if (!host) return;
+        if (host._spriteRig) { host._spriteRig.destroy(); host._spriteRig = null; }
+        host.innerHTML = '';
+        host.removeAttribute('data-actor-key');
+      });
+
+      this.$.enemyContainer.classList.remove('enemy-attacking');
+      this.$.enemyContainer.innerHTML = '';
       this.$.battlePanel.classList.remove('active');
       if (this.$.stageIntroOverlay) this.$.stageIntroOverlay.style.display = 'none';
       if (this.$.storyTbcOverlay) this.$.storyTbcOverlay.style.display = 'none';
@@ -2697,6 +3114,8 @@
   // ============================================================
   //  BOOT
   // ============================================================
-  window.addEventListener('DOMContentLoaded', () => { new PythonQuestGame(); });
+  window.addEventListener('DOMContentLoaded', () => {
+    window.__pythonQuest = new PythonQuestGame();
+  });
 
 })();
