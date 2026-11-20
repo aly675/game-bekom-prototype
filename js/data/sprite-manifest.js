@@ -229,6 +229,190 @@ window.SPRITE_ASSETS = {
       ] },
     }
   },
+  castle_knight: {
+    label: "Ksatria Hitam",
+    dir: "assets/enemy_karakter/enemy_castle/black-knight/",
+    scale: 0.33,
+    smooth: true,
+    anims: {
+      idle: { fps: 6, loop: true, frames: [
+        ["sprite-idle-1.png", 399, 386],
+        ["sprite-idle-2.png", 426, 386],
+        ["sprite-idle-3.png", 407, 386],
+        ["sprite-idle-4.png", 406, 386],
+      ] },
+      attack: { fps: 10, loop: false, frames: [
+        ["sprite-attack-1.png", 385, 378],
+        ["sprite-attack-2.png", 413, 442],
+        ["sprite-attack-3.png", 423, 465],
+        ["sprite-attack-4.png", 652, 380],
+        ["sprite-attack-5.png", 390, 374],
+      ] },
+      death: { fps: 5, loop: false, frames: [
+        ["sprite-death-1.png", 433, 375],
+        ["sprite-death-2.png", 542, 375],
+        ["sprite-death-3.png", 458, 231],
+        ["sprite-death-4.png", 563, 190],
+      ] },
+    }
+  },
+  castle_hammer: {
+    label: "Ksatria Palu",
+    dir: "assets/enemy_karakter/enemy_castle/hammer/",
+    scale: 0.33,
+    smooth: true,
+    anims: {
+      idle: { fps: 6, loop: true, frames: [
+        ["sprite-idle-1.png", 373, 373],
+        ["sprite-idle-2.png", 372, 373],
+        ["sprite-idle-3.png", 374, 373],
+        ["sprite-idle-4.png", 372, 373],
+        ["sprite-idle-5.png", 374, 373],
+        ["sprite-idle-6.png", 372, 372],
+      ] },
+      attack: { fps: 10, loop: false, frames: [
+        ["sprite-attack-1.png", 381, 373],
+        ["sprite-attack-2.png", 376, 332],
+        ["sprite-attack-3.png", 445, 385],
+        ["sprite-attack-4.png", 355, 481],
+        ["sprite-attack-5.png", 351, 450],
+      ] },
+      death: { fps: 5, loop: false, frames: [
+        ["sprite-death-1.png", 399, 373],
+        ["sprite-death-2.png", 362, 340],
+        ["sprite-death-3.png", 459, 263],
+        ["sprite-death-4.png", 366, 229],
+        ["sprite-death-5.png", 432, 184],
+      ] },
+    }
+  },
+  castle_boss: {
+    label: "Raja Ksatria Bayangan",
+    dir: "assets/enemy_karakter/enemy_castle/boss/",
+    scale: 0.35,
+    smooth: true,
+    anims: {
+      idle: { fps: 6, loop: true, frames: [
+        ["sprite-idle-1.png", 466, 426],
+        ["sprite-idle-2.png", 451, 427],
+        ["sprite-idle-3.png", 448, 427],
+        ["sprite-idle-4.png", 448, 426],
+        ["sprite-idle-5.png", 446, 427],
+      ] },
+      attack: { fps: 10, loop: false, frames: [
+        ["sprite-attack-1.png", 456, 523],
+        ["sprite-attack-2.png", 443, 513],
+        ["sprite-attack-3.png", 415, 464],
+        ["sprite-attack-4.png", 446, 485],
+        ["sprite-attack-5.png", 446, 478],
+        ["sprite-attack-6.png", 465, 425],
+      ] },
+      death: { fps: 5, loop: false, frames: [
+        ["sprite-death-1.png", 466, 420],
+        ["sprite-death-2.png", 505, 407],
+        ["sprite-death-3.png", 532, 367],
+        ["sprite-death-4.png", 520, 255],
+        ["sprite-death-5.png", 521, 184],
+      ] },
+      hurt: { fps: 8, loop: false, frames: [
+        ["sprite-idle-1.png", 466, 426],
+        ["sprite-idle-2.png", 451, 427],
+      ] },
+    }
+  },
+  volcano_dog: {
+    label: "Anjing Api",
+    dir: "assets/enemy_karakter/enemy_volcano/anjing/",
+    scale: 0.36,
+    smooth: true,
+    anims: {
+      idle: { fps: 6, loop: true, frames: [
+        ["sprite-idle-1.png", 403, 310],
+        ["sprite-idle-3.png", 408, 310],
+        ["sprite-idle-4.png", 414, 309],
+        ["sprite-idle-5.png", 402, 311],
+        ["sprite-idle-6.png", 402, 312],
+      ] },
+      attack: { fps: 10, loop: false, frames: [
+        ["sprite-attack-1.png", 410, 311],
+        ["sprite-attack-2.png", 410, 372],
+        ["sprite-attack-3.png", 474, 339],
+        ["sprite-attack-5.png", 419, 297],
+      ] },
+      death: { fps: 5, loop: false, frames: [
+        ["sprite-death-1.png", 397, 350],
+        ["sprite-death-2.png", 415, 271],
+        ["sprite-death-3.png", 450, 246],
+        ["sprite-death-4.png", 422, 266],
+        ["sprite-death-5.png", 420, 169],
+        ["sprite-death-6.png", 409, 178],
+      ] },
+    }
+  },
+  volcano_spirit: {
+    label: "Spirit Api",
+    dir: "assets/enemy_karakter/enemy_volcano/spirit_api/",
+    scale: 0.36,
+    smooth: true,
+    anims: {
+      idle: { fps: 6, loop: true, frames: [
+        ["sprite-idle-1.png", 242, 313],
+        ["sprite-idle-2.png", 244, 301],
+        ["sprite-idle-3.png", 241, 302],
+        ["sprite-idle-4.png", 238, 326],
+        ["sprite-idle-5.png", 241, 312],
+        ["sprite-idle-6.png", 242, 311],
+      ] },
+      attack: { fps: 10, loop: false, frames: [
+        ["sprite-attack-1.png", 243, 312],
+        ["sprite-attack-2.png", 224, 316],
+        ["sprite-attack-3.png", 287, 313],
+        ["sprite-attack-4.png", 293, 314],
+        ["sprite-attack-5.png", 380, 314],
+        ["sprite-attack-6.png", 249, 330],
+        ["sprite-attack-7.png", 242, 314],
+      ] },
+      death: { fps: 5, loop: false, frames: [
+        ["sprite-dearh-1.png", 248, 316],
+        ["sprite-dearh-2.png", 292, 318],
+        ["sprite-dearh-3.png", 284, 316],
+        ["sprite-dearh-4.png", 247, 316],
+        ["sprite-dearh-5.png", 196, 291],
+      ] },
+    }
+  },
+  volcano_boss: {
+    label: "Raksasa Lava",
+    dir: "assets/enemy_karakter/enemy_volcano/boss/",
+    scale: 0.38,
+    smooth: true,
+    anims: {
+      idle: { fps: 6, loop: true, frames: [
+        ["sprite-idle-1.png", 337, 389],
+        ["sprite-idle-2.png", 339, 375],
+        ["sprite-idle-3.png", 338, 365],
+        ["sprite-idle-4.png", 333, 373],
+      ] },
+      attack: { fps: 10, loop: false, frames: [
+        ["sprite-attack-1.png", 333, 352],
+        ["sprite-attack-2.png", 313, 451],
+        ["sprite-attack-3.png", 330, 416],
+        ["sprite-attack-4.png", 390, 301],
+        ["sprite-attack-5.png", 333, 331],
+      ] },
+      death: { fps: 5, loop: false, frames: [
+        ["sprite-death-1.png", 383, 357],
+        ["sprite-death-2.png", 370, 335],
+        ["sprite-death-3.png", 352, 317],
+        ["sprite-death-4.png", 431, 265],
+        ["sprite-death-5.png", 398, 245],
+      ] },
+      hurt: { fps: 8, loop: false, frames: [
+        ["sprite-idle-1.png", 337, 389],
+        ["sprite-idle-2.png", 339, 375],
+      ] },
+    }
+  },
 };
 
 window.SPRITE_PORTRAITS = {

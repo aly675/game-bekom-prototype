@@ -113,7 +113,7 @@
    ============================================================ */
 .game-world {
   position: relative;
-  flex: 0 0 220px;
+  flex: 0 0 260px;
   overflow: hidden;
   background: linear-gradient(180deg, #87CEEB 0%, #B0E2FF 100%);
 }
@@ -195,6 +195,76 @@
 .theme-village-destroyed .ground-layer { background: linear-gradient(180deg, #2E1B1B 0%, #1A0D0D 40%, #0A0505 100%); }
 .theme-village-destroyed .sky-bg {
   background: linear-gradient(180deg, #050103 0%, #22030B 45%, #5C0011 100%);
+}
+
+/* ---- LATAR JPG GAMEPLAY (forest / volcano / castle) ---- */
+.game-world.theme-forest,
+.game-world.theme-volcano,
+.game-world.theme-dark-castle {
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.4);
+}
+.game-world.theme-forest {
+  background-image: url("../assets/background_gameplay/forest/forest.jpg");
+  background-position: center 60%;
+}
+.game-world.theme-volcano {
+  background-image: url("../assets/background_gameplay/volcano/volcano.jpg");
+  background-position: center 65%;
+}
+.game-world.theme-dark-castle {
+  background-image: url("../assets/background_gameplay/castle/castle.jpg");
+  background-position: center 50%;
+}
+.game-world.theme-forest .sky-bg,
+.game-world.theme-forest .mountain-layer,
+.game-world.theme-volcano .sky-bg,
+.game-world.theme-volcano .mountain-layer,
+.game-world.theme-dark-castle .sky-bg,
+.game-world.theme-dark-castle .mountain-layer {
+  display: none;
+}
+
+.game-world.theme-forest #ground-layer {
+  background: linear-gradient(180deg, #3b5c33 0%, #22341e 50%, #141a12 100%);
+  border-top: 2px solid #7fae66;
+}
+.game-world.theme-volcano #ground-layer {
+  background: linear-gradient(180deg, #3a201a 0%, #1a0b08 50%, #0a0302 100%);
+  border-top: 2px solid #ff5722;
+}
+.game-world.theme-dark-castle #ground-layer {
+  background: linear-gradient(180deg, #34323b 0%, #1b1a21 50%, #0b0a0e 100%);
+  border-top: 2px solid #8b8b9e;
+}
+
+/* ---- LATAR JPG UNTUK CUTSCENE (volcano / castle) ---- */
+.story-world.theme-volcano,
+.story-world.theme-dark-castle {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.story-world.theme-volcano {
+  background-image: url("../assets/background_gameplay/volcano/volcano.jpg");
+}
+.story-world.theme-dark-castle {
+  background-image: url("../assets/background_gameplay/castle/castle.jpg");
+}
+.story-world.theme-volcano .sky-bg,
+.story-world.theme-volcano .mountain-layer,
+.story-world.theme-dark-castle .sky-bg,
+.story-world.theme-dark-castle .mountain-layer {
+  display: none;
+}
+.story-world.theme-volcano #story-ground-layer {
+  background: linear-gradient(180deg, #3a201a 0%, #1a0b08 50%, #0a0302 100%);
+  border-top: 2px solid #ff5722;
+}
+.story-world.theme-dark-castle #story-ground-layer {
+  background: linear-gradient(180deg, #34323b 0%, #1b1a21 50%, #0b0a0e 100%);
+  border-top: 2px solid #8b8b9e;
 }
 
 /* ---- LAYERS ---- */
@@ -903,14 +973,14 @@
    GAME WORLD size adjustments (when battle panel open)
    ============================================================ */
 .game-world {
-  flex: 0 0 200px;
+  flex: 0 0 260px;
 }
 
 /* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 600px) {
-  .game-world { flex: 0 0 150px; }
+  .game-world { flex: 0 0 200px; }
   .code-display { font-size: 0.82rem; line-height: 2.1; padding: 10px 12px; }
   .code-slot { min-width: 60px; min-height: 28px; font-size: 0.78rem; padding: 2px 6px; }
   .code-chip { font-size: 0.8rem; padding: 6px 10px; }

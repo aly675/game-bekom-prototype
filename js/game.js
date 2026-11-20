@@ -114,9 +114,9 @@
         stages: [
           {
             stageNum: 1,
-            enemy: { name: 'Condition Bat', type: 'bat', hp: 1, isBoss: false },
+            enemy: { name: 'Anjing Api', type: 'volcano_dog', hp: 1, isBoss: false },
             question: {
-              scenario: 'Condition Bat menyerang! Susun algoritma kelulusan siswa dengan batas nilai 70!',
+              scenario: 'Anjing Api menyerang! Susun algoritma kelulusan siswa dengan batas nilai 70!',
               code: 'nilai = 50\n{0} {1}:\n    {2}(\'Selamat, anda lulus!\')\n{3}:\n    print(\'Maaf, anda tidak lulus.\')',
               blanks: [
                 { id: 0, answer: 'if' },
@@ -130,9 +130,9 @@
           },
           {
             stageNum: 2,
-            enemy: { name: 'Elif Goblin', type: 'svg_goblin', hp: 1, isBoss: false },
+            enemy: { name: 'Spirit Api', type: 'volcano_spirit', hp: 1, isBoss: false },
             question: {
-              scenario: 'Elif Goblin muncul! Periksa apakah nilai bilangan merupakan angka positif!',
+              scenario: 'Spirit Api muncul! Periksa apakah nilai bilangan merupakan angka positif!',
               code: 'angka = 15\n{0} angka {1} 0:\n    print("Positif")\n{2}:\n    print("Bukan Positif")',
               blanks: [
                 { id: 0, answer: 'if' },
@@ -145,9 +145,9 @@
           },
           {
             stageNum: 3,
-            enemy: { name: 'Input Imp', type: 'svg_goblin', hp: 1, isBoss: false },
+            enemy: { name: 'Anjing Lava', type: 'volcano_dog', hp: 1, isBoss: false },
             question: {
-              scenario: 'Input Imp menghalangi! Lengkapi percabangan bertingkat elif untuk menentukan Grade B!',
+              scenario: 'Anjing Lava menghalangi! Lengkapi percabangan bertingkat elif untuk menentukan Grade B!',
               code: 'skor = 78\nif skor >= 85:\n    grade = "A"\n{0} skor {1} 70:\n    grade = "B"\n{2}:\n    grade = "C"',
               blanks: [
                 { id: 0, answer: 'elif' },
@@ -160,9 +160,9 @@
           },
           {
             stageNum: 4,
-            enemy: { name: 'Elif Troll', type: 'svg_goblin', hp: 1, isBoss: false },
+            enemy: { name: 'Spirit Magma', type: 'volcano_spirit', hp: 1, isBoss: false },
             question: {
-              scenario: 'Elif Troll menjaga gerbang! Akses hanya dibuka jika punya tiket DAN punya password!',
+              scenario: 'Spirit Magma menjaga gerbang! Akses hanya dibuka jika punya tiket DAN punya password!',
               code: 'tiket = True\npassword_benar = True\nif tiket {0} {1}:\n    {2}("Pintu Terbuka!")\nelse:\n    print("Akses Ditolak!")',
               blanks: [
                 { id: 0, answer: 'and' },
@@ -175,10 +175,10 @@
           },
           {
             stageNum: 5,
-            enemy: { name: 'BOSS: Logic Demon', type: 'boss_logic', hp: 3, isBoss: true },
+            enemy: { name: 'BOSS: Raksasa Lava', type: 'volcano_boss', hp: 3, isBoss: true },
             bossQuestions: [
               {
-                scenario: '🔥 [BOSS FASE 1/3] Logic Demon menyerang! Berikan diskon jika belanja mencapai 100 ribu!',
+                scenario: '🔥 [BOSS FASE 1/3] Raksasa Lava menyerang! Berikan diskon jika belanja mencapai 100 ribu!',
                 code: 'belanja = 120000\n{0} belanja {1} 100000:\n    diskon = {2}\nelse:\n    diskon = 0',
                 blanks: [
                   { id: 0, answer: 'if' },
@@ -189,7 +189,7 @@
                 explanation: 'if belanja >= 100000 memeriksa total belanja memenuhi syarat diskon 20000.'
               },
               {
-                scenario: '⚡ [BOSS FASE 2/3] Demon mengerahkan perisai! Gunakan operator OR untuk memeriksa kelemahan sihir!',
+                scenario: '⚡ [BOSS FASE 2/3] Raksasa Lava mengerahkan perisai! Gunakan operator OR untuk memeriksa kelemahan sihir!',
                 code: 'kelemahan_es = True\nkelemahan_petir = False\nif kelemahan_es {0} {1}:\n    {2}("Serangan Berhasil!")',
                 blanks: [
                   { id: 0, answer: 'or' },
@@ -221,9 +221,9 @@
         stages: [
           {
             stageNum: 1,
-            enemy: { name: 'Loop Spider', type: 'spider', hp: 1, isBoss: false },
+            enemy: { name: 'Ksatria Hitam', type: 'castle_knight', hp: 1, isBoss: false },
             question: {
-              scenario: 'Loop Spider menyerang! Buat perulangan for dengan range untuk memukul 5 kali!',
+              scenario: 'Ksatria Hitam menyerang! Buat perulangan for dengan range untuk memukul 5 kali!',
               code: '{0} i in {1}(5):\n    {2}("Pukulan ke-", i)',
               blanks: [
                 { id: 0, answer: 'for' },
@@ -236,9 +236,9 @@
           },
           {
             stageNum: 2,
-            enemy: { name: 'While Ghost', type: 'ghost', hp: 1, isBoss: false },
+            enemy: { name: 'Ksatria Palu', type: 'castle_hammer', hp: 1, isBoss: false },
             question: {
-              scenario: 'While Ghost mengurung ruangan! Jalankan hitung mundur dengan perulangan while!',
+              scenario: 'Ksatria Palu mengurung ruangan! Jalankan hitung mundur dengan perulangan while!',
               code: 'hitung = 3\n{0} hitung > 0:\n    print(hitung)\n    hitung {1} {2}',
               blanks: [
                 { id: 0, answer: 'while' },
@@ -251,9 +251,9 @@
           },
           {
             stageNum: 3,
-            enemy: { name: 'Function Wraith', type: 'ghost', hp: 1, isBoss: false },
+            enemy: { name: 'Ksatria Bayangan', type: 'castle_knight', hp: 1, isBoss: false },
             question: {
-              scenario: 'Function Wraith datang! Definisikan fungsi dan kembalikan nilai hasil perkalian kuadrat!',
+              scenario: 'Ksatria Bayangan datang! Definisikan fungsi dan kembalikan nilai hasil perkalian kuadrat!',
               code: '{0} kuadrat(x):\n    {1} x * x\n\nhasil = kuadrat(5)',
               blanks: [
                 { id: 0, answer: 'def' },
@@ -265,9 +265,9 @@
           },
           {
             stageNum: 4,
-            enemy: { name: 'List Demon', type: 'spider', hp: 1, isBoss: false },
+            enemy: { name: 'Ksatria Palu Hitam', type: 'castle_hammer', hp: 1, isBoss: false },
             question: {
-              scenario: 'List Demon menyerang! Tambahkan item ke list tas dan ambil item indeks pertama!',
+              scenario: 'Ksatria Palu Hitam menyerang! Tambahkan item ke list tas dan ambil item indeks pertama!',
               code: 'tas = ["Kunci", "Perisai"]\ntas.{0}("Excalibur")\npertama = tas[{1}]',
               blanks: [
                 { id: 0, answer: 'append' },
@@ -279,10 +279,10 @@
           },
           {
             stageNum: 5,
-            enemy: { name: 'BOSS FINAL: Shadow Dragon (Penjaga Hibat)', type: 'dragon', hp: 3, isBoss: true },
+            enemy: { name: 'BOSS FINAL: Raja Ksatria Bayangan (Penjaga Hibat)', type: 'castle_boss', hp: 3, isBoss: true },
             bossQuestions: [
               {
-                scenario: '🔥 [FINAL BOSS FASE 1/3] Naga Rekursif menyembur api! Definisikan fungsi serangan naga!',
+                scenario: '🔥 [FINAL BOSS FASE 1/3] Raja Ksatria Bayangan menyerang! Definisikan fungsi serangan ksatria!',
                 code: '{0} serang(daya):\n    {1} daya * 3\n\ntotal = serang(20)',
                 blanks: [
                   { id: 0, answer: 'def' },
@@ -292,7 +292,7 @@
                 explanation: 'def serang(daya) mendefinisikan fungsi dan return mengembalikan hasil perkalian.'
               },
               {
-                scenario: '⚡ [FINAL BOSS FASE 2/3] Naga meregenerasi sayap! Ulangi penjumlahan damage dari daftar serangan!',
+                scenario: '⚡ [FINAL BOSS FASE 2/3] Kuda perang menerjang! Ulangi penjumlahan damage dari daftar serangan!',
                 code: 'combo = [15, 25, 40]\ntotal = 0\n{0} dmg {1} combo:\n    total += dmg',
                 blanks: [
                   { id: 0, answer: 'for' },
@@ -303,7 +303,7 @@
               },
               {
                 scenario: '💥 [FINAL BOSS FASE FINAL] Tebasan Pamungkas! Lengkapi Base Case fungsi rekursif!',
-                code: 'def hitung_mundur(detik):\n    if detik {0} 0:\n        return "Naga Kalah!"\n    {1} hitung_mundur(detik - 1)',
+                code: 'def hitung_mundur(detik):\n    if detik {0} 0:\n        return "Ksatria Kalah!"\n    {1} hitung_mundur(detik - 1)',
                 blanks: [
                   { id: 0, answer: '<=' },
                   { id: 1, answer: 'return' }
@@ -825,15 +825,15 @@
     '1-4': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Goblin Bayangan melompat dari balik pepohonan. Operator perbandingan >= harus tepat sasaran!' },
     '1-5': { speaker: 'Ali', avatar: 'ali_avatar', text: 'AURANYA MENGERIKAN! Raja Iblis Hutan menjaga gerbang keluar hutan! Gua harus selesaikan 3 fase logika untuk lolos!' },
     '2-1': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Lembah Magma... Hawanya membara dan jalurnya bercabang di atas lahar panas. Gua harus teliti menyusun logika percabangan if-else!' },
-    '2-2': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Elif Goblin melompat dari celah batu magma! Periksa nilai positif menggunakan operator lebih besar dari (>).' },
-    '2-3': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Input Imp mencoba mencuri perbekalanku di tepi kawah lahar! Gunakan prompt input bertingkat elif untuk mengusirnya!' },
-    '2-4': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Jembatan batu lahar dijaga Elif Troll. Kombinasikan dua kondisi dengan operator logika AND!' },
-    '2-5': { speaker: 'Ali', avatar: 'ali_avatar', text: 'PINTU GERBANG LAHAR TERKUNCI! Logic Demon menghadang! Gua harus tuntaskan 3 fase perhitungan diskon dan sihir!' },
-    '3-1': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Kerajaan Gelap Hibat... Benteng ini menjulang angker dengan petir ungu. Labah-labah loop berpatroli, kalahkan mereka dengan perulangan for in range!' },
-    '3-2': { speaker: 'Ali', avatar: 'ali_avatar', text: 'While Ghost mengurung koridor istana dengan sihir gelap. Buat perulangan while dengan syarat berhenti yang tepat!' },
-    '3-3': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Function Wraith melayang di aula benteng! Susun fungsi def dan return nilai untuk meruntuhkan pertahanannya!' },
-    '3-4': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Hampir sampai di ruang tahta tertinggi tempat Danova dikurung! List Demon menjaga gerbang terakhir, susun item di list tas!' },
-    '3-5': { speaker: 'Ali', avatar: 'ali_avatar', text: 'DANOVA ADA DI DALAM SANA! Naga Pelindung Hibat menghadang di tahta kegelapan! Kerahkan seluruh logika fungsi dan rekursif untuk mengalahkannya dan membawa Danova pulang!' }
+    '2-2': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Spirit Api melompat dari celah batu magma! Periksa nilai positif menggunakan operator lebih besar dari (>).' },
+    '2-3': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Anjing Lava mencoba mencuri perbekalanku di tepi kawah lahar! Gunakan prompt input bertingkat elif untuk mengusirnya!' },
+    '2-4': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Jembatan batu lahar dijaga Spirit Magma. Kombinasikan dua kondisi dengan operator logika AND!' },
+    '2-5': { speaker: 'Ali', avatar: 'ali_avatar', text: 'PINTU GERBANG LAHAR TERKUNCI! Raksasa Lava menghadang! Gua harus tuntaskan 3 fase perhitungan diskon dan sihir!' },
+    '3-1': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Kerajaan Gelap Hibat... Benteng ini dijaga Ksatria Hitam dengan perisai baja. Kalahkan mereka dengan perulangan for in range!' },
+    '3-2': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Ksatria Palu mengurung koridor istana dengan palu raksasa. Buat perulangan while dengan syarat berhenti yang tepat!' },
+    '3-3': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Ksatria Bayangan menghadang di aula benteng! Susun fungsi def dan return nilai untuk meruntuhkan pertahanannya!' },
+    '3-4': { speaker: 'Ali', avatar: 'ali_avatar', text: 'Hampir sampai di ruang tahta tertinggi tempat Danova dikurung! Ksatria Palu Hitam menjaga gerbang terakhir, susun item di list tas!' },
+    '3-5': { speaker: 'Ali', avatar: 'ali_avatar', text: 'DANOVA ADA DI DALAM SANA! Raja Ksatria Bayangan menghadang di tahta kegelapan! Kerahkan seluruh logika fungsi dan rekursif untuk mengalahkannya dan membawa Danova pulang!' }
   };
 
   // ============================================================
@@ -2609,19 +2609,7 @@
       sc.style.transform = 'translateX(0)';
 
       if (theme === 'forest') {
-        [80, 220, 380, 540, 720, 920, 1100].forEach((x, i) => {
-          const h = 55 + (i % 3) * 15;
-          const el = document.createElement('div');
-          el.className = 'scenery-obj';
-          el.style.left = x + 'px';
-          el.style.bottom = '60px';
-          el.innerHTML = '<svg width="44" height="' + h + '" viewBox="0 0 44 ' + h + '">' +
-            '<rect x="18" y="' + (h - 22) + '" width="8" height="22" fill="#8B4513"/>' +
-            '<polygon points="22,0 44,' + (h - 10) + ' 0,' + (h - 10) + '" fill="#2D7D2D"/>' +
-            '<polygon points="22,8 40,' + (h - 6) + ' 4,' + (h - 6) + '" fill="#228B22"/>' +
-            '</svg>';
-          sc.appendChild(el);
-        });
+        // Latar JPG hutan sudah berisi pepohonan, jadi tidak perlu objek statis lagi.
       } else if (theme === 'cave') {
         [60, 180, 320, 470, 640, 820, 1000].forEach((x, i) => {
           const h = 40 + (i % 4) * 10;
@@ -2647,15 +2635,28 @@
           sc.appendChild(el);
         });
       } else if (theme === 'volcano') {
-        [90, 280, 480, 700, 920].forEach((x, i) => {
+        // Latar JPG lava sudah penuh; sisakan partikel bara supaya tetap hidup.
+        [60, 280, 620, 960].forEach((x, i) => {
           const el = document.createElement('div');
           el.className = 'scenery-obj';
           el.style.left = x + 'px';
-          el.style.bottom = '60px';
-          el.innerHTML = '<svg width="54" height="38" viewBox="0 0 54 38">' +
-            '<ellipse cx="27" cy="30" rx="27" ry="12" fill="#37474F"/>' +
-            '<ellipse cx="27" cy="30" rx="20" ry="8" fill="#FF5722" opacity="0.65"/>' +
-            (i % 2 === 0 ? '<path d="M22 10 Q27 0 32 10" stroke="#FF8C00" stroke-width="3" fill="none" opacity="0.7"/>' : '') +
+          el.style.bottom = (75 + (i % 3) * 30) + 'px';
+          el.innerHTML = '<svg viewBox="0 0 20 20" width="20" height="20">' +
+            '<circle cx="10" cy="10" r="3.5" fill="#FF5722" opacity="0.85"/>' +
+            '<circle cx="10" cy="10" r="1.5" fill="#FFEB3B"/>' +
+            '</svg>';
+          sc.appendChild(el);
+        });
+      } else if (theme === 'dark-castle') {
+        // Latar JPG kastil sudah berisi pilar dan bendera; sisakan percikan sihir.
+        [200, 520, 840].forEach((x, i) => {
+          const el = document.createElement('div');
+          el.className = 'scenery-obj';
+          el.style.left = x + 'px';
+          el.style.bottom = (75 + (i % 2) * 35) + 'px';
+          el.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24">' +
+            '<circle cx="12" cy="12" r="4" fill="#9D4EDD" opacity="0.8"/>' +
+            '<circle cx="12" cy="12" r="1.5" fill="#FFF"/>' +
             '</svg>';
           sc.appendChild(el);
         });
@@ -2914,19 +2915,7 @@
           sc.appendChild(ember);
         });
       } else if (theme === 'volcano') {
-        [150, 480, 820].forEach((x, i) => {
-          const rock = document.createElement('div');
-          rock.className = 'scenery-obj';
-          rock.style.left = x + 'px';
-          rock.style.bottom = '55px';
-          rock.innerHTML = '<svg viewBox="0 0 90 70" width="90" height="70">' +
-            '<polygon points="10,70 35,20 65,35 85,70" fill="#2E1B1B"/>' +
-            '<polygon points="25,70 45,30 60,70" fill="#BF360C"/>' +
-            '<line x1="35" y1="20" x2="45" y2="70" stroke="#FF5722" stroke-width="2"/>' +
-            '<circle cx="35" cy="20" r="3" fill="#FFEB3B"/>' +
-            '</svg>';
-          sc.appendChild(rock);
-        });
+        // Latar JPG sudah berisi bebatuan dan lahar; sisakan bara.
         [60, 280, 620, 960].forEach((x, i) => {
           const ember = document.createElement('div');
           ember.className = 'scenery-obj';
@@ -2939,19 +2928,7 @@
           sc.appendChild(ember);
         });
       } else if (theme === 'dark-castle') {
-        [100, 320, 700, 920].forEach((x, i) => {
-          const pillar = document.createElement('div');
-          pillar.className = 'scenery-obj';
-          pillar.style.left = x + 'px';
-          pillar.style.bottom = '58px';
-          pillar.innerHTML = '<svg viewBox="0 0 60 120" width="60" height="120">' +
-            '<rect x="15" y="20" width="30" height="100" fill="#140524"/>' +
-            '<polygon points="10,20 30,0 50,20" fill="#240A3D"/>' +
-            '<rect x="22" y="35" width="16" height="30" rx="3" fill="#7B2CBF" opacity="0.5"/>' +
-            '<circle cx="30" cy="50" r="4" fill="#E0AAFF"/>' +
-            '</svg>';
-          sc.appendChild(pillar);
-        });
+        // Latar JPG sudah berisi pilar dan bendera; sisakan percikan sihir.
         [200, 520, 840].forEach((x, i) => {
           const spark = document.createElement('div');
           spark.className = 'scenery-obj';

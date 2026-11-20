@@ -6,7 +6,7 @@
 
 ## 1. Konsep & Tujuan Game
 
-Game edukasi berbasis web interaktif bertema petualangan pahlawan logika Python (*Code Puzzle Drag & Drop*). Pemain berperan sebagai pahlawan yang menjelajahi 3 dunia (Forest, Cave, Volcano) dan menghadapi monster di setiap stage dengan cara menyelesaikan puzzle kode Python yang rumpang (*Fill-in-the-Blank*).
+Game edukasi berbasis web interaktif bertema petualangan pahlawan logika Python (*Code Puzzle Drag & Drop*). Pemain berperan sebagai pahlawan yang menjelajahi 3 dunia (Forest, Volcano, Castle) dan menghadapi monster di setiap stage dengan cara menyelesaikan puzzle kode Python yang rumpang (*Fill-in-the-Blank*).
 
 Keterkaitan dengan **4 Pilar Berpikir Komputasi**:
 1. **Dekomposisi**: Memecah blok program Python yang utuh ke dalam token-token komponen (pernyataan kondisi, pemanggilan fungsi, operator perbandingan, kata kunci percabangan).

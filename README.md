@@ -30,8 +30,8 @@ Game ini telah disempurnakan dengan sistem **Drag & Drop Code Puzzle (Fill-in-th
 
 ## 🗺️ Tema Lingkungan & Materi Python
 
-### 🌲 Level 1: Python Dasar (Tema Hutan / Forest)
-- **Background**: Langit biru cerah, pegunungan hijau, pepohonan rindang.
+### 🌲 Level 1: Hutan Sintaks (Tema Hutan / Forest)
+- **Background**: `assets/background_gameplay/forest/forest.jpg` — hutan pinus dan perbukitan.
 - **Stage 1**: Orc Perusak — *Variabel & String `nama = "Budi"`*
 - **Stage 2**: Goblin Sintaks — *Fungsi Output `print()`*
 - **Stage 3**: Orc Pengintai — *Pemeriksaan Tipe Data `type(42)`*
@@ -40,20 +40,22 @@ Game ini telah disempurnakan dengan sistem **Drag & Drop Code Puzzle (Fill-in-th
 - **Pola Musuh**: Orc dan Goblin tampil bergantian di Stage 1–4, lalu boss hutan menjadi musuh terakhir.
 
 ### 🌋 Level 2: Kondisi & Percabangan (Tema Lembah Magma)
-- **Background**: Langit magma membara, aliran lahar, dan batu pijar.
-- **Stage 1**: Condition Bat — *Percabangan If-Else Kelulusan Nilai Siswa (`if`, `nilai >= 70`, `print`, `else`)*
-- **Stage 2**: Elif Goblin — *Operator Pembanding Numerik Positif (`if angka > 0: ... else:`)*
-- **Stage 3**: Input Imp — *Percabangan Bertingkat Elif Grade Nilai (`elif skor >= 70:`)*
-- **Stage 4**: Elif Troll — *Operator Logika Gabungan AND (`if tiket and password_benar:`)*
-- **Stage 5 (BOSS)**: Logic Demon (3 HP) — *Diskon Belanja, Logika OR Kelemahan Sihir, & Percabangan Mana Jurus Pamungkas*
+- **Background**: `assets/background_gameplay/volcano/volcano.jpg` — gunung berapi, lahar, dan bara.
+- **Stage 1**: Anjing Api — *Percabangan If-Else Kelulusan Nilai Siswa (`if`, `nilai >= 70`, `print`, `else`)*
+- **Stage 2**: Spirit Api — *Operator Pembanding Numerik Positif (`if angka > 0: ... else:`)*
+- **Stage 3**: Anjing Lava — *Percabangan Bertingkat Elif Grade Nilai (`elif skor >= 70:`)*
+- **Stage 4**: Spirit Magma — *Operator Logika Gabungan AND (`if tiket and password_benar:`)*
+- **Stage 5 (BOSS)**: Raksasa Lava (3 HP) — *Diskon Belanja, Logika OR Kelemahan Sihir, & Percabangan Mana Jurus Pamungkas*
+- **Pola Musuh**: Anjing Api dan Spirit Api tampil bergantian di Stage 1–4.
 
 ### 🏰 Level 3: Perulangan & Fungsi (Tema Kerajaan Gelap)
-- **Background**: Benteng hitam, petir ungu, dan pilar sihir.
-- **Stage 1**: Loop Spider — *Perulangan `for i in range(5):`*
-- **Stage 2**: While Ghost — *Perulangan Bersyarat `while hitung > 0:`*
-- **Stage 3**: Function Wraith — *Penggabungan Parameter String Fungsi `sapa(nama)`*
-- **Stage 4**: List Demon — *Metode Penambahan Elemen List `buah.append("jeruk")`*
-- **Stage 5 (FINAL BOSS)**: Dragon Rekursif (3 HP) — *Fungsi Rekursif Faktorial `n * faktorial(n-1)`, Base Case `<= 0`, & Akses Indeks Terakhir List*
+- **Background**: `assets/background_gameplay/castle/castle.jpg` — aula kastil, bendera, dan obor.
+- **Stage 1**: Ksatria Hitam — *Perulangan `for i in range(5):`*
+- **Stage 2**: Ksatria Palu — *Perulangan Bersyarat `while hitung > 0:`*
+- **Stage 3**: Ksatria Bayangan — *Penggabungan Parameter String Fungsi `sapa(nama)`*
+- **Stage 4**: Ksatria Palu Hitam — *Metode Penambahan Elemen List `buah.append("jeruk")`*
+- **Stage 5 (FINAL BOSS)**: Raja Ksatria Bayangan (3 HP) — *Fungsi Rekursif Faktorial `n * faktorial(n-1)`, Base Case `<= 0`, & Akses Indeks Terakhir List*
+- **Pola Musuh**: Ksatria Hitam dan Ksatria Palu tampil bergantian di Stage 1–4.
 
 ---
 
@@ -115,10 +117,23 @@ project_akhir/
 │   │   ├── ali_armored/          # Ali berzirah: idle, run, attack, hit, death
 │   │   ├── danova/               # Danova: idle & walk (tampak depan + belakang)
 │   │   └── hibat/                # Hibat: idle melayang 8 frame
-│   ├── enemy_karakter/enemy_forest/
-│   │   ├── sprites/              # Orc: idle, attack, hurt, death
-│   │   ├── goblin/               # Goblin: idle, attack
-│   │   └── boss/                 # Raja Iblis Hutan: idle, attack, hurt, death
+│   ├── enemy_karakter/
+│   │   ├── enemy_forest/
+│   │   │   ├── sprites/          # Orc: idle, attack, hurt, death
+│   │   │   ├── goblin/           # Goblin: idle, attack
+│   │   │   └── boss/             # Raja Iblis Hutan: idle, attack, hurt, death
+│   │   ├── enemy_volcano/
+│   │   │   ├── anjing/           # Anjing Api: idle, attack, death
+│   │   │   ├── spirit_api/       # Spirit Api: idle, attack, death
+│   │   │   └── boss/             # Raksasa Lava: idle, attack, hurt, death
+│   │   └── enemy_castle/
+│   │       ├── black-knight/     # Ksatria Hitam: idle, attack, death
+│   │       ├── hammer/           # Ksatria Palu: idle, attack, death
+│   │       └── boss/             # Raja Ksatria Bayangan: idle, attack, hurt, death
+│   ├── background_gameplay/
+│   │   ├── forest/forest.jpg     # Latar gameplay Hutan Sintaks
+│   │   ├── volcano/volcano.jpg   # Latar gameplay Lembah Magma
+│   │   └── castle/castle.jpg     # Latar gameplay Kerajaan Gelap
 │   └── portraits/                # Potret wajah Ali, Ali Armored, Danova untuk dialog
 ├── css/
 │   ├── style.css                 # Styling global: header, menu, level select, modal
@@ -147,7 +162,14 @@ Semua sprite PNG dimuat lewat `js/data/sprite-manifest.js`, lalu dianimasikan ol
 | `enemy_forest/sprites` | Orc hutan (Stage 1 & 3) | `idle`, `attack`, `hurt`, `death` |
 | `enemy_forest/goblin` | Goblin hutan (Stage 2 & 4) | `idle`, `attack` + jatuh (fallback) |
 | `enemy_forest/boss` | **Boss terakhir Hutan Sintaks** (Stage 5, 3 HP) | `idle`, `attack`, `hurt`, `death` |
+| `enemy_volcano/anjing` | Anjing Api (Level 2 Stage 1 & 3) | `idle`, `attack`, `death` |
+| `enemy_volcano/spirit_api` | Spirit Api (Level 2 Stage 2 & 4) | `idle`, `attack`, `death` |
+| `enemy_volcano/boss` | **Raksasa Lava** (Level 2 Stage 5, 3 HP) | `idle`, `attack`, `hurt`, `death` |
+| `enemy_castle/black-knight` | Ksatria Hitam (Level 3 Stage 1 & 3) | `idle`, `attack`, `death` |
+| `enemy_castle/hammer` | Ksatria Palu (Level 3 Stage 2 & 4) | `idle`, `attack`, `death` |
+| `enemy_castle/boss` | **Raja Ksatria Bayangan** (Level 3 Stage 5, 3 HP) | `idle`, `attack`, `hurt`, `death` |
 
+- **Latar gameplay** memakai JPG dari `assets/background_gameplay/` untuk Hutan, Lembah Magma, dan Kerajaan Gelap. Latar desa masih menunggu aset berikutnya.
 - **Wajah Ali di dialog** memakai potret dari `assets/portraits/` — Ali biasa saat prolog, Ali berzirah setelahnya.
 - **Goblin** saat berjalan/idle hanya memakai frame `sprite-1-1` dan `sprite-1-2` (posisi siap, belum menyerang); frame 3–4 yang berpose memukul tidak dipakai di animasi jalan.
 - **Prolog**: Ali dan Danova diam di tempat karena sedang berbicara. Hibat tetap beranimasi di prolog sampai ia menghilang.
