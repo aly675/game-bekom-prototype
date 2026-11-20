@@ -57,12 +57,37 @@ Game ini telah disempurnakan dengan sistem **Drag & Drop Code Puzzle (Fill-in-th
 
 ---
 
+## 🧭 Alur Halaman (Multi-Page)
+
+Game sekarang dipisah menjadi tiga halaman supaya refresh tidak mengulang dari awal:
+
+1. **`index.html` — Halaman Awal**
+   - Menampilkan menu utama dan tombol **MULAI / LANJUTKAN PETUALANGAN**.
+   - Kalau prolog belum ditonton, tombol membuka `game.html?mode=prologue`.
+   - Kalau sudah ada progress, tombol membuka `levels.html`.
+
+2. **`levels.html` — Pilih Level**
+   - Refresh di halaman ini tetap di daftar level.
+   - Level terkunci/terbuka dibaca dari progress tersimpan.
+   - Memilih level membuka `game.html?level=N` (mulai dari Stage 1 level itu).
+   - Kartu Prolog/Epilog membuka `game.html?mode=prologue` / `?mode=epilogue`.
+
+3. **`game.html` — Game & Cerita**
+   - Berisi layar cerita (prolog, antar-level, epilog) dan layar pertarungan.
+   - **Refresh tidak mengulang dari Level 1**: level, stage, dan HP terakhir disimpan, lalu URL diperbarui menjadi `game.html?level=1&stage=3`.
+   - Refresh saat cerita juga melanjutkan dari **scene** cerita terakhir.
+   - Tombol **Pilih Level** di header kembali ke `levels.html`.
+
+Progress level disimpan permanen (`localStorage`), sedangkan posisi game/cerita disimpan per sesi (`sessionStorage`). Kalau browser memblokir storage (mis. dibuka lewat `file://`), game memakai `window.name` sebagai cadangan supaya progress tetap terbawa antar halaman.
+
+---
+
 ## 🕹️ Cara Menjalankan
 
 Game ini 100% **kompatibel offline** dan dapat langsung dimainkan:
 
 ### Cara 1: Langsung Double-Click (Rekomendasi)
-Buka folder `project_akhir` di File Explorer Windows Anda, lalu **klik dua kali berkas `index.html`**. Game langsung terbuka di browser tanpa perlu server apa pun!
+Buka folder `project_akhir` di File Explorer Windows Anda, lalu **klik dua kali berkas `index.html`**. Halaman awal langsung terbuka di browser tanpa perlu server apa pun. Navigasi ke pilih level dan game berjalan otomatis lewat tombol di halaman.
 
 ### Cara 2: Live Server / Localhost
 Jika menggunakan VS Code:
@@ -79,7 +104,9 @@ Lalu buka `http://localhost:3000`.
 
 ```
 project_akhir/
-├── index.html                    # Halaman utama game (HUD, Game-World side-scrolling, Battle Panel, Modals)
+├── index.html                    # Halaman awal / menu utama
+├── levels.html                   # Halaman pilih level
+├── game.html                     # Halaman game + cutscene (prolog/inter/epilog)
 ├── README.md                     # Dokumentasi proyek & penjelasan akademik
 ├── package.json                  # Metadata proyek
 ├── assets/
@@ -94,9 +121,12 @@ project_akhir/
 │   │   └── boss/                 # Raja Iblis Hutan: idle, attack, hurt, death
 │   └── portraits/                # Potret wajah Ali, Ali Armored, Danova untuk dialog
 ├── css/
-│   ├── style.css                 # Styling global: UI menu, level select cards, typography arcade, modal
+│   ├── style.css                 # Styling global: header, menu, level select, modal
 │   └── game.css                  # Dunia game, HUD, sprite rig, animasi attack/hit/death, dialog
 └── js/
+    ├── progress.js               # Simpan/baca progress, posisi level/stage, dan scene cerita
+    ├── menu.js                   # Logika halaman awal
+    ├── levels.js                 # Logika halaman pilih level
     ├── data/
     │   └── sprite-manifest.js    # Daftar frame + ukuran + fps + skala tiap karakter
     └── game.js                   # Engine game (State Machine, Audio Synth, Sprite Rig, Soal Python, Boss 3 Fase)

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Petualangan — Python Quest</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+
+  <!-- ===== APP HEADER ===== -->
+  <header class="app-header">
+    <a class="brand" href="index.html">
+      <span class="brand-icon">🐍</span>
+      <span class="brand-name">Python Quest</span>
+    </a>
+    <div class="header-actions">
+      <span class="subtitle-tag">Mode Petualangan</span>
+      <a class="header-link" href="levels.html">Pilih Level</a>
+      <button id="btn-sound" class="icon-btn" title="Toggle Sound">🔊</button>
+    </div>
+  </header>
+
+  <!-- ===== SCREEN: STORY / PROLOG ===== -->
+  <section id="screen-story" class="screen">
+    <div class="story-container">
+      <!-- Story Top Bar -->
+      <div class="story-top-bar">
+        <span class="story-chapter-title" id="story-chapter-title">Prolog: Bagian 1</span>
+        <button id="btn-skip-story" class="btn btn-ghost btn-skip" title="Lewati cutscene prolog">
+          <span>⏭️</span> Lewati Cerita
+        </button>
+      </div>
+
+      <!-- Story 2D World Canvas -->
+      <div class="story-world theme-village-peaceful" id="story-world">
+        <div class="sky-bg" id="story-sky-bg"></div>
+        <div class="mountain-layer" id="story-mountain-layer">
+          <svg class="mountains-svg" viewBox="0 0 1200 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="mtn1" points="0,180 150,60 300,180"/>
+            <polygon class="mtn1" points="200,180 400,30 600,180"/>
+            <polygon class="mtn1" points="500,180 700,70 900,180"/>
+            <polygon class="mtn1" points="750,180 950,45 1150,180"/>
+            <polygon class="mtn1" points="1000,180 1150,80 1300,180"/>
+            <polygon class="mtn2" points="0,180 100,100 200,180"/>
+            <polygon class="mtn2" points="300,180 480,90 660,180"/>
+            <polygon class="mtn2" points="650,180 820,100 990,180"/>
+            <polygon class="mtn2" points="900,180 1060,110 1200,180"/>
+          </svg>
+        </div>
+        <div class="scenery" id="story-scenery"></div>
+        <div class="ground-layer" id="story-ground-layer"></div>
+
+        <!-- Actors on stage -->
+        <div class="story-actor actor-left" id="story-actor-left"></div>
+        <div class="story-actor actor-right" id="story-actor-right"></div>
+        <div class="story-actor actor-right2" id="story-actor-right2"></div>
+
+        <!-- Story effect layer (lightning, smoke poof, red flash) -->
+        <div class="story-fx-layer" id="story-fx-layer"></div>
+      </div>
+
+      <!-- Dialogue Box (Visual Novel / RPG Style) -->
+      <div class="story-dialogue-panel" id="story-dialogue-panel">
+        <div class="dialogue-inner">
+          <div class="dialogue-avatar-wrap">
+            <div class="dialogue-avatar" id="dialogue-avatar"></div>
+          </div>
+          <div class="dialogue-content">
+            <div class="dialogue-header">
+              <span class="dialogue-speaker" id="dialogue-speaker">Ali</span>
+            </div>
+            <div class="dialogue-text" id="dialogue-text">...</div>
+            <div class="dialogue-choices" id="dialogue-choices" style="display:none;"></div>
+            <div class="dialogue-footer" id="dialogue-footer">
+              <span class="dialogue-hint" id="dialogue-hint">Klik layar atau tekan Spasi untuk lanjut ▶</span>
+              <button id="btn-next-dialogue" class="btn btn-dialogue-next">Lanjut ▶</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dramatic "TO BE CONTINUED" Overlay Screen -->
+      <div class="story-tbc-overlay" id="story-tbc-overlay" style="display:none;">
+        <div class="tbc-content">
+          <div class="tbc-badge">AKHIR BABAK 1</div>
+          <h1 class="tbc-title">TO BE CONTINUED...</h1>
+          <p class="tbc-subtitle" id="tbc-subtitle">Ali &amp; Danova — Dua Sahabat yang Kini Berseberangan</p>
+          <div class="tbc-decision-badge" id="tbc-decision-badge">Pilihanmu: Lindungi Umat Manusia</div>
+          <div class="tbc-actions">
+            <button id="btn-tbc-replay" class="btn btn-secondary">🔄 Tonton Ulang Epilog</button>
+            <button id="btn-tbc-menu" class="btn btn-primary">🏠 Kembali ke Pilih Level</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN: GAME ===== -->
+  <section id="screen-game" class="screen">
+
+    <!-- HUD -->
+    <div class="game-hud">
+      <div class="hud-left">
+        <div class="stage-badge" id="stage-badge">L1-S1</div>
+      </div>
+      <div class="hud-center">
+        <div class="timer-wrap" id="timer-bar-wrap">
+          <div class="timer-label">⏱</div>
+          <div class="timer-track">
+            <div class="timer-bar" id="timer-bar"></div>
+          </div>
+          <div class="timer-num" id="timer-num">60</div>
+        </div>
+      </div>
+      <div class="hud-right">
+        <div class="hud-hearts" id="hud-hearts">❤️❤️❤️</div>
+      </div>
+    </div>
+
+    <!-- Boss HP Bar (hidden by default) -->
+    <div class="boss-hp-bar" id="boss-hp-bar" style="display:none;">
+      <span class="boss-hp-label">💀</span>
+      <span class="boss-hp-name" id="boss-hp-name">BOSS</span>
+      <div class="boss-hp-track">
+        <div class="boss-hp-inner" id="boss-hp-inner"></div>
+      </div>
+    </div>
+
+    <!-- GAME WORLD -->
+    <div class="game-world" id="game-world">
+
+      <!-- Sky / background -->
+      <div class="sky-bg" id="sky-bg"></div>
+
+      <!-- Mountains / backdrop -->
+      <div class="mountain-layer" id="mountain-layer">
+        <svg class="mountains-svg" viewBox="0 0 1200 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="mtn1" points="0,180 150,60 300,180"/>
+          <polygon class="mtn1" points="200,180 400,30 600,180"/>
+          <polygon class="mtn1" points="500,180 700,70 900,180"/>
+          <polygon class="mtn1" points="750,180 950,45 1150,180"/>
+          <polygon class="mtn1" points="1000,180 1150,80 1300,180"/>
+          <polygon class="mtn2" points="0,180 100,100 200,180"/>
+          <polygon class="mtn2" points="300,180 480,90 660,180"/>
+          <polygon class="mtn2" points="650,180 820,100 990,180"/>
+          <polygon class="mtn2" points="900,180 1060,110 1200,180"/>
+        </svg>
+      </div>
+
+      <!-- Scenery objects (trees/stalactites/rocks) -->
+      <div class="scenery" id="scenery"></div>
+
+      <!-- Ground -->
+      <div class="ground-layer" id="ground-layer"></div>
+
+      <!-- Player -->
+      <div class="player hero-idle" id="player"></div>
+
+      <!-- Enemy container -->
+      <div class="enemy-container" id="enemy-container"></div>
+
+      <!-- Stage flag -->
+      <div class="stage-flag" id="stage-flag" style="display:none;">
+        <div class="flag-pole"></div>
+        <div class="flag-banner">🏁</div>
+      </div>
+
+      <!-- Stage clear flash overlay -->
+      <div class="transition-overlay" id="transition-overlay"></div>
+    </div>
+    <!-- end game-world -->
+
+    <!-- STAGE INTRO OVERLAY (Mini Narrative Before Battle) -->
+    <div class="stage-intro-overlay" id="stage-intro-overlay" style="display:none;">
+      <div class="stage-intro-box">
+        <div class="stage-intro-avatar" id="stage-intro-avatar"></div>
+        <div class="stage-intro-body">
+          <div class="stage-intro-speaker" id="stage-intro-speaker">Ali</div>
+          <p class="stage-intro-text" id="stage-intro-text">...</p>
+        </div>
+        <button id="btn-dismiss-intro" class="btn btn-primary btn-sm">Maju! ▶</button>
+      </div>
+    </div>
+
+    <!-- BATTLE PANEL -->
+    <div class="battle-panel" id="battle-panel">
+      <div class="battle-inner">
+        <div class="battle-top">
+          <p class="battle-scenario" id="battle-scenario">Musuh muncul!</p>
+        </div>
+        <div class="code-block">
+          <div class="code-label">🐍 Python Code</div>
+          <div class="code-display" id="code-display"></div>
+        </div>
+        <!-- CODE BANK (DRAGGABLE CHIPS POOL) -->
+        <div class="code-bank-section">
+          <div class="code-bank-header">
+            <span class="code-bank-title">📦 BALOK KODE</span>
+            <span class="code-bank-hint">Tarik atau Klik balok ke kotak kosong [ ? ]</span>
+          </div>
+          <div class="code-chips-pool" id="code-chips-pool">
+            <!-- Chips rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- BATTLE ACTIONS -->
+        <div class="battle-actions">
+          <button type="button" id="btn-run-code" class="btn btn-action-run">
+            <span>▶</span> JALANKAN KODE!
+          </button>
+          <button type="button" id="btn-reset-code" class="btn btn-action-reset">
+            <span>🔄</span> Reset Balok
+          </button>
+        </div>
+
+        <div class="battle-feedback" id="battle-feedback"></div>
+        <div class="battle-explanation" id="battle-explanation" style="display:none;"></div>
+      </div>
+    </div>
+    <!-- end battle-panel -->
+
+  </section>
+  <!-- end screen-game -->
+
+  <!-- ===== MODAL: GAME OVER ===== -->
+  <div class="modal-overlay" id="modal-gameover">
+    <div class="modal-box modal-gameover">
+      <div class="modal-icon">💀</div>
+      <h2 class="modal-title">Game Over!</h2>
+      <p class="modal-msg" id="gameover-msg">Kamu dikalahkan. Jangan menyerah!</p>
+      <div class="modal-buttons">
+        <button id="btn-restart" class="btn btn-primary">🔄 Coba Lagi</button>
+        <button id="btn-return-menu" class="btn btn-secondary">🏠 Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL: VICTORY ===== -->
+  <div class="modal-overlay" id="modal-victory">
+    <div class="modal-box modal-victory">
+      <div class="modal-icon victory-spin">🏆</div>
+      <h2 class="modal-title victory-title">Level Clear!</h2>
+      <p class="modal-level-name" id="victory-level">Level 1: Python Dasar</p>
+      <p class="modal-msg" id="victory-msg">Luar biasa! Kamu menguasai materi ini!</p>
+      <div class="stars-row">⭐⭐⭐</div>
+      <div class="modal-buttons">
+        <button id="btn-next-level" class="btn btn-primary">Level Berikutnya →</button>
+        <button id="btn-return-menu2" class="btn btn-secondary">🏠 Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/progress.js"></script>
+  <script src="js/data/sprite-manifest.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

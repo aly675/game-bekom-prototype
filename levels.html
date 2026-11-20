@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pilih Level — Python Quest</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== APP HEADER ===== -->
+  <header class="app-header">
+    <a class="brand" href="index.html">
+      <span class="brand-icon">🐍</span>
+      <span class="brand-name">Python Quest</span>
+    </a>
+    <div class="header-actions">
+      <span class="subtitle-tag">Pilih Level</span>
+      <a class="header-link" href="index.html">← Menu</a>
+      <button id="btn-sound" class="icon-btn" title="Toggle Sound">🔊</button>
+    </div>
+  </header>
+
+  <!-- ===== HALAMAN PILIH LEVEL ===== -->
+  <section id="screen-levels" class="screen active">
+    <div class="levels-container">
+      <h2 class="levels-title">Pilih Level</h2>
+      <p class="levels-subtitle">Prolog + 3 Wilayah Petualangan + Epilog Pilihan · 15 Stage Python</p>
+
+      <div class="level-grid">
+        <!-- Kartu Prolog Sinematik (Dapat ditonton ulang kapan saja) -->
+        <div class="level-card level-card-story" id="card-prologue" data-story="prologue">
+          <div class="level-card-num">00</div>
+          <div class="level-card-icon">📖</div>
+          <div class="level-card-name">Prolog: Tragedi Desa</div>
+          <div class="level-card-desc">Awal mula penculikan Danova oleh Hibat</div>
+          <div class="level-card-stages">Sinematik</div>
+        </div>
+
+        <div class="level-card" data-level="1">
+          <div class="level-card-num">01</div>
+          <div class="level-card-icon">🌲</div>
+          <div class="level-card-name">Hutan Sintaks</div>
+          <div class="level-card-desc">Variabel, Print, Tipe Data, Operator</div>
+          <div class="level-card-stages">5 Stage</div>
+          <div class="lock-icon">🔒</div>
+        </div>
+
+        <div class="level-card" data-level="2">
+          <div class="level-card-num">02</div>
+          <div class="level-card-icon">🌋</div>
+          <div class="level-card-name">Lembah Magma</div>
+          <div class="level-card-desc">if, else, elif, Operator Perbandingan</div>
+          <div class="level-card-stages">5 Stage</div>
+          <div class="lock-icon">🔒</div>
+        </div>
+
+        <div class="level-card" data-level="3">
+          <div class="level-card-num">03</div>
+          <div class="level-card-icon">🏰</div>
+          <div class="level-card-name">Kerajaan Gelap</div>
+          <div class="level-card-desc">for, while, def, return, list</div>
+          <div class="level-card-stages">5 Stage</div>
+          <div class="lock-icon">🔒</div>
+        </div>
+
+        <!-- Kartu Epilog Sinematik (Terbuka setelah tamat Level 3) -->
+        <div class="level-card level-card-story locked" id="card-epilogue" data-story="epilogue">
+          <div class="level-card-num">END</div>
+          <div class="level-card-icon">⚡</div>
+          <div class="level-card-name">Epilog: Pilihan Terakhir</div>
+          <div class="level-card-desc">Kebenaran Danova, Hibat, dan Pilihan Ali</div>
+          <div class="level-card-stages">Klimaks Interaktif</div>
+          <div class="lock-icon">🔒</div>
+        </div>
+      </div>
+
+      <a href="index.html" class="btn btn-ghost">← Kembali ke Menu</a>
+    </div>
+  </section>
+
+  <script src="js/progress.js"></script>
+  <script src="js/levels.js"></script>
+</body>
+</html>

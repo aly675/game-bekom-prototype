@@ -1,6 +1,6 @@
 # Game Design Document: "Python Quest — Logic Battle"
 **Mata Kuliah**: Berpikir Komputasi (Bekom)  
-**Tech Stack**: Native HTML5, CSS3, Vanilla JavaScript (ES6+) — Single Page Application (SPA)
+**Tech Stack**: Native HTML5, CSS3, Vanilla JavaScript (ES6+) — Multi-Page Application (MPA)
 
 ---
 
@@ -18,7 +18,13 @@ Keterkaitan dengan **4 Pilar Berpikir Komputasi**:
 
 ## 2. Alur Navigasi & Game State (Game Flow)
 
-Game dirancang sebagai **Single Page Application (SPA)** murni:
+Game dirancang sebagai **Multi-Page Application (MPA)** dengan tiga halaman utama:
+
+- `index.html` — halaman awal / menu utama
+- `levels.html` — halaman pemilihan level
+- `game.html` — halaman pertarungan + cutscene (prolog, antar-level, epilog)
+
+Progress level dan posisi stage disimpan otomatis, sehingga refresh halaman tidak mengulang permainan dari awal.
 
 ```mermaid
 flowchart TD

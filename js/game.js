@@ -1261,7 +1261,7 @@
   class SoundFX {
     constructor() {
       this.ctx = null;
-      this.enabled = true;
+      this.enabled = window.PQProgress ? PQProgress.getSound() : true;
     }
     _getCtx() {
       if (!this.ctx) {
@@ -1423,7 +1423,88 @@
 
       this._cacheDOM();
       this._bindEvents();
-      this._gotoMenu();
+      this._bootGamePage();
+    }
+
+    // ----------------------------------------------------------
+    //  BOOT HALAMAN GAME
+    // ----------------------------------------------------------
+    _bootGamePage() {
+      const params = new URLSearchParams(window.location.search);
+      const mode = params.get('mode');
+      const savedStory = PQProgress.loadStory();
+
+      if (mode === 'prologue') {
+        this._startPrologue(savedStory && savedStory.story === 'prologue' ? savedStory : null);
+        return;
+      }
+      if (mode === 'epilogue') {
+        this._startEpilogue(savedStory && savedStory.story === 'epilogue' ? savedStory : null);
+        return;
+      }
+      if (mode === 'inter') {
+        const interLevel = parseInt(params.get('level'), 10);
+        if (interLevel === 1 || interLevel === 2) {
+          this._startLevelFromStory(interLevel);
+          return;
+        }
+      }
+
+      // Fallback: refresh saat cerita berjalan tapi URL belum sempat berubah.
+      if (!mode && !params.has('level') && savedStory && savedStory.story) {
+        if (savedStory.story === 'prologue') {
+          this._startPrologue(savedStory);
+          return;
+        }
+        if (savedStory.story === 'epilogue') {
+          this._startEpilogue(savedStory);
+          return;
+        }
+        if (savedStory.story === 'inter_1' || savedStory.story === 'inter_2') {
+          this._startLevelFromStory(savedStory.story === 'inter_1' ? 1 : 2);
+          return;
+        }
+      }
+
+      const levelParam = parseInt(params.get('level'), 10);
+      if (levelParam >= 1 && levelParam <= GAME_DATA.levels.length) {
+        const run = PQProgress.loadRun();
+        let stageIdx = 0;
+        let playerHP = this.maxHP;
+
+        if (params.has('stage')) {
+          stageIdx = Math.max(0, (parseInt(params.get('stage'), 10) || 1) - 1);
+        } else if (run && run.level === levelParam && run.stage) {
+          stageIdx = Math.max(0, run.stage - 1);
+        }
+
+        if (run && run.level === levelParam && run.stage === stageIdx + 1 && typeof run.playerHP === 'number') {
+          playerHP = Math.max(1, Math.min(this.maxHP, run.playerHP));
+        }
+
+        this._startLevel(levelParam - 1, { stage: stageIdx, playerHP: playerHP });
+        return;
+      }
+
+      const run = PQProgress.loadRun();
+      if (run && run.level >= 1 && run.level <= GAME_DATA.levels.length) {
+        this._startLevel(run.level - 1, {
+          stage: Math.max(0, (run.stage || 1) - 1),
+          playerHP: typeof run.playerHP === 'number' ? Math.max(1, Math.min(this.maxHP, run.playerHP)) : this.maxHP
+        });
+        return;
+      }
+
+      this._gotoLevelSelect();
+    }
+
+    _startLevelFromStory(levelNum) {
+      const scenes = INTER_LEVEL_DATA[levelNum];
+      if (!scenes || scenes.length === 0) {
+        this._startLevel(levelNum);
+        return;
+      }
+      this._playInterLevelScene(levelNum, () => this._startLevel(levelNum));
     }
 
     // ----------------------------------------------------------
@@ -1507,19 +1588,36 @@
     //  BIND EVENTS
     // ----------------------------------------------------------
     _bindEvents() {
-      this.$.btnPlay.addEventListener('click', () => {
-        if (!this.unlockedLevels.prologue) {
-          this._startPrologue();
-        } else {
-          this._gotoLevelSelect();
-        }
-      });
-      this.$.btnHowto.addEventListener('click', () => this._showModal(this.$.modalHowto));
-      this.$.btnBackMenu.addEventListener('click', () => this._gotoMenu());
-      this.$.btnCloseHowto.addEventListener('click', () => this._hideModal(this.$.modalHowto));
-      this.$.btnRestart.addEventListener('click', () => this._restartCurrentLevel());
-      this.$.btnReturnMenu.addEventListener('click', () => { this._hideModal(this.$.modalGameover); this._gotoMenu(); });
-      this.$.btnNextLevel.addEventListener('click', () => this._onNextLevel());
+      if (this.$.btnPlay) {
+        this.$.btnPlay.addEventListener('click', () => {
+          if (!this.unlockedLevels.prologue) {
+            this._startPrologue();
+          } else {
+            this._gotoLevelSelect();
+          }
+        });
+      }
+      if (this.$.btnHowto) {
+        this.$.btnHowto.addEventListener('click', () => this._showModal(this.$.modalHowto));
+      }
+      if (this.$.btnBackMenu) {
+        this.$.btnBackMenu.addEventListener('click', () => this._gotoMenu());
+      }
+      if (this.$.btnCloseHowto) {
+        this.$.btnCloseHowto.addEventListener('click', () => this._hideModal(this.$.modalHowto));
+      }
+      if (this.$.btnRestart) {
+        this.$.btnRestart.addEventListener('click', () => this._restartCurrentLevel());
+      }
+      if (this.$.btnReturnMenu) {
+        this.$.btnReturnMenu.addEventListener('click', () => {
+          this._hideModal(this.$.modalGameover);
+          this._gotoMenu();
+        });
+      }
+      if (this.$.btnNextLevel) {
+        this.$.btnNextLevel.addEventListener('click', () => this._onNextLevel());
+      }
       const btnReturnMenu2 = document.getElementById('btn-return-menu2');
       if (btnReturnMenu2) {
         btnReturnMenu2.addEventListener('click', () => {
@@ -1527,38 +1625,14 @@
           this._gotoLevelSelect();
         });
       }
-      this.$.btnSound.addEventListener('click', () => {
-        const on = this.sound.toggle();
-        this.$.btnSound.textContent = on ? '🔊' : '🔇';
-      });
-      this.$.levelCards.forEach(card => {
-        card.addEventListener('click', () => {
-          if (card.dataset.story === 'prologue') {
-            this._startPrologue();
-            return;
-          }
-          if (card.dataset.story === 'epilogue') {
-            if (this.unlockedLevels.epilogue) {
-              this._startEpilogue();
-            } else {
-              this.sound.wrong();
-              alert('Selesaikan Level 3 terlebih dahulu untuk membuka Epilog cerita penutup!');
-            }
-            return;
-          }
-          const lid = parseInt(card.dataset.level, 10);
-          if (this.unlockedLevels[lid]) {
-            this._startLevel(lid - 1);
-          } else {
-            this.sound.wrong();
-            if (lid === 1) {
-              alert('Tonton Prolog terlebih dahulu untuk membuka Level 1!');
-            } else {
-              alert(`Selesaikan Level ${lid - 1} terlebih dahulu untuk membuka level ini!`);
-            }
-          }
+      if (this.$.btnSound) {
+        this.$.btnSound.textContent = this.sound.enabled ? '🔊' : '🔇';
+        this.$.btnSound.addEventListener('click', () => {
+          const on = this.sound.toggle();
+          PQProgress.setSound(on);
+          this.$.btnSound.textContent = on ? '🔊' : '🔇';
         });
-      });
+      }
       if (this.$.btnRunCode) {
         this.$.btnRunCode.addEventListener('click', () => {
           if (this.state === GameState.BATTLE) this._checkAnswer();
@@ -1627,22 +1701,11 @@
     //  PROGRESS
     // ----------------------------------------------------------
     _loadProgress() {
-      try {
-        const saved = JSON.parse(localStorage.getItem('pythonquest_progress') || '{}');
-        const hasPrologue = !!saved.prologue || !!saved[1];
-        return {
-          prologue: hasPrologue,
-          1: hasPrologue,
-          2: hasPrologue && !!saved[2],
-          3: hasPrologue && !!saved[3],
-          epilogue: hasPrologue && !!saved.epilogue
-        };
-      } catch (e) {
-        return { prologue: false, 1: false, 2: false, 3: false, epilogue: false };
-      }
+      return PQProgress.loadProgress();
     }
+
     _saveProgress() {
-      try { localStorage.setItem('pythonquest_progress', JSON.stringify(this.unlockedLevels)); } catch (e) {}
+      PQProgress.saveProgress(this.unlockedLevels);
     }
 
     // ----------------------------------------------------------
@@ -1659,46 +1722,39 @@
 
     _gotoMenu() {
       this._stopAll();
-      this.$.gameWorld.className = 'game-world';
-      this._showScreen(this.$.screenMenu);
-      this.state = GameState.MENU;
+      PQProgress.clearRun();
+      PQProgress.clearStory();
+      window.location.href = 'index.html';
     }
 
     _gotoLevelSelect() {
       this._stopAll();
-      this._showScreen(this.$.screenLevels);
-      this.state = GameState.LEVEL_SELECT;
-      this.$.levelCards.forEach(card => {
-        if (card.dataset.story === 'prologue') {
-          card.classList.remove('locked');
-          return;
-        }
-        if (card.dataset.story === 'epilogue') {
-          if (this.unlockedLevels.epilogue) {
-            card.classList.remove('locked');
-          } else {
-            card.classList.add('locked');
-          }
-          return;
-        }
-        const lid = parseInt(card.dataset.level, 10);
-        if (this.unlockedLevels[lid]) {
-          card.classList.remove('locked');
-        } else {
-          card.classList.add('locked');
-        }
-      });
+      PQProgress.clearRun();
+      PQProgress.clearStory();
+      window.location.href = 'levels.html';
     }
 
     // ----------------------------------------------------------
     //  LEVEL & STAGE START
     // ----------------------------------------------------------
-    _startLevel(levelIdx) {
+    _startLevel(levelIdx, options) {
+      options = options || {};
+      const levelData = GAME_DATA.levels[levelIdx];
+      if (!levelData) {
+        this._gotoLevelSelect();
+        return;
+      }
+
+      PQProgress.clearStory();
       this.currentLevel = levelIdx;
-      this.currentStage = 0;
-      this.playerHP = this.maxHP;
+      const maxStage = levelData.stages.length - 1;
+      this.currentStage = Math.max(0, Math.min(options.stage || 0, maxStage));
+      this.playerHP = typeof options.playerHP === 'number'
+        ? Math.max(1, Math.min(this.maxHP, options.playerHP))
+        : this.maxHP;
+
       this._showScreen(this.$.screenGame);
-      this._setTheme(GAME_DATA.levels[levelIdx].bgTheme);
+      this._setTheme(levelData.bgTheme);
       this._startStage();
     }
 
@@ -1748,11 +1804,50 @@
       this.$.enemyContainer.style.display = 'block';
       this._spawnEnemy(stageData);
 
+      // Simpan posisi level/stage supaya refresh tidak mulai dari awal.
+      this._syncGameUrl();
+
       // Start with Stage Intro Dialogue if available
       this._showStageIntro(() => {
         this.state = GameState.WALKING;
         this._beginWalking();
       });
+    }
+
+    _syncGameUrl() {
+      const params = new URLSearchParams();
+      params.set('level', String(this.currentLevel + 1));
+      params.set('stage', String(this.currentStage + 1));
+      this._replaceUrl(params);
+      this._persistRun();
+    }
+
+    _persistRun() {
+      if (typeof this.currentLevel !== 'number') return;
+      if (!this.$.screenGame || !this.$.screenGame.classList.contains('active')) return;
+      PQProgress.saveRun({
+        level: this.currentLevel + 1,
+        stage: this.currentStage + 1,
+        playerHP: this.playerHP
+      });
+    }
+
+    _replaceUrl(params) {
+      const base = window.location.href.split('?')[0].split('#')[0];
+      const query = params.toString();
+      try {
+        history.replaceState(null, '', base + (query ? '?' + query : ''));
+      } catch (e) {}
+    }
+
+    _setStoryMode(mode, extra) {
+      PQProgress.clearRun();
+      const params = new URLSearchParams();
+      params.set('mode', mode);
+      if (extra) {
+        Object.keys(extra).forEach(key => params.set(key, extra[key]));
+      }
+      this._replaceUrl(params);
     }
 
     _createPlayer() {
@@ -2429,11 +2524,13 @@
       const isLast = this.currentLevel >= GAME_DATA.levels.length - 1;
 
       if (!isLast) {
+        this.unlockedLevels[this.currentLevel + 1] = true;
         this.unlockedLevels[this.currentLevel + 2] = true;
         this._saveProgress();
         this.$.btnNextLevel.style.display = 'inline-block';
         this.$.btnNextLevel.innerHTML = '<span>🎬</span> Cerita & Level Berikutnya →';
       } else {
+        this.unlockedLevels[this.currentLevel + 1] = true;
         this.unlockedLevels.epilogue = true;
         this._saveProgress();
         this.$.btnNextLevel.style.display = 'inline-block';
@@ -2445,6 +2542,7 @@
 
     _gameOver() {
       this.state = GameState.GAME_OVER;
+      PQProgress.clearRun();
       const levelData = GAME_DATA.levels[this.currentLevel];
       const stageData = levelData.stages[this.currentStage];
       this.$.gameoverMsg.textContent =
@@ -2491,6 +2589,7 @@
       } else {
         this._updateTimerBar(60, 60);
       }
+      this._persistRun();
     }
 
     // ----------------------------------------------------------
@@ -2566,13 +2665,15 @@
     // ----------------------------------------------------------
     //  STORY & PROLOGUE & EPILOGUE CONTROLLER
     // ----------------------------------------------------------
-    _playStory(scenes, storyKey, onFinish) {
+    _playStory(scenes, storyKey, onFinish, startAt) {
       this._stopAll();
       this.state = GameState.PROLOGUE;
       this.currentStory = storyKey;
       this.currentStoryScenes = scenes;
       this.onStoryFinishCallback = onFinish;
-      this.currentSceneIdx = 0;
+
+      const startScene = startAt && Number.isInteger(startAt.scene) ? startAt.scene : 0;
+      this.currentSceneIdx = Math.max(0, Math.min(startScene, scenes.length - 1));
       this.currentLineIdx = 0;
       this.isTyping = false;
       this.isWaitingChoice = false;
@@ -2586,13 +2687,14 @@
       if (this.$.dialogueHint) this.$.dialogueHint.style.display = 'inline-block';
 
       this._showScreen(this.$.screenStory);
-      this._loadStoryScene(0);
+      this._loadStoryScene(this.currentSceneIdx);
     }
 
-    _startPrologue() {
+    _startPrologue(startAt) {
+      this._setStoryMode('prologue');
       this._playStory(PROLOGUE_DATA, 'prologue', () => {
         this._finishPrologue();
-      });
+      }, startAt);
     }
 
     _playInterLevelScene(levelNum, callback) {
@@ -2601,17 +2703,24 @@
         if (callback) callback();
         return;
       }
+
+      this._setStoryMode('inter', { level: String(levelNum) });
+      const savedStory = PQProgress.loadStory();
+      const startAt = savedStory && savedStory.story === 'inter_' + levelNum ? savedStory : null;
+
       this._playStory(scenes, 'inter_' + levelNum, () => {
+        PQProgress.clearStory();
         if (callback) callback();
-      });
+      }, startAt);
     }
 
-    _startEpilogue() {
+    _startEpilogue(startAt) {
+      this._setStoryMode('epilogue');
       // Deep clone EPILOGUE_DATA so user can make different choices on replays
       const scenes = JSON.parse(JSON.stringify(EPILOGUE_DATA));
       this._playStory(scenes, 'epilogue', () => {
         this._finishEpilogue();
-      });
+      }, startAt);
     }
 
     _loadStoryScene(sceneIdx) {
@@ -2629,6 +2738,9 @@
         }
         return;
       }
+
+      // Simpan scene cerita supaya refresh tidak mengulang dari scene pertama.
+      PQProgress.saveStory({ story: this.currentStory, scene: sceneIdx });
 
       const scene = this.currentStoryScenes[sceneIdx];
       this.$.storyChapterTitle.textContent = scene.title;
@@ -3021,6 +3133,8 @@
       this.unlockedLevels.prologue = true;
       this.unlockedLevels[1] = true;
       this._saveProgress();
+      PQProgress.clearStory();
+      PQProgress.clearRun();
       this._gotoLevelSelect();
     }
 
@@ -3032,6 +3146,8 @@
       this.sound.stageClear();
       this.unlockedLevels.epilogue = true;
       this._saveProgress();
+      PQProgress.clearStory();
+      PQProgress.clearRun();
       this._stopAll();
       this.$.storyWorld.className = 'story-world theme-dark-castle';
       this._showTBCOverlay();

@@ -59,6 +59,8 @@ html, body {
   display: flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
+  color: inherit;
 }
 .brand-icon { font-size: 1.5rem; }
 .brand-name {
@@ -73,6 +75,37 @@ html, body {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.header-link {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--clr-secondary);
+  text-decoration: none;
+  border: 1.5px solid var(--clr-panel2);
+  border-radius: 8px;
+  padding: 6px 12px;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.header-link:hover {
+  color: #fff;
+  background: var(--clr-panel2);
+  border-color: var(--clr-accent);
+}
+
+.menu-progress {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  margin-top: 22px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: rgba(10, 10, 30, 0.78);
+  border: 1px solid rgba(69, 123, 157, 0.35);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .subtitle-tag {
@@ -263,7 +296,7 @@ html, body {
 
 .deco-enemy-preview {
   position: absolute;
-  bottom: 10%;
+  bottom: 3%;
   right: 5%;
   display: flex;
   gap: 8px;
@@ -378,10 +411,10 @@ html, body {
 }
 .lock-icon {
   position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2.5rem;
-  opacity: 0.6;
+  top: 12px;
+  left: 14px;
+  font-size: 1.6rem;
+  opacity: 0.75;
 }
 .level-card:not(.locked) .lock-icon { display: none; }
 
